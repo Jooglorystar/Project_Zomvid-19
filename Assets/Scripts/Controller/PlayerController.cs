@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour, IMovable
     [Header("Move")]
     [SerializeField] private LayerMask GroundLayerMask;
     private Vector3 inputVector = Vector3.zero;
-    private bool canMove = true;
+    public bool canMove = true;
     private float walkSpeed;
     private float runSpeed = 1;
     private float jumpPower;
@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour, IMovable
     private float mouseSensitivity;
     private float maxVerticalRotation = 80;
     private float minVerticalRotation = -80;
+    public bool canLook = true;
 
 
 
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour, IMovable
 
     private void LateUpdate()
     {
+        if(canLook)
         Look();
     }
 
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour, IMovable
         Vector3 moveDirection = Vector3.one;
         moveDirection = transform.forward * inputVector.y + transform.right * inputVector.x;
         moveDirection.Normalize();
+
         Vector3 horizontalVector = moveDirection * walkSpeed * runSpeed;
         rb.velocity = new Vector3(horizontalVector.x, rb.velocity.y, horizontalVector.z);
     }
@@ -124,9 +127,9 @@ public class PlayerController : MonoBehaviour, IMovable
         jumpPower = CharacterManager.Instance.player.data.jumpPower;
         jumpStamina = CharacterManager.Instance.player.data.jumpStamina;
 
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started && IsGround())
         {
-            if (IsGround() && condition.UseStamina(jumpStamina))
+            if (condition.UseStamina(jumpStamina))
             {
                 rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             }
@@ -138,10 +141,12 @@ public class PlayerController : MonoBehaviour, IMovable
         if (context.phase == InputActionPhase.Started)
         {
             runSpeed = CharacterManager.Instance.player.data.runSpeed;
+            CharacterManager.Instance.player.equip.curEquip?.OnRunInput(true);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             runSpeed = 1;
+            CharacterManager.Instance.player.equip.curEquip?.OnRunInput(false);
         }
     }
 }
