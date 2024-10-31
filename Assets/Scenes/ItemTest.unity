@@ -854,8 +854,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 885181700}
-        m_TargetAssemblyTypeName: InventoryAndCraftingPage, Assembly-CSharp
+      - m_Target: {fileID: 885181699}
+        m_TargetAssemblyTypeName: InventoryAndCraftingTab, Assembly-CSharp
         m_MethodName: GoNextPage
         m_Mode: 1
         m_Arguments:
@@ -5070,8 +5070,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 885181700}
-        m_TargetAssemblyTypeName: InventoryAndCraftingPage, Assembly-CSharp
+      - m_Target: {fileID: 885181699}
+        m_TargetAssemblyTypeName: InventoryAndCraftingTab, Assembly-CSharp
         m_MethodName: GoPreviousPage
         m_Mode: 1
         m_Arguments:
@@ -5431,6 +5431,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryTab: {fileID: 613554679}
   craftingTab: {fileID: 801324006}
+  NextPageButton: {fileID: 145549393}
+  PreviousPageButton: {fileID: 805348724}
+  Inventory1Page: {fileID: 586235736}
+  Inventory2Page: {fileID: 382292779}
+  Crafting1Page: {fileID: 201502674}
+  Crafting2Page: {fileID: 1881006624}
 --- !u!114 &885181700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5443,12 +5449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324f61d98aac14b47b884a7b59d2eaad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextPageButton: {fileID: 145549393}
-  PreviousPageButton: {fileID: 805348724}
-  Inventory1Page: {fileID: 586235736}
-  Inventory2Page: {fileID: 382292779}
-  Crafting1Page: {fileID: 201502674}
-  Crafting2Page: {fileID: 1881006624}
 --- !u!1 &885830701
 GameObject:
   m_ObjectHideFlags: 0
