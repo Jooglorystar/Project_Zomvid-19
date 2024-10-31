@@ -15,7 +15,7 @@ public enum ConsumeType
     Stamina,
     Hunger,
     Thirst,
-    temperature
+    Temperature
 }
 
 [System.Serializable]
@@ -28,7 +28,7 @@ public class ConsumeData
 [System.Serializable]
 public class ItemInRecipe
 {
-    public GameObject item;  // GameObject는 임시
+    public ItemSO item;  // GameObject는 임시
     public int itemCount;
 }
 
