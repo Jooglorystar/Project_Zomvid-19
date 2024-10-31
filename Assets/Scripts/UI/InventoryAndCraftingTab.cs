@@ -7,96 +7,128 @@ public enum InventoryState
     Crafting
 }
 
-public enum PageState
-{
-    Page1,
-    Page2
-}
-
 public class InventoryAndCraftingTab : MonoBehaviour
 {
+    [SerializeField] private GameObject wholeTab;
+
     [SerializeField] private GameObject inventoryTab;
     [SerializeField] private GameObject craftingTab;
 
-    [SerializeField] private GameObject NextPageButton;
-    [SerializeField] private GameObject PreviousPageButton;
+    [SerializeField] private GameObject nextPageButton;
+    [SerializeField] private GameObject previousPageButton;
 
-    [SerializeField] private GameObject Inventory1Page;
-    [SerializeField] private GameObject Inventory2Page;
-    [SerializeField] private GameObject Crafting1Page;
-    [SerializeField] private GameObject Crafting2Page;
+    [SerializeField] private GameObject inventory1Page;
+    [SerializeField] private GameObject inventory2Page;
+    [SerializeField] private GameObject crafting1Page;
+    [SerializeField] private GameObject crafting2Page;
 
-
-    static public InventoryState State;
+    private InventoryState _state;
 
     public void Start()
     {
-        PreviousPageButton.SetActive(false);
-        Inventory2Page.SetActive(false);
-        Crafting2Page.SetActive(false);
-        State = InventoryState.Inventory;
+        ResetTap();
+
+        _state = InventoryState.Inventory;
+        wholeTab.SetActive(false);
     }
 
     public void OnInventoryUI(InputAction.CallbackContext context)
     {
+        if(context.phase == InputActionPhase.Started)
+        {
+            ToggleInventoryUI();
+        }
+    }
 
+    // 창을 여닿는 메서드
+    private void ToggleInventoryUI()
+    {
+        ResetTap();
+
+        if (!wholeTab.activeInHierarchy)
+        {
+            wholeTab.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            // 인벤토리 오픈 시 움직임 및 회전을 막음
+            //CharacterManager.Instance.player.controller.canMove = false;
+            //CharacterManager.Instance.player.controller.canLook = false;
+        }
+        else
+        {
+            wholeTab.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            // 다시 품
+            //CharacterManager.Instance.player.controller.canLook = true;
+            //CharacterManager.Instance.player.controller.canLook = true;
+        }
+    }
+
+
+    private void ResetTap()
+    {
+        previousPageButton.SetActive(false);
+        inventory2Page.SetActive(false);
+        crafting2Page.SetActive(false);
+        GoPreviousPage();
     }
 
     // 인벤토리 탭 버튼
     public void OnInventoryTab()
     {
-        if (State == InventoryState.Crafting)
+        if (_state == InventoryState.Crafting)
         {
             craftingTab.SetActive(false);
             inventoryTab.SetActive(true);
-            State = InventoryState.Inventory;
+            ResetTap();
+            _state = InventoryState.Inventory;
         }
     }
 
     // 크래프팅 탭 버튼
     public void OnCraftingTab()
     {
-        if (State == InventoryState.Inventory)
+        if (_state == InventoryState.Inventory)
         {
             inventoryTab.SetActive(false);
             craftingTab.SetActive(true);
-            State = InventoryState.Crafting;
+            ResetTap();
+            _state = InventoryState.Crafting;
         }
     }
 
     // 2페이지로 이동
     public void GoNextPage()
     {
-        if (State == InventoryState.Inventory)
+        if (_state == InventoryState.Inventory)
         {
-            Inventory2Page.SetActive(true);
-            Inventory1Page.SetActive(false);
+            inventory1Page.SetActive(false);
+            inventory2Page.SetActive(true);
         }
-        else if (State == InventoryState.Crafting)
+        else if (_state == InventoryState.Crafting)
         {
-            Crafting2Page.SetActive(true);
-            Crafting1Page.SetActive(false);
+            crafting1Page.SetActive(false);
+            crafting2Page.SetActive(true);
         }
 
-        PreviousPageButton.SetActive(true);
-        NextPageButton.SetActive(false);
+        nextPageButton.SetActive(false);
+        previousPageButton.SetActive(true);
     }
 
     // 1페이지로 이동
     public void GoPreviousPage()
     {
-        if (State == InventoryState.Inventory)
+        if (_state == InventoryState.Inventory)
         {
-            Inventory2Page.SetActive(false);
-            Inventory1Page.SetActive(true);
+            inventory1Page.SetActive(true);
+            inventory2Page.SetActive(false);
         }
-        else if (State == InventoryState.Crafting)
+        else if (_state == InventoryState.Crafting)
         {
-            Crafting2Page.SetActive(false);
-            Crafting1Page.SetActive(true);
+            crafting1Page.SetActive(true);
+            crafting2Page.SetActive(false);
         }
 
-        NextPageButton.SetActive(true);
-        PreviousPageButton.SetActive(false);
+        nextPageButton.SetActive(true);
+        previousPageButton.SetActive(false);
     }
 }

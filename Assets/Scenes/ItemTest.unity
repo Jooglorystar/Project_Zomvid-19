@@ -5346,7 +5346,6 @@ GameObject:
   - component: {fileID: 885181698}
   - component: {fileID: 885181697}
   - component: {fileID: 885181699}
-  - component: {fileID: 885181700}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -5429,26 +5428,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8bcac38a96d5d44b790299bcd8ef37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wholeTab: {fileID: 885181695}
   inventoryTab: {fileID: 613554679}
   craftingTab: {fileID: 801324006}
-  NextPageButton: {fileID: 145549393}
-  PreviousPageButton: {fileID: 805348724}
-  Inventory1Page: {fileID: 586235736}
-  Inventory2Page: {fileID: 382292779}
-  Crafting1Page: {fileID: 201502674}
-  Crafting2Page: {fileID: 1881006624}
---- !u!114 &885181700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885181695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324f61d98aac14b47b884a7b59d2eaad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  nextPageButton: {fileID: 145549393}
+  previousPageButton: {fileID: 805348724}
+  inventory1Page: {fileID: 586235736}
+  inventory2Page: {fileID: 382292779}
+  crafting1Page: {fileID: 201502674}
+  crafting2Page: {fileID: 1881006624}
 --- !u!1 &885830701
 GameObject:
   m_ObjectHideFlags: 0
@@ -10005,6 +9993,112 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1664662107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1664662109}
+  - component: {fileID: 1664662108}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1664662108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664662107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a703b9fd34e7b544f918dfdaf3aef0ee, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a18e287b-9ebe-4691-aadd-ed9a340a6eae
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ec7a798e-71f9-44d2-be13-cd64959427ec
+    m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: afd3d30d-357a-4ba6-b80d-81431e502f1e
+    m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2ae42cef-0d01-480e-b50d-cdcfc6ad39d4
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 885181699}
+        m_TargetAssemblyTypeName: InventoryAndCraftingTab, Assembly-CSharp
+        m_MethodName: OnInventoryUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 94dab26d-ac68-44a2-a7e2-28e1b40765f6
+    m_ActionName: Player/Inventory[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 35aa0d61-afcd-4591-b290-baeb1b7d263b
+    m_ActionName: Player/Setting[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e8c9755f-64e2-4d82-a144-13929b0d5cf1
+    m_ActionName: Player/Run[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 830bad52-15b3-4ba3-87fa-b98f0e1827fc
+    m_ActionName: Player/Attack[/Mouse/leftButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!4 &1664662109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664662107}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1679757956
 GameObject:
   m_ObjectHideFlags: 0
@@ -20852,3 +20946,4 @@ SceneRoots:
   - {fileID: 1165945276}
   - {fileID: 1663414011}
   - {fileID: 270817403}
+  - {fileID: 1664662109}
