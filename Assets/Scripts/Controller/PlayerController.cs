@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour, IMovable
     [Header("Move")]
     [SerializeField] private LayerMask GroundLayerMask;
     private Vector3 inputVector = Vector3.zero;
-    private bool canMove = true;
+    public bool canMove = true;
     private float walkSpeed;
     private float runSpeed = 1;
     private float jumpPower;
@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour, IMovable
     private float mouseSensitivity;
     private float maxVerticalRotation = 80;
     private float minVerticalRotation = -80;
+    public bool canLook = true;
 
 
 
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour, IMovable
 
     private void LateUpdate()
     {
+        if(canLook)
         Look();
     }
 
