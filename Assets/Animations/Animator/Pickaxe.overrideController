@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pickaxe
+  m_Controller: {fileID: 9100000, guid: fc63d97200d6e2a4e8033ec763e517d1, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 9074ceb6c289ac045adb6fe76897e2a7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8626f7016ff24c648b32389ba4e1cf8f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f3f1d74ea608fd848b083bb627c6d66c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 68d825d65148531488291257bd1aad35, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c39116ef6da801346a8d3e271f6d195f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5b5e74fe3002e4e43a7860d75e3f1646, type: 2}

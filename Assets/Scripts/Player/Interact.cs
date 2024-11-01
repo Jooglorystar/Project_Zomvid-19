@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public interface IInteractable
 {
@@ -23,6 +24,8 @@ public class Interact : MonoBehaviour
 
     private Camera cam;
     private bool hasSearched = false;
+
+    private ItemSO curItemData;
 
     private void Start()
     {
@@ -50,13 +53,14 @@ public class Interact : MonoBehaviour
             if(hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 hasSearched = true;
-
+                curItemData = hit.collider.GetComponent<ItemSO>();
                 SetNamePrompt(interactable.GetInteractPromptName());
                 SetDescriptionPrompt(interactable.GetInteractPromptDescription());
             }
         }
         else
         {
+            curItemData = null;
             promptPanel.SetActive(false);
             descriptionPanel.SetActive(false);
         }
@@ -79,5 +83,9 @@ public class Interact : MonoBehaviour
         itemDescriptionPrompt.text = description;
     }
 
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        
+    }
 
 }
