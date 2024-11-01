@@ -3745,10 +3745,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 459720519372526524, guid: 642701ae65c4f90459d488a69c1932d5, type: 3}
-      propertyPath: curEquip
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4724934998760703469, guid: 642701ae65c4f90459d488a69c1932d5, type: 3}
       propertyPath: NamePrompt
       value: 
