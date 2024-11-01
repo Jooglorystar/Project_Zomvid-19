@@ -15,13 +15,13 @@ public class UIInventoryTab : MonoBehaviour
     public Transform Page2;
 
     [Header("Select Item")]
-    private ItemSlot selectedItem;
-    private int selectedItemIndex;
-
     public TextMeshProUGUI selectedItemName;
     public TextMeshProUGUI selectedItemDesc;
     public TextMeshProUGUI selectedItemStatName;
     public TextMeshProUGUI selectedItemStatValue;
+
+    private ItemSlot selectedItem;
+    private int selectedItemIndex;
 
     public GameObject useButton;
     public GameObject equipButton;
@@ -92,5 +92,12 @@ public class UIInventoryTab : MonoBehaviour
 
         useButton.SetActive(selectedItem.itemData.itemType == ItemType.Consume);
         BuildButton.SetActive(selectedItem.itemData.itemType == ItemType.Build);
+
+        dropButton.SetActive(true);
+    }
+
+    public void OnDropButton()
+    {
+        // TODO 드랍 메서드
     }
 }

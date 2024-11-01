@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 108fe3b1cdc6deb46b1ee4aaeb1aaa80, type: 3}
-  m_Name: TestEquipData
-  m_EditorClassIdentifier: Assembly-CSharp::MeleeEquipItemSO
-  itemName: 
-  itemDesc: 
+  m_Name: Axe
+  m_EditorClassIdentifier: 
+  itemName: "\uB3C4\uB07C"
+  itemDesc: "\uB098\uBB34\uB97C \uD328\uAC70\uB098 \uC0AC\uB78C\uC744 \uD339\uB2C8\uB2E4."
   itemType: 0
   icon: {fileID: 0}
   dropPrefab: {fileID: 0}
@@ -22,7 +22,9 @@ MonoBehaviour:
   ConsumeData: []
   canCrafting: 0
   itemMaterials: []
-  damage: 0
-  attackDistance: 0
-  attackRate: 0
-  useStamina: 0
+  damage: 30
+  attackDistance: 3
+  attackRate: 0.5
+  useStamina: 30
+  meleePrefab: {fileID: 7983293337051816722, guid: f7826d791d976c243a65348fd0aaf5f1, type: 3}
+  toolType: 0

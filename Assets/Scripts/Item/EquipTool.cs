@@ -6,21 +6,34 @@ public class EquipTool : Equip
 {
     private bool isAttacking;
 
-    [Header("ScriptableObject")]
-    public float damage;
-    public float attackDistance;
-    public float attackRate;
-    public float useStamina;
+    private float damage;
+    private float attackDistance;
+    private float attackRate;
+    private float useStamina;
+
+    [SerializeField] private ItemSO itemData;
 
     private Animator animator;
     private Camera cam;
 
-    private void Awake()
+
+    private void Start()
     {
+        InitMelee();
         animator = GetComponent<Animator>();
         cam = Camera.main;
     }
 
+    public void InitMelee()
+    {
+        if (itemData is MeleeEquipItemSO meleeData)
+        {
+            damage = meleeData.damage;
+            attackDistance = meleeData.attackDistance;
+            attackRate = meleeData.attackRate;
+            useStamina = meleeData.useStamina;
+        }
+    }
 
     public override void OnAttackInput()
     {
@@ -53,9 +66,9 @@ public class EquipTool : Equip
         Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 
-        if(Physics.Raycast(ray,out hit, attackDistance))
+        if (Physics.Raycast(ray, out hit, attackDistance))
         {
-            if(hit.collider.TryGetComponent<IDamagable>(out IDamagable damagable))
+            if (hit.collider.TryGetComponent<IDamagable>(out IDamagable damagable))
             {
                 damagable.TakeDamage(damage);
             }

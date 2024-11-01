@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 108fe3b1cdc6deb46b1ee4aaeb1aaa80, type: 3}
-  m_Name: TestEquipData
-  m_EditorClassIdentifier: Assembly-CSharp::MeleeEquipItemSO
-  itemName: 
-  itemDesc: 
+  m_Script: {fileID: 11500000, guid: 309bdb798f5e2b2499560a47de1bafc6, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  itemName: "\uB9AC\uBCFC\uBC84"
+  itemDesc: "\uB9AC\uBCFC\uBC84\uC785\uB2C8\uB2E4"
   itemType: 0
   icon: {fileID: 0}
   dropPrefab: {fileID: 0}
@@ -22,7 +22,9 @@ MonoBehaviour:
   ConsumeData: []
   canCrafting: 0
   itemMaterials: []
-  damage: 0
-  attackDistance: 0
-  attackRate: 0
-  useStamina: 0
+  damage: 50
+  attackDistance: 50
+  attackRate: 1
+  useStamina: 3
+  RangePrefab: {fileID: 976122341353580055, guid: 331051aa9863eef438350f65a128a4e9, type: 3}
+  toolType: 2
