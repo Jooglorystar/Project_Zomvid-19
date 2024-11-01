@@ -19,12 +19,10 @@ MonoBehaviour:
   dropPrefab: {fileID: 0}
   canStack: 1
   MaxStackSize: 20
-  ConsumeDate:
-  - Type: 0
-    itemEffectValue: 0
-  - Type: 1
-    itemEffectValue: 0
-  - Type: 2
-    itemEffectValue: 0
+  ConsumeData:
+  - consumeType: 0
+    itemEffectValue: 20
+  - consumeType: 1
+    itemEffectValue: 20
   canCrafting: 0
   itemMaterials: []

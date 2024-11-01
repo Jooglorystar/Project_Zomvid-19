@@ -51,6 +51,7 @@ public class UIInventoryTab : MonoBehaviour
         ClearInventorySelectedItemWindow();
     }
 
+    // 창 초기화
     private void ClearInventorySelectedItemWindow()
     {
         selectedItemName.text = string.Empty;
@@ -65,6 +66,7 @@ public class UIInventoryTab : MonoBehaviour
         dropButton.SetActive(false);
     }
 
+    // 선택아이템 표시
     public void SelectItem(int index)
     {
         if (slots[index].itemData == null) return;
@@ -86,16 +88,5 @@ public class UIInventoryTab : MonoBehaviour
 
         useButton.SetActive(selectedItem.itemData.itemType == ItemType.Consume);
         BuildButton.SetActive(selectedItem.itemData.itemType == ItemType.Build);
-    }
-
-    private void AddItem()
-    {
-        // 중복 확인
-
-        // 빈 슬롯 확인
-
-        // 빈 슬롯 있음
-
-        // 빈 슬롯 없음
     }
 }

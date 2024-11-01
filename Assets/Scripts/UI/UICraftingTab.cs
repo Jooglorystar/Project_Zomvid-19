@@ -42,6 +42,7 @@ public class UICraftingTab : MonoBehaviour
         ClearCraftingItemWindow();
     }
 
+    // 창 초기화
     private void ClearCraftingItemWindow()
     {
         craftingItemName.text = string.Empty;
@@ -52,6 +53,7 @@ public class UICraftingTab : MonoBehaviour
         craftButton.SetActive(false);
     }
 
+    // 선택 아이템 표시
     public void SelectItem(int index)
     {
         if (slots[index].itemData == null) return;
@@ -65,10 +67,31 @@ public class UICraftingTab : MonoBehaviour
         materialName.text = string.Empty;
         materialCount.text = string.Empty;
 
+        // 재료 표시
         for (int i = 0; i < selectedItem.itemData.itemMaterials.Count; i++)
         {
             materialName.text += selectedItem.itemData.itemMaterials[i].item.itemName.ToString() + "\n";
-            materialCount.text += selectedItem.itemData.itemMaterials[i].itemCount.ToString() + "\n";
+
+            int needCount = selectedItem.itemData.itemMaterials[i].itemCount;
+            int hasCount = 0;
+
+            for (int j = 0; j < inventoryTab.slots.Length; j++)
+            {
+                if (selectedItem.itemData.itemMaterials[i].item == inventoryTab.slots[j].itemData)
+                {
+                    hasCount = inventoryTab.slots[j].itemCount;
+                    break;
+                }
+            }
+            string hasCountAndNeedCount = $"{hasCount} / {needCount}";
+            
+            // 미달된 아이템은 붉은 표시
+            if (hasCount < needCount)
+            {
+                hasCountAndNeedCount = $"<color=#FF0000>{hasCountAndNeedCount}</color>";
+            }
+
+            materialCount.text += hasCountAndNeedCount + "\n";
         }
 
         craftButton.SetActive(true);

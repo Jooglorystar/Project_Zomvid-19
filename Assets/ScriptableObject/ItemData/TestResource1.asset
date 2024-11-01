@@ -16,9 +16,9 @@ MonoBehaviour:
   itemDesc: This is resource1
   itemType: 2
   icon: {fileID: 21300000, guid: a5eee16fca07dbb40a04ac1eb0ccc9c2, type: 3}
-  dropPrefab: {fileID: 0}
+  dropPrefab: {fileID: 6542617424550535336, guid: 1cdc21cdacd637a48b9ce79ed7984ad9, type: 3}
   canStack: 0
   MaxStackSize: 0
-  ConsumeDate: []
+  ConsumeData: []
   canCrafting: 0
   itemMaterials: []
