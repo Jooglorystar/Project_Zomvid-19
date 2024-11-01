@@ -9,22 +9,23 @@ public class UICraftingTab : MonoBehaviour
 
     public Transform Page1;
     public Transform Page2;
+    public UIInventoryTab inventoryTab;
 
     [Header("Select Item")]
-    private CraftingSlot selectedItem;
-    private int selectedItemIndex;
-
     public TextMeshProUGUI craftingItemNameText;
     public TextMeshProUGUI craftingItemDescText;
     public TextMeshProUGUI materialNameText;
     public TextMeshProUGUI materialCountText;
 
+    public GameObject craftButton;
+
+    private CraftingSlot selectedItem;
+    private int selectedItemIndex;
+
+    [Header("Not Enough Item")]
     public TextMeshProUGUI notEnoughItemMessageText;
     private Coroutine notEnoughItemMessageCoroutine;
 
-    public GameObject craftButton;
-
-    public UIInventoryTab inventoryTab;
 
     // 소지한 재료의 갯수 파악용 배열
     private int[] hasMaterialCounts;
@@ -164,9 +165,12 @@ public class UICraftingTab : MonoBehaviour
         return true;
     }
 
+    // 아이템 제작 메서드
     private void CraftItem()
     {
         // TODO 아이템 제작하는 메서드
+        // 재료 아이템을 필요한 양 만큼 깎고
+        // 만든 만큼 인벤토리 추가하기
     }
 
     // 재료 부족시 경고 메세지 띄우는 메서드
