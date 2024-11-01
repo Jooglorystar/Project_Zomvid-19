@@ -149,7 +149,7 @@ public class UICraftingTab : MonoBehaviour
             // 제작시 이용할 배열에 보유숫자 저장
             hasMaterialCounts[i] = hasCount;
 
-            // "1/3 형태의 문자열화'
+            // 보유/필요 형태의 문자열화
             string hasCountAndNeedCount = $"{hasCount} / {needCount}";
 
             // 미달된 아이템은 붉은 표시
