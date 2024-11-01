@@ -149,4 +149,17 @@ public class PlayerController : MonoBehaviour, IMovable
             CharacterManager.Instance.player.equip.curEquip?.OnRunInput(false);
         }
     }
+
+    public void OnSetting(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            ToggleCursor();
+        }
+    }
+
+    private void ToggleCursor()
+    {
+        Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
+    }
 }
