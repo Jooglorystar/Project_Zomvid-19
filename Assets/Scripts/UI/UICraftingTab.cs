@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UICraftingTab : MonoBehaviour
@@ -12,14 +13,17 @@ public class UICraftingTab : MonoBehaviour
     private CraftingSlot selectedItem;
     private int selectedItemIndex;
 
-    public TextMeshProUGUI craftingItemName;
-    public TextMeshProUGUI craftingItemDesc;
-    public TextMeshProUGUI materialName;
-    public TextMeshProUGUI materialCount;
+    public TextMeshProUGUI craftingItemNameText;
+    public TextMeshProUGUI craftingItemDescText;
+    public TextMeshProUGUI materialNameText;
+    public TextMeshProUGUI materialCountText;
 
     public GameObject craftButton;
 
     public UIInventoryTab inventoryTab;
+
+    [Header("Crafting Value")]
+    private int[] hasMaterialCounts;
 
     private void Start()
     {
@@ -45,10 +49,10 @@ public class UICraftingTab : MonoBehaviour
     // 창 초기화
     private void ClearCraftingItemWindow()
     {
-        craftingItemName.text = string.Empty;
-        craftingItemDesc.text = string.Empty;
-        materialName.text = string.Empty;
-        materialCount.text = string.Empty;
+        craftingItemNameText.text = string.Empty;
+        craftingItemDescText.text = string.Empty;
+        materialNameText.text = string.Empty;
+        materialCountText.text = string.Empty;
 
         craftButton.SetActive(false);
     }
@@ -65,20 +69,24 @@ public class UICraftingTab : MonoBehaviour
         selectedItem = slots[index];
         selectedItemIndex = index;
 
-        craftingItemName.text = selectedItem.itemData.itemName;
-        craftingItemDesc.text = selectedItem.itemData.itemDesc;
+        craftingItemNameText.text = selectedItem.itemData.itemName;
+        craftingItemDescText.text = selectedItem.itemData.itemDesc;
 
-        materialName.text = string.Empty;
-        materialCount.text = string.Empty;
+        materialNameText.text = string.Empty;
+        materialCountText.text = string.Empty;
+
+        hasMaterialCounts = new int[selectedItem.itemData.itemMaterials.Count];
 
         // 재료 표시
         for (int i = 0; i < selectedItem.itemData.itemMaterials.Count; i++)
         {
-            materialName.text += selectedItem.itemData.itemMaterials[i].item.itemName.ToString() + "\n";
+            materialNameText.text += selectedItem.itemData.itemMaterials[i].item.itemName.ToString() + "\n";
+            
 
             int needCount = selectedItem.itemData.itemMaterials[i].itemCount;
             int hasCount = 0;
 
+            // 레시피와 같은 재료 찾기
             for (int j = 0; j < inventoryTab.slots.Length; j++)
             {
                 if (selectedItem.itemData.itemMaterials[i].item == inventoryTab.slots[j].itemData)
@@ -87,27 +95,55 @@ public class UICraftingTab : MonoBehaviour
                     break;
                 }
             }
+            hasMaterialCounts[i] = hasCount;
             string hasCountAndNeedCount = $"{hasCount} / {needCount}";
-            
+
             // 미달된 아이템은 붉은 표시
             if (hasCount < needCount)
             {
                 hasCountAndNeedCount = $"<color=#FF0000>{hasCountAndNeedCount}</color>";
             }
+            // 충족된 아이템은 녹색 표시
             else
             {
                 hasCountAndNeedCount = $"<color=#00FF00>{hasCountAndNeedCount}</color>";
             }
 
-            materialCount.text += hasCountAndNeedCount + "\n";
+            materialCountText.text += hasCountAndNeedCount + "\n";
         }
 
         craftButton.SetActive(true);
     }
 
     // 제작 버튼
-    private void OnCraftButton()
+    public void OnCraftButton()
     {
+        if (HasAllMaterial())
+        {
+            Debug.Log("제작 완료");
+        }
+        else
+        {
+            Debug.Log("재료 부족");
+        }
+    }
 
+
+    // 선택된 아이템 재료 수 체크 메서드
+    private bool HasAllMaterial()
+    {
+        for (int i = 0; i < hasMaterialCounts.Length; i++)
+        {
+            if(hasMaterialCounts[i] < selectedItem.itemData.itemMaterials[i].itemCount)
+            {
+                Debug.Log($"{hasMaterialCounts[i]}/{selectedItem.itemData.itemMaterials[i].itemCount}\n{selectedItem.itemData.itemMaterials[i].item.itemName}이 부족");
+                return false;
+            }
+            else
+            {
+                continue;
+            }
+        }
+        return true;
     }
 }

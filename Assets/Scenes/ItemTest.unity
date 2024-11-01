@@ -1808,7 +1808,7 @@ PrefabInstance:
     - target: {fileID: 4991340771212545498, guid: f493def463f6e3742885c233a23e1024, type: 3}
       propertyPath: itemData
       value: 
-      objectReference: {fileID: 11400000, guid: ea1c4447b9d3a5144919282b66375974, type: 2}
+      objectReference: {fileID: 11400000, guid: 061da941b79a64c4e9ae0b2089a7ca3a, type: 2}
     - target: {fileID: 4991340771212545498, guid: f493def463f6e3742885c233a23e1024, type: 3}
       propertyPath: itemCount
       value: 1
@@ -2019,7 +2019,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 251134703}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 801324008}
+        m_TargetAssemblyTypeName: UICraftingTab, Assembly-CSharp
+        m_MethodName: OnCraftButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &251134703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4837,10 +4849,10 @@ MonoBehaviour:
   slots: []
   Page1: {fileID: 201502675}
   Page2: {fileID: 1405610204}
-  craftingItemName: {fileID: 118197367}
-  craftingItemDesc: {fileID: 1235884240}
-  materialName: {fileID: 327422507}
-  materialCount: {fileID: 564318759}
+  craftingItemNameText: {fileID: 118197367}
+  craftingItemDescText: {fileID: 1235884240}
+  materialNameText: {fileID: 327422507}
+  materialCountText: {fileID: 564318759}
   craftButton: {fileID: 251134700}
   inventoryTab: {fileID: 613554681}
 --- !u!1 &805348724
@@ -10809,10 +10821,10 @@ PrefabInstance:
     - target: {fileID: 4991340771212545498, guid: f493def463f6e3742885c233a23e1024, type: 3}
       propertyPath: itemData
       value: 
-      objectReference: {fileID: 11400000, guid: 061da941b79a64c4e9ae0b2089a7ca3a, type: 2}
+      objectReference: {fileID: 11400000, guid: ea1c4447b9d3a5144919282b66375974, type: 2}
     - target: {fileID: 4991340771212545498, guid: f493def463f6e3742885c233a23e1024, type: 3}
       propertyPath: itemCount
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5614547641726011698, guid: f493def463f6e3742885c233a23e1024, type: 3}
       propertyPath: m_Name
