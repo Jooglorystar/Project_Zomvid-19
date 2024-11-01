@@ -50,11 +50,11 @@ public class Zombie : MonoBehaviour, IDamagable
     }
     void Update()
     {
-        playerDistance = Vector2.Distance(transform.position, CharacterManager.Instance.player.transform.position);
+        playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.player.transform.position);
 
         animator.SetBool("Moving", aiState != AIState.Idle);
 
-        if(isStopped) return;
+        if (isStopped) return;
 
         switch (aiState)
         {
@@ -93,7 +93,8 @@ public class Zombie : MonoBehaviour, IDamagable
 
         }
 
-        animator.speed = agent.speed / data.walkSpeed;
+        //animator.speed = agent.speed / data.walkSpeed;
+        animator.SetFloat("Speed", agent.speed);
     }
 
     void PassiveUpdate()
@@ -150,7 +151,7 @@ public class Zombie : MonoBehaviour, IDamagable
                 CharacterManager.Instance.player.controller.GetComponent<IDamagable>().TakeDamage(data.basicATK);
                 animator.speed = 1;
                 animator.SetTrigger("Attack");
-            }
+            }   
         }
         else
         {
