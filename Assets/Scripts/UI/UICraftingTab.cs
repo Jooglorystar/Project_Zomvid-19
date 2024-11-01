@@ -22,6 +22,13 @@ public class UICraftingTab : MonoBehaviour
     private CraftingSlot selectedItem;
     private int selectedItemIndex;
 
+    [Header("Craft Quantity")]
+    public TextMeshProUGUI craftQuantityText;
+    private int craftQuantity;
+
+    public GameObject QuantityUpButton;
+    public GameObject QuantityDownButton;
+
     [Header("Not Enough Item")]
     public TextMeshProUGUI notEnoughItemMessageText;
     private Coroutine notEnoughItemMessageCoroutine;
@@ -58,10 +65,13 @@ public class UICraftingTab : MonoBehaviour
         craftingItemDescText.text = string.Empty;
         materialNameText.text = string.Empty;
         materialCountText.text = string.Empty;
+        craftQuantityText.text = string.Empty;
 
         notEnoughItemMessageText.gameObject.SetActive(false);
 
         craftButton.SetActive(false);
+        QuantityUpButton.SetActive(false);
+        QuantityDownButton.SetActive(false);
     }
 
     // 선택 아이템 표시
@@ -80,6 +90,36 @@ public class UICraftingTab : MonoBehaviour
         craftingItemNameText.text = selectedItem.itemData.itemName;
         craftingItemDescText.text = selectedItem.itemData.itemDesc;
 
+        craftButton.SetActive(true);
+
+        // 제작 수 조정 버튼
+        craftQuantity = 1;
+        craftQuantityText.text = craftQuantity.ToString();
+        QuantityUpButton.SetActive(true);
+        QuantityDownButton.SetActive(true);
+
+        // 제작에 필요한 재료 체크
+        CheckMaterials();
+    }
+
+    // 제작 버튼
+    public void OnCraftButton()
+    {
+        if (HasAllMaterial())
+        {
+            Debug.Log("제작 완료");
+        }
+        else
+        {
+            if (notEnoughItemMessageCoroutine == null)
+            {
+                notEnoughItemMessageCoroutine = StartCoroutine(DisplayNotEnoughItemMessage());
+            }
+        }
+    }
+
+    private void CheckMaterials()
+    {
         materialNameText.text = string.Empty;
         materialCountText.text = string.Empty;
 
@@ -90,9 +130,9 @@ public class UICraftingTab : MonoBehaviour
         {
             // 이름 표기
             materialNameText.text += selectedItem.itemData.itemMaterials[i].item.itemName.ToString() + "\n";
-            
+
             // needCount = 필요한 재료 수, hasCount = 보유한 재료 수
-            int needCount = selectedItem.itemData.itemMaterials[i].itemCount;
+            int needCount = selectedItem.itemData.itemMaterials[i].itemCount * craftQuantity;
             int hasCount = 0;
 
             // 레시피와 같은 재료 찾기
@@ -108,7 +148,7 @@ public class UICraftingTab : MonoBehaviour
             hasMaterialCounts[i] = hasCount;
 
             // "1/3 형태의 문자열화'
-            string hasCountAndNeedCount = $"{hasCount} / {needCount}"; 
+            string hasCountAndNeedCount = $"{hasCount} / {needCount}";
 
             // 미달된 아이템은 붉은 표시
             if (hasCount < needCount)
@@ -124,24 +164,6 @@ public class UICraftingTab : MonoBehaviour
             // 재료 수 표기
             materialCountText.text += hasCountAndNeedCount + "\n";
         }
-
-        craftButton.SetActive(true);
-    }
-
-    // 제작 버튼
-    public void OnCraftButton()
-    {
-        if (HasAllMaterial())
-        {
-            Debug.Log("제작 완료");
-        }
-        else
-        {
-            if(notEnoughItemMessageCoroutine == null)
-            {
-                notEnoughItemMessageCoroutine = StartCoroutine(DisplayNotEnoughItemMessage());
-            }
-        }
     }
 
     // 선택된 아이템 재료 수 체크 메서드
@@ -150,7 +172,7 @@ public class UICraftingTab : MonoBehaviour
         for (int i = 0; i < hasMaterialCounts.Length; i++)
         {
             // hasMaterialCounts에 저장한 값과 itemMaterials[i].itemCount값 비교
-            if (hasMaterialCounts[i] < selectedItem.itemData.itemMaterials[i].itemCount)
+            if (hasMaterialCounts[i] < selectedItem.itemData.itemMaterials[i].itemCount * craftQuantity)
             {
                 // 하나라도 충족시키지 못하면 false 반환
                 return false;
@@ -181,5 +203,19 @@ public class UICraftingTab : MonoBehaviour
         notEnoughItemMessageText.gameObject.SetActive(false);
 
         notEnoughItemMessageCoroutine = null;
+    }
+
+    public void OnQuantityUpButton()
+    {
+        craftQuantity = Mathf.Clamp(craftQuantity + 1, 1, 9);
+        craftQuantityText.text = craftQuantity.ToString();
+        CheckMaterials();
+    }
+
+    public void OnQuantityDownButton()
+    {
+        craftQuantity = Mathf.Clamp(craftQuantity - 1, 1, 9);
+        craftQuantityText.text = craftQuantity.ToString();
+        CheckMaterials();
     }
 }
