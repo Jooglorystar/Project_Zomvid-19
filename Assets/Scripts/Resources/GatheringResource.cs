@@ -25,7 +25,8 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
     [SerializeField] private Transform normalModel;
     [SerializeField] private Transform depletedModel;
 
-    [SerializeField] private bool regenerative; //재생 가능
+    [SerializeField] private bool regenerative;    //재생 가능 여부
+    [SerializeField] private float regenerateTime; //재생 시간 (단위 : 하루)
     private bool depleted;
     private float depletedTime;
 
@@ -33,8 +34,14 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
     private void Start()
     {
         curDurability = durability;
-    }
 
+        EnvironmentManager.Instance.SetAlarm(0.7f, DamageDamage);
+        EnvironmentManager.Instance.SetAlarm(1.0f, DamageDamage);
+    }
+    void DamageDamage()
+    {
+        TakeDamage(50);
+    }
 
     public void OnInteraction() // 없음
     {
@@ -104,8 +111,13 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
         depletedModel.gameObject.SetActive(true);
 
         depleted = true;
-        // TODO : 게임세계의 시간 가져오기
-        //depletedTime = 
+        depletedTime = EnvironmentManager.Instance.WorldTime;
+
+        // 재생 가능하면 설정된 시간 뒤에 재생됨
+        if (regenerative)
+        {
+            EnvironmentManager.Instance.SetAlarm(depletedTime + regenerateTime, Regenerated);
+        }
     }
 
     private void Regenerated()
