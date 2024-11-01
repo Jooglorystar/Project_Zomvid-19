@@ -50,16 +50,16 @@ public class InventoryAndCraftingTab : MonoBehaviour
             wholeTab.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             // 인벤토리 오픈 시 움직임 및 회전을 막음
-            //CharacterManager.Instance.player.controller.canMove = false;
-            //CharacterManager.Instance.player.controller.canLook = false;
+            CharacterManager.Instance.player.controller.canMove = false;
+            CharacterManager.Instance.player.controller.canLook = false;
         }
         else
         {
             wholeTab.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             // 다시 품
-            //CharacterManager.Instance.player.controller.canLook = true;
-            //CharacterManager.Instance.player.controller.canLook = true;
+            CharacterManager.Instance.player.controller.canLook = true;
+            CharacterManager.Instance.player.controller.canLook = true;
         }
     }
 

@@ -28,7 +28,7 @@ public class ConsumeData
 [System.Serializable]
 public class ItemInRecipe
 {
-    public ItemSO item;  // GameObject´Â ÀÓ½Ã
+    public ItemSO item;
     public int itemCount;
 }
 
