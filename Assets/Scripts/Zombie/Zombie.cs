@@ -86,7 +86,6 @@ public class Zombie : MonoBehaviour, IDamagable
 
     void PassiveUpdate()
     {
-        Debug.Log($"PassiveUpdate");
         if (aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
         {
             SetState(AIState.Idle);
@@ -101,7 +100,6 @@ public class Zombie : MonoBehaviour, IDamagable
 
     void WanderToNewLocation()
     {
-        Debug.Log($"WanderToNewLocation");
         if (aiState != AIState.Idle) return;
 
         SetState(AIState.Wandering);
@@ -133,7 +131,6 @@ public class Zombie : MonoBehaviour, IDamagable
     {
         if (playerDistance < data.attackDistance && IsPlayerInFieldOfView())
         {
-            Debug.Log($"playerDistance : {playerDistance} \n attackDistance : {data.attackDistance}");
             agent.isStopped = true;
             if (Time.time - lastAttackTime > data.attackRate)
             {
