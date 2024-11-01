@@ -22,7 +22,7 @@ public class UICraftingTab : MonoBehaviour
 
     public UIInventoryTab inventoryTab;
 
-    [Header("Crafting Value")]
+    // 소지한 재료의 갯수 파악용 배열
     private int[] hasMaterialCounts;
 
     private void Start()
@@ -69,6 +69,7 @@ public class UICraftingTab : MonoBehaviour
         selectedItem = slots[index];
         selectedItemIndex = index;
 
+        // 제작할 아이템 이름과 설명
         craftingItemNameText.text = selectedItem.itemData.itemName;
         craftingItemDescText.text = selectedItem.itemData.itemDesc;
 
@@ -80,9 +81,10 @@ public class UICraftingTab : MonoBehaviour
         // 재료 표시
         for (int i = 0; i < selectedItem.itemData.itemMaterials.Count; i++)
         {
+            // 이름 표기
             materialNameText.text += selectedItem.itemData.itemMaterials[i].item.itemName.ToString() + "\n";
             
-
+            // needCount = 필요한 재료 수, hasCount = 보유한 재료 수
             int needCount = selectedItem.itemData.itemMaterials[i].itemCount;
             int hasCount = 0;
 
@@ -95,8 +97,11 @@ public class UICraftingTab : MonoBehaviour
                     break;
                 }
             }
+            // 제작시 이용할 배열
             hasMaterialCounts[i] = hasCount;
-            string hasCountAndNeedCount = $"{hasCount} / {needCount}";
+
+            // "1/3 형태의 문자열화'
+            string hasCountAndNeedCount = $"{hasCount} / {needCount}"; 
 
             // 미달된 아이템은 붉은 표시
             if (hasCount < needCount)
@@ -109,6 +114,7 @@ public class UICraftingTab : MonoBehaviour
                 hasCountAndNeedCount = $"<color=#00FF00>{hasCountAndNeedCount}</color>";
             }
 
+            // 재료 수 표기
             materialCountText.text += hasCountAndNeedCount + "\n";
         }
 
@@ -134,16 +140,19 @@ public class UICraftingTab : MonoBehaviour
     {
         for (int i = 0; i < hasMaterialCounts.Length; i++)
         {
-            if(hasMaterialCounts[i] < selectedItem.itemData.itemMaterials[i].itemCount)
+            // hasMaterialCounts에 저장한 값과 itemMaterials[i].itemCount값 비교
+            if (hasMaterialCounts[i] < selectedItem.itemData.itemMaterials[i].itemCount)
             {
-                Debug.Log($"{hasMaterialCounts[i]}/{selectedItem.itemData.itemMaterials[i].itemCount}\n{selectedItem.itemData.itemMaterials[i].item.itemName}이 부족");
+                // 하나라도 충족시키지 못하면 false 반환
                 return false;
             }
             else
             {
+                // 충족하면 다음 아이템 체크
                 continue;
             }
         }
+        // 모두 충족시 true 반환
         return true;
     }
 }
