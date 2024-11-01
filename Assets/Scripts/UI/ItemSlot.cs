@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    [SerializeField] private ItemSO itemData;
+    public ItemSO itemData;
 
     [SerializeField] private Image slotIcon;
     [SerializeField] private TextMeshProUGUI itemCountText;
@@ -27,6 +27,7 @@ public class ItemSlot : MonoBehaviour
         if (itemData != null) Set();
         else Clear();
     }
+
     public void Set()
     {
         slotIcon.gameObject.SetActive(true);
@@ -39,5 +40,10 @@ public class ItemSlot : MonoBehaviour
         itemData = null;
         slotIcon.gameObject.SetActive(false);
         itemCountText.text = string.Empty;
+    }
+
+    public void OnClickButton()
+    {
+        inventoryTab.SelectItem(index);
     }
 }

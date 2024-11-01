@@ -197,7 +197,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1538464849178154490}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -4180799169954494780}
+        m_TargetAssemblyTypeName: CraftingSlot, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5353989126138016648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,3 +239,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 0}
   slotIcon: {fileID: 3655282143843322510}
+  craftingTab: {fileID: 0}
+  index: 0

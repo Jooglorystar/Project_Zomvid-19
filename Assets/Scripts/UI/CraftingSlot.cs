@@ -3,8 +3,12 @@ using UnityEngine.UI;
 
 public class CraftingSlot : MonoBehaviour
 {
-    [SerializeField] private ItemSO itemData;
+    public ItemSO itemData;
     [SerializeField] private Image slotIcon;
+
+    public UICraftingTab craftingTab;
+
+    public int index;
 
     public void Start()
     {
@@ -12,6 +16,7 @@ public class CraftingSlot : MonoBehaviour
         if (itemData != null) Set();
         else Clear();
     }
+
     public void Set()
     {
         slotIcon.gameObject.SetActive(true);
@@ -22,5 +27,10 @@ public class CraftingSlot : MonoBehaviour
     {
         itemData = null;
         slotIcon.gameObject.SetActive(false);
+    }
+
+    public void OnClickButton()
+    {
+        craftingTab.SelectItem(index);
     }
 }

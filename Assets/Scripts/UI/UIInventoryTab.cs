@@ -15,6 +15,9 @@ public class UIInventoryTab : MonoBehaviour
     public Transform Page2;
 
     [Header("Select Item")]
+    private ItemSlot selectedItem;
+    private int selectedItemIndex;
+
     public TextMeshProUGUI selectedItemName;
     public TextMeshProUGUI selectedItemDesc;
     public TextMeshProUGUI selectedItemStatName;
@@ -23,6 +26,7 @@ public class UIInventoryTab : MonoBehaviour
     public GameObject useButton;
     public GameObject equipButton;
     public GameObject unequipButton;
+    public GameObject BuildButton;
     public GameObject dropButton;
 
     private void Start()
@@ -57,7 +61,31 @@ public class UIInventoryTab : MonoBehaviour
         useButton.SetActive(false);
         equipButton.SetActive(false);
         unequipButton.SetActive(false);
+        BuildButton.SetActive(false);
         dropButton.SetActive(false);
+    }
+
+    public void SelectItem(int index)
+    {
+        if (slots[index].itemData == null) return;
+
+        selectedItem = slots[index];
+        selectedItemIndex = index;
+
+        selectedItemName.text = selectedItem.itemData.itemName;
+        selectedItemDesc.text = selectedItem.itemData.itemDesc;
+
+        selectedItemStatName.text = string.Empty;
+        selectedItemStatValue.text = string.Empty;
+
+        for (int i = 0; 0 < selectedItem.itemData.ConsumeData.Count; i++)
+        {
+            selectedItemStatName.text += selectedItem.itemData.ConsumeData[i].consumeType.ToString() + "\n";
+            selectedItemStatValue.text += selectedItem.itemData.ConsumeData[i].itemEffectValue.ToString() + "\n";
+        }
+
+        useButton.SetActive(selectedItem.itemData.itemType == ItemType.Consume);
+        BuildButton.SetActive(selectedItem.itemData.itemType == ItemType.Build);
     }
 
     private void AddItem()

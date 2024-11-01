@@ -21,7 +21,7 @@ public enum ConsumeType
 [System.Serializable]
 public class ConsumeData
 {
-    public ConsumeType Type;
+    public ConsumeType consumeType;
     public float itemEffectValue;
 }
 
@@ -47,7 +47,7 @@ public class ItemSO : ScriptableObject
     public int MaxStackSize;
 
     [Header("Item Stat")]
-    public List<ConsumeData> ConsumeDate;
+    public List<ConsumeData> ConsumeData;
 
     [Header("Crafting")]
     public bool canCrafting;
