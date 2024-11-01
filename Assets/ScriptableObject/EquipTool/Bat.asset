@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 108fe3b1cdc6deb46b1ee4aaeb1aaa80, type: 3}
-  m_Name: TestEquipData
-  m_EditorClassIdentifier: Assembly-CSharp::MeleeEquipItemSO
-  itemName: 
-  itemDesc: 
+  m_Name: Bat
+  m_EditorClassIdentifier: 
+  itemName: "\uC57C\uAD6C\uBC30\uD2B8"
+  itemDesc: "\uC774\uBC88\uC57C\uAD6C\uACF5\uC740 \uC0AC\uB78C\uC5BC\uAD74\uBAA8\uC591\uC774\uB124\uC694"
   itemType: 0
   icon: {fileID: 0}
   dropPrefab: {fileID: 0}
@@ -22,7 +22,9 @@ MonoBehaviour:
   ConsumeData: []
   canCrafting: 0
   itemMaterials: []
-  damage: 0
-  attackDistance: 0
-  attackRate: 0
-  useStamina: 0
+  damage: 15
+  attackDistance: 5
+  attackRate: 0.3
+  useStamina: 15
+  meleePrefab: {fileID: 1155917094026964738, guid: 4af366860e0c4014896446053ae322e7, type: 3}
+  toolType: 2

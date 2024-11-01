@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour, IMovable
     public bool canLook = true;
 
 
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -148,5 +147,18 @@ public class PlayerController : MonoBehaviour, IMovable
             runSpeed = 1;
             CharacterManager.Instance.player.equip.curEquip?.OnRunInput(false);
         }
+    }
+
+    public void OnSetting(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            ToggleCursor();
+        }
+    }
+
+    private void ToggleCursor()
+    {
+        Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }

@@ -32,7 +32,7 @@ public class ItemSlot : MonoBehaviour
     {
         slotIcon.gameObject.SetActive(true);
         slotIcon.sprite = itemData.icon;
-        itemCountText.text = itemCount > 1 ? itemCount.ToString() : string.Empty;
+        itemCountText.text = itemCount >= 1 ? itemCount.ToString() : string.Empty;
     }
 
     public void Clear()
