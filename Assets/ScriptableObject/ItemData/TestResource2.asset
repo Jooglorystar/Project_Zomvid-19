@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ce2ef2de24278f46a5c6e4b0e36fd79, type: 3}
-  m_Name: ItemSO
+  m_Name: TestResource2
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDesc: 
-  itemType: 0
-  icon: {fileID: 0}
+  itemName: Test Resource2
+  itemDesc: This is Resource2
+  itemType: 2
+  icon: {fileID: 21300000, guid: 129bb35bc940c374091029b9eefe346c, type: 3}
   dropPrefab: {fileID: 0}
   canStack: 0
   MaxStackSize: 0
