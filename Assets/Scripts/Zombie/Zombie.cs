@@ -12,32 +12,14 @@ public enum AIState
 
 public class Zombie : MonoBehaviour, IDamagable
 {
-    [Header("Stats")]
-    public float health;
-    public float walkSpeed;
-    public float runSpeed;
-    //public ItemData[] dropOnDeath;
+    internal ZombieData data;
 
     [Header("AI")]
     private NavMeshAgent agent;
-    public float detectDistance;
     private AIState aiState;
 
-    [Header("Wandering")]
-    public float minWanderDistance;
-    public float maxWanderDistance;
-    public float minWanderWaitTime;
-    public float maxWanderWaitTime;
-
-    [Header("Combat")]
-    public int damage;
-    public float attackRate;
     private float lastAttackTime;
-    public float attackDistance;
-
     private float playerDistance;
-
-    public float fieldOfView = 120f;
 
     private Animator animator;
     private SkinnedMeshRenderer[] meshRenderers;
@@ -46,6 +28,7 @@ public class Zombie : MonoBehaviour, IDamagable
 
     private void Awake()
     {
+        data = GetComponent<ZombieData>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
@@ -84,21 +67,21 @@ public class Zombie : MonoBehaviour, IDamagable
         switch (aiState)
         {
             case AIState.Idle:
-                agent.speed = walkSpeed;
+                agent.speed = data.walkSpeed;
                 agent.isStopped = true;
                 break;
             case AIState.Wandering:
-                agent.speed = walkSpeed;
+                agent.speed = data.walkSpeed;
                 agent.isStopped = false;
                 break;
             case AIState.Attacking:
-                agent.speed = runSpeed;
+                agent.speed = data.runSpeed;
                 agent.isStopped = false;
                 break;
 
         }
 
-        animator.speed = agent.speed / walkSpeed;
+        animator.speed = agent.speed / data.walkSpeed;
     }
 
     void PassiveUpdate()
@@ -107,10 +90,10 @@ public class Zombie : MonoBehaviour, IDamagable
         if (aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
         {
             SetState(AIState.Idle);
-            Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));
+            Invoke("WanderToNewLocation", Random.Range(data.minWanderWaitTime, data.maxWanderWaitTime));
         }
 
-        if (playerDistance < detectDistance)
+        if (playerDistance < data.detectDistance)
         {
             SetState(AIState.Attacking);
         }
@@ -129,16 +112,16 @@ public class Zombie : MonoBehaviour, IDamagable
     {
         NavMeshHit hit;
 
-        float wanderRagne = Random.Range(minWanderDistance, maxWanderDistance);
+        float wanderRagne = Random.Range(data.minWanderDistance, data.maxWanderDistance);
         Debug.Log($"더해질 값 : {wanderRagne}");
-        NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * wanderRagne), out hit, maxWanderDistance, NavMesh.AllAreas);
+        NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * wanderRagne), out hit, data.maxWanderDistance, NavMesh.AllAreas);
 
         Debug.Log($"현재 곰 위치 : {transform.position}");
         int i = 0;
 
-        while (Vector3.Distance(transform.position, hit.position) < detectDistance)
+        while (Vector3.Distance(transform.position, hit.position) < data.detectDistance)
         {
-            NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
+            NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(data.minWanderDistance, data.maxWanderDistance)), out hit, data.maxWanderDistance, NavMesh.AllAreas);
             i++;
             if (i == 30) break;
         }
@@ -148,14 +131,14 @@ public class Zombie : MonoBehaviour, IDamagable
 
     void AttackingUpdate()
     {
-        if (playerDistance < attackDistance && IsPlayerInFieldOfView())
+        if (playerDistance < data.attackDistance && IsPlayerInFieldOfView())
         {
-            Debug.Log($"playerDistance : {playerDistance} \n attackDistance : {attackDistance}");
+            Debug.Log($"playerDistance : {playerDistance} \n attackDistance : {data.attackDistance}");
             agent.isStopped = true;
-            if (Time.time - lastAttackTime > attackRate)
+            if (Time.time - lastAttackTime > data.attackRate)
             {
                 lastAttackTime = Time.time;
-                CharacterManager.Instance.player.controller.GetComponent<IDamagable>().TakeDamage(damage);
+                CharacterManager.Instance.player.controller.GetComponent<IDamagable>().TakeDamage(data.basicATK);
                 animator.speed = 1;
                 animator.SetTrigger("Attack");
             }
@@ -163,7 +146,7 @@ public class Zombie : MonoBehaviour, IDamagable
         else
         {
             //공격범위안에는 있지만
-            if (playerDistance < detectDistance)
+            if (playerDistance < data.detectDistance)
             {
                 agent.isStopped = false;
                 NavMeshPath path = new NavMeshPath();
@@ -192,13 +175,13 @@ public class Zombie : MonoBehaviour, IDamagable
         Vector3 directionToPlayer = CharacterManager.Instance.player.transform.position - transform.position;
         float angle = Vector3.Angle(transform.forward, directionToPlayer);
 
-        return angle < fieldOfView * 0.5f;
+        return angle < data.fieldOfView * 0.5f;
     }
 
     public void TakePhysicalDamage(int damage)
     {
-        health -= damage;
-        if (health <= 0)
+        data.maxHealth -= damage;
+        if (data.maxHealth <= 0)
         {
             Die();
         }
@@ -207,8 +190,8 @@ public class Zombie : MonoBehaviour, IDamagable
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
-            coroutine = StartCoroutine(DamageFlash());
         }
+        coroutine = StartCoroutine(DamageFlash());
     }
 
     void Die()
@@ -219,7 +202,7 @@ public class Zombie : MonoBehaviour, IDamagable
         //    Instantiate(dropOnDeath[i].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
         //}
 
-        Destroy(gameObject);
+        Destroy(data.gameObject);
     }
 
     IEnumerator DamageFlash()
