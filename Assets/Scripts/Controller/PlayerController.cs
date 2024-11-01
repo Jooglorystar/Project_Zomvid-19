@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour, IMovable
     public bool canLook = true;
 
 
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
