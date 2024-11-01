@@ -108,6 +108,7 @@ public class UICraftingTab : MonoBehaviour
         if (HasAllMaterial())
         {
             Debug.Log("제작 완료");
+            CraftItem();
         }
         else
         {
@@ -118,6 +119,7 @@ public class UICraftingTab : MonoBehaviour
         }
     }
 
+    // 제작 갯수 체크 메서드
     private void CheckMaterials()
     {
         materialNameText.text = string.Empty;
@@ -207,6 +209,7 @@ public class UICraftingTab : MonoBehaviour
 
     public void OnQuantityUpButton()
     {
+        // craft범위는 1 이상 9 이하
         craftQuantity = Mathf.Clamp(craftQuantity + 1, 1, 9);
         craftQuantityText.text = craftQuantity.ToString();
         CheckMaterials();
