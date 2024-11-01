@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1041141478}
     m_Modifications:
+    - target: {fileID: 1078554033673139080, guid: 751fbece1da026b4a9b3dda78d3ecedb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3937f73c759382645801b287d4a5dd4a, type: 2}
     - target: {fileID: 4524266824791206612, guid: 751fbece1da026b4a9b3dda78d3ecedb, type: 3}
       propertyPath: m_Name
       value: knife
@@ -383,6 +387,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 350
       objectReference: {fileID: 0}
+    - target: {fileID: 7654962663510890842, guid: f7826d791d976c243a65348fd0aaf5f1, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: cdb437c8fd53a174f9dba0572b76ab24, type: 2}
     - target: {fileID: 7983293337051816722, guid: f7826d791d976c243a65348fd0aaf5f1, type: 3}
       propertyPath: m_Name
       value: Axe
@@ -1996,10 +2004,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ItemDescriptionItemDescriptionItemDescriptionItemDescription
+  m_text: "\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bbbded7e9c4246d46a81c7a385c74df6, type: 2}
+  m_sharedMaterial: {fileID: 7305665420557682771, guid: bbbded7e9c4246d46a81c7a385c74df6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2023,7 +2031,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 24.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2499,10 +2507,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ItemName
+  m_text: "\uD55C\uAE00\uAC00\uB2A5\uD55C\uAE00\uC124\uBA85\uD55C\uAE00\uC124\uD615"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bbbded7e9c4246d46a81c7a385c74df6, type: 2}
+  m_sharedMaterial: {fileID: 7305665420557682771, guid: bbbded7e9c4246d46a81c7a385c74df6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2526,7 +2534,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.65
+  m_fontSize: 21.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2632,6 +2640,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7773328435300034814, guid: 4af366860e0c4014896446053ae322e7, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ce3a1b7099f1024aa4d0139d810baf3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2827,7 +2839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 5
   m_FollowOffset: {x: 0, y: 1.6, z: -0}
-  m_XDamping: 1
+  m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
   m_AngularDampingMode: 0
@@ -8774,6 +8786,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 1906219495975544146, guid: 34dcc795afa3c7846b60f226d631671f, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5cfb9f6bfaf020a409ee0a166d2b7703, type: 2}
     - target: {fileID: 3660892752303985980, guid: 34dcc795afa3c7846b60f226d631671f, type: 3}
       propertyPath: m_Name
       value: Pickaxe

@@ -9,10 +9,10 @@ public class EquipTool : Equip
     [SerializeField] private ItemSO itemData;
 
     [Header("ScriptableObject")]
-    public float damage;
-    public float attackDistance;
-    public float attackRate;
-    public float useStamina;
+    private float damage;
+    private float attackDistance;
+    private float attackRate;
+    private float useStamina;
 
     private Animator animator;
     private Camera cam;
@@ -21,6 +21,20 @@ public class EquipTool : Equip
     {
         animator = GetComponent<Animator>();
         cam = Camera.main;
+    }
+
+    private void Start()
+    {
+        InitMelee();
+    }
+
+    private void InitMelee()
+    {
+        MeleeEquipItemSO meleeData = itemData as MeleeEquipItemSO;
+        damage = meleeData.damage;
+        attackDistance = meleeData.attackDistance;
+        attackRate = meleeData.attackRate;
+        useStamina = meleeData.useStamina;
     }
 
 

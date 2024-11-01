@@ -52,8 +52,11 @@ public class PlayerController : MonoBehaviour, IMovable
 
     private void LateUpdate()
     {
-        if(canLook)
-        Look();
+        if (canLook)
+        {
+            Look();
+
+        }
     }
 
     public void Move()
@@ -85,6 +88,7 @@ public class PlayerController : MonoBehaviour, IMovable
         verticalRotation = Mathf.Clamp(-mouseDelta.y, minVerticalRotation, maxVerticalRotation);
 
         transform.eulerAngles += new Vector3(0, mouseDelta.x, 0);
+        //virtualCamera.transform.eulerAngles += new Vector3(0, mouseDelta.x, 0);
         virtualCamera.transform.localEulerAngles += new Vector3(verticalRotation, 0, 0);
     }
 

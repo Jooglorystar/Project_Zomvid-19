@@ -20,12 +20,13 @@ public class Interact : MonoBehaviour
     [SerializeField] private LayerMask interactableLayerMask;
 
     [SerializeField] float interactionDistance = 3;
-    [SerializeField] float interactionRate = 0.5f;
+    [SerializeField] float interactionRate = 0.1f;
 
     private Camera cam;
     private bool hasSearched = false;
 
     private ItemSO curItemData;
+    private IInteractable curInteract;
 
     private void Start()
     {
@@ -53,7 +54,10 @@ public class Interact : MonoBehaviour
             if(hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 hasSearched = true;
+
                 curItemData = hit.collider.GetComponent<ItemSO>();
+                curInteract = interactable;
+
                 SetNamePrompt(interactable.GetInteractPromptName());
                 SetDescriptionPrompt(interactable.GetInteractPromptDescription());
             }
@@ -61,9 +65,17 @@ public class Interact : MonoBehaviour
         else
         {
             curItemData = null;
-            promptPanel.SetActive(false);
-            descriptionPanel.SetActive(false);
+            curInteract = null;
+            ClearPrompt();
         }
+    }
+
+    private void ClearPrompt()
+    {
+        promptPanel.SetActive(false);
+        itemNamePrompt.text = string.Empty;
+        descriptionPanel.SetActive(false);
+        itemDescriptionPrompt.text = string.Empty;
     }
 
     private void SearchAgain()
@@ -83,9 +95,16 @@ public class Interact : MonoBehaviour
         itemDescriptionPrompt.text = description;
     }
 
+    //e키를 누를때
     public void OnInteract(InputAction.CallbackContext context)
     {
-        
+        if(context.phase == InputActionPhase.Started)
+        {
+            if(curItemData != null)
+            {
+                curInteract.OnInteraction();
+            }
+        }
     }
 
 }

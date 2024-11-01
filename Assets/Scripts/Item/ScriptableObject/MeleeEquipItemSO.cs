@@ -8,4 +8,12 @@ public class MeleeEquipItemSO : ItemSO
     public float attackDistance;
     public float attackRate;
     public float useStamina;
+    
+}
+
+public enum ToolType
+{
+    Axe,
+    Pickaxe,
+    extra   //자원을 캘 수 없는 도구들
 }
