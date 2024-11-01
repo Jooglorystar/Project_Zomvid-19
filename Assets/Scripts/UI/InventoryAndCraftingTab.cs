@@ -45,7 +45,16 @@ public class InventoryAndCraftingTab : MonoBehaviour
     {
         ResetTap();
 
-        if (!wholeTab.activeInHierarchy)
+        if (isOpen())
+        {
+            wholeTab.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            // 다시 품
+            //CharacterManager.Instance.player.controller.canLook = true;
+            //CharacterManager.Instance.player.controller.canLook = true;
+            
+        }
+        else
         {
             wholeTab.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
@@ -53,14 +62,11 @@ public class InventoryAndCraftingTab : MonoBehaviour
             //CharacterManager.Instance.player.controller.canMove = false;
             //CharacterManager.Instance.player.controller.canLook = false;
         }
-        else
-        {
-            wholeTab.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            // 다시 품
-            //CharacterManager.Instance.player.controller.canLook = true;
-            //CharacterManager.Instance.player.controller.canLook = true;
-        }
+    }
+
+    private bool isOpen()
+    {
+        return wholeTab.activeInHierarchy;
     }
 
 
