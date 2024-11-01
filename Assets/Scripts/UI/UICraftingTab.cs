@@ -56,7 +56,11 @@ public class UICraftingTab : MonoBehaviour
     // 선택 아이템 표시
     public void SelectItem(int index)
     {
-        if (slots[index].itemData == null) return;
+        if (slots[index].itemData == null)
+        {
+            ClearCraftingItemWindow();
+            return;
+        }
 
         selectedItem = slots[index];
         selectedItemIndex = index;
@@ -90,6 +94,10 @@ public class UICraftingTab : MonoBehaviour
             {
                 hasCountAndNeedCount = $"<color=#FF0000>{hasCountAndNeedCount}</color>";
             }
+            else
+            {
+                hasCountAndNeedCount = $"<color=#00FF00>{hasCountAndNeedCount}</color>";
+            }
 
             materialCount.text += hasCountAndNeedCount + "\n";
         }
@@ -97,6 +105,7 @@ public class UICraftingTab : MonoBehaviour
         craftButton.SetActive(true);
     }
 
+    // 제작 버튼
     private void OnCraftButton()
     {
 

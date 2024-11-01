@@ -69,7 +69,11 @@ public class UIInventoryTab : MonoBehaviour
     // 선택아이템 표시
     public void SelectItem(int index)
     {
-        if (slots[index].itemData == null) return;
+        if (slots[index].itemData == null)
+        {
+            ClearInventorySelectedItemWindow();
+            return;
+        }
 
         selectedItem = slots[index];
         selectedItemIndex = index;
