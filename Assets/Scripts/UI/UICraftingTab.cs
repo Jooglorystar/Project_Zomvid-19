@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -17,6 +18,9 @@ public class UICraftingTab : MonoBehaviour
     public TextMeshProUGUI craftingItemDescText;
     public TextMeshProUGUI materialNameText;
     public TextMeshProUGUI materialCountText;
+
+    public TextMeshProUGUI notEnoughItemMessageText;
+    private Coroutine notEnoughItemMessageCoroutine;
 
     public GameObject craftButton;
 
@@ -53,6 +57,8 @@ public class UICraftingTab : MonoBehaviour
         craftingItemDescText.text = string.Empty;
         materialNameText.text = string.Empty;
         materialCountText.text = string.Empty;
+
+        notEnoughItemMessageText.gameObject.SetActive(false);
 
         craftButton.SetActive(false);
     }
@@ -97,7 +103,7 @@ public class UICraftingTab : MonoBehaviour
                     break;
                 }
             }
-            // 제작시 이용할 배열
+            // 제작시 이용할 배열에 보유숫자 저장
             hasMaterialCounts[i] = hasCount;
 
             // "1/3 형태의 문자열화'
@@ -130,10 +136,12 @@ public class UICraftingTab : MonoBehaviour
         }
         else
         {
-            Debug.Log("재료 부족");
+            if(notEnoughItemMessageCoroutine == null)
+            {
+                notEnoughItemMessageCoroutine = StartCoroutine(DisplayNotEnoughItemMessage());
+            }
         }
     }
-
 
     // 선택된 아이템 재료 수 체크 메서드
     private bool HasAllMaterial()
@@ -154,5 +162,20 @@ public class UICraftingTab : MonoBehaviour
         }
         // 모두 충족시 true 반환
         return true;
+    }
+
+    private void CraftItem()
+    {
+        // TODO 아이템 제작하는 메서드
+    }
+
+    // 재료 부족시 경고 메세지 띄우는 메서드
+    private IEnumerator DisplayNotEnoughItemMessage()
+    {
+        notEnoughItemMessageText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        notEnoughItemMessageText.gameObject.SetActive(false);
+
+        notEnoughItemMessageCoroutine = null;
     }
 }
