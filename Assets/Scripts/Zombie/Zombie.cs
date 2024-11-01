@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public enum AIState
 {
@@ -12,6 +13,9 @@ public enum AIState
 
 public class Zombie : MonoBehaviour, IDamagable
 {
+    //public InputActionAsset inputActions;
+    //private InputActionMap inputMap;
+
     internal ZombieData data;
 
     [Header("AI")]
@@ -26,6 +30,8 @@ public class Zombie : MonoBehaviour, IDamagable
 
     private Coroutine coroutine;
 
+    public bool isStopped = true;
+
     private void Awake()
     {
         data = GetComponent<ZombieData>();
@@ -36,6 +42,10 @@ public class Zombie : MonoBehaviour, IDamagable
 
     private void Start()
     {
+        //키보드
+        //inputMap  = inputActions.actionMaps[0];
+        //inputMap.FindAction("Stop") += StopZombie;
+
         SetState(AIState.Wandering);
     }
     void Update()
@@ -43,6 +53,8 @@ public class Zombie : MonoBehaviour, IDamagable
         playerDistance = Vector2.Distance(transform.position, CharacterManager.Instance.player.transform.position);
 
         animator.SetBool("Moving", aiState != AIState.Idle);
+
+        if(isStopped) return;
 
         switch (aiState)
         {
@@ -89,6 +101,7 @@ public class Zombie : MonoBehaviour, IDamagable
         if (aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
         {
             SetState(AIState.Idle);
+            Debug.Log("목표 탐색 시작");
             Invoke("WanderToNewLocation", Random.Range(data.minWanderWaitTime, data.maxWanderWaitTime));
         }
 
@@ -104,6 +117,7 @@ public class Zombie : MonoBehaviour, IDamagable
 
         SetState(AIState.Wandering);
         agent.SetDestination(GetWanderLocation());
+        Debug.Log("목표 탐색 끝");
     }
 
     Vector3 GetWanderLocation()
@@ -218,5 +232,36 @@ public class Zombie : MonoBehaviour, IDamagable
     public void TakeDamage(float damage)
     {
         throw new System.NotImplementedException();
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Gizmo 색상을 설정
+        Gizmos.color = Color.red;
+
+        // 공격 범위를 원형으로 표시
+        Gizmos.DrawWireSphere(transform.position, data.attackDistance);
+
+        // 씬 뷰에 거리 값을 표시
+        Vector3 textPosition = (transform.position + CharacterManager.Instance.player.transform.position) / 2;
+        UnityEditor.Handles.Label(textPosition, $"Distance: {playerDistance:F2}");
+    }
+
+    public void StopZombie(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            Debug.Log("1");
+            isStopped = true;
+        }
+    }
+
+    public void ResumeZombie(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            Debug.Log("2");
+            isStopped = false;
+        }
     }
 }
