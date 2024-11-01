@@ -1874,6 +1874,7 @@ GameObject:
   - component: {fileID: 1527447287}
   - component: {fileID: 1527447289}
   - component: {fileID: 1527447290}
+  - component: {fileID: 1527447291}
   m_Layer: 0
   m_Name: ZombieNPC
   m_TagString: Untagged
@@ -1973,18 +1974,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a41b54e58430b24ea92b07ed2f3e2c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+--- !u!114 &1527447291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527447285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b36164d59af2e409aff06318fb66b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
   walkSpeed: 1
-  runSpeed: 3
-  detectDistance: 1
+  runSpeed: 1.5
+  basicATK: 5
+  Temperature: 100
   minWanderDistance: 1
-  maxWanderDistance: 5
-  minWanderWaitTime: 2
-  maxWanderWaitTime: 5
-  damage: 3
-  attackRate: 1
-  attackDistance: 2
-  fieldOfView: 90
+  maxWanderDistance: 3
+  minWanderWaitTime: 1
+  maxWanderWaitTime: 3
+  attackRate: 3
+  attackDistance: 1
+  detectDistance: 2
+  fieldOfView: 120
 --- !u!1 &1571612695
 GameObject:
   m_ObjectHideFlags: 0
