@@ -42,7 +42,7 @@ public class Zombie : MonoBehaviour, IDamagable
     {
         playerDistance = Vector2.Distance(transform.position, CharacterManager.Instance.player.transform.position);
 
-        //animator.SetBool("Moving", aiState != AIState.Idle);
+        animator.SetBool("Moving", aiState != AIState.Idle);
 
         switch (aiState)
         {
@@ -111,10 +111,8 @@ public class Zombie : MonoBehaviour, IDamagable
         NavMeshHit hit;
 
         float wanderRagne = Random.Range(data.minWanderDistance, data.maxWanderDistance);
-        Debug.Log($"더해질 값 : {wanderRagne}");
         NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * wanderRagne), out hit, data.maxWanderDistance, NavMesh.AllAreas);
 
-        Debug.Log($"현재 곰 위치 : {transform.position}");
         int i = 0;
 
         while (Vector3.Distance(transform.position, hit.position) < data.detectDistance)
