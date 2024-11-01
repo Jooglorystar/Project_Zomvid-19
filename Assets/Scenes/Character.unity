@@ -536,7 +536,9 @@ MonoBehaviour:
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  canMove: 1
   virtualCamera: {fileID: 681457337}
+  canLook: 1
 --- !u!114 &525662252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2198,7 +2200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6279823610682781954, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.8716822
+      value: 4.535
       objectReference: {fileID: 0}
     - target: {fileID: 6279823610682781954, guid: 970a0e0414fa8be4695cbe8c3d95afd7, type: 3}
       propertyPath: m_LocalRotation.w

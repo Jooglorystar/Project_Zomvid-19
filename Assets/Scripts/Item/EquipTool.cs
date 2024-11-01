@@ -6,6 +6,8 @@ public class EquipTool : Equip
 {
     private bool isAttacking;
 
+    [SerializeField] private ItemSO itemData;
+
     [Header("ScriptableObject")]
     public float damage;
     public float attackDistance;
