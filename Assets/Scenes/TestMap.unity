@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.27058825, g: 0.54901963, b: 0.8313726, a: 1}
+  m_FogColor: {r: 0.10196079, g: 0.20000002, b: 0.5254902, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
   m_LinearFogStart: 5
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: d3fa561db8a2c004ca5192cb72e65886, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 67950864b84c5db4f9eee7ca51c85571, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -593,8 +593,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18ffd06947f03f4a859c533f8331b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 0.4
-  timeSpeed: 3600
+  startTime: 0.65
+  timeSpeed: 3000
   TimeStopped: 0
   noon: {x: 90, y: 0, z: 0}
   Sun: {fileID: 566245251}
@@ -739,7 +739,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.3
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -748,18 +748,18 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.15
-      value: 0.4
-      inSlope: 1.5999999
-      outSlope: 1.5999999
+      value: 0.6
+      inSlope: 1.2
+      outSlope: 1.2
       tangentMode: 136
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.25
-      value: 0.75
-      inSlope: 1.6666666
-      outSlope: 1.6666666
+      value: 0.8
+      inSlope: 0.9999999
+      outSlope: 0.9999999
       tangentMode: 136
       weightedMode: 0
       inWeight: 0.33333334
@@ -784,25 +784,25 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.75
-      value: 0.75
-      inSlope: -1.6666665
-      outSlope: -1.6666665
+      value: 0.8
+      inSlope: -0.9999998
+      outSlope: -0.9999998
       tangentMode: 136
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.85
-      value: 0.4
-      inSlope: -1.5999997
-      outSlope: -1.5999997
+      value: 0.6
+      inSlope: -1.2
+      outSlope: -1.2
       tangentMode: 136
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.3
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -854,11 +854,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  day: []
-  night: []
-  cloudDay: []
-  cloudNight: []
-  transitionTime: 0
+  dayWeatherSO: {fileID: 11400000, guid: 5248aea657874f24e88e453c445dc7bc, type: 2}
+  nightWeatherSO: {fileID: 11400000, guid: a0d2f27d6abe4294abeead17111c593f, type: 2}
+  cloudDayWeatherSO: {fileID: 0}
+  cloudNightWeatherSO: {fileID: 0}
+  weatherTransitionTime: 0.19
 --- !u!4 &1114740433
 Transform:
   m_ObjectHideFlags: 0
@@ -2553,7 +2553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &5335628539171477719
 GameObject:
   m_ObjectHideFlags: 0
