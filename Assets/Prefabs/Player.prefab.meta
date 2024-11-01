@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/TestItem/TestCraftingThing.prefab.meta
+guid: c0c9a4063d6a85047825522c8746d3bf
+========
+guid: 5b0790f12f0cfb94487047afb0ab084b
+>>>>>>>> dev:Assets/Prefabs/Player.prefab.meta
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
