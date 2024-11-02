@@ -9,7 +9,8 @@ public enum AIState
     Idle,
     Wandering,
     Attacking,
-    AttackingFence
+    AttackingFence,
+    Die
 }
 
 public class Zombie : MonoBehaviour, IDamagable
@@ -32,7 +33,7 @@ public class Zombie : MonoBehaviour, IDamagable
 
     private Coroutine coroutine;
 
-    public bool isStopped = true;
+    public bool isStopped;
     private IDamagable FenceAttacked;
 
     private void Awake()
@@ -53,11 +54,23 @@ public class Zombie : MonoBehaviour, IDamagable
     }
     void Update()
     {
+        // 1번 키 입력 처리
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            LockCursor();
+        }
+
+        // 2번 키 입력 처리
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UnlockCursor();
+        }
+
         playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.player.transform.position);
 
         animator.SetBool("Moving", aiState != AIState.Idle);
 
-        //if (isStopped) return;
+        if (isStopped) return;
 
         switch (aiState)
         {
@@ -140,6 +153,13 @@ public class Zombie : MonoBehaviour, IDamagable
                 agent.speed = data.runSpeed;
                 agent.isStopped = false;
                 break;
+            case AIState.Die:
+                agent.speed = 0;
+                agent.isStopped = true;
+                animator.SetTrigger("Dying");
+                Invoke("Die", 4.0f);
+                break;
+
         }
 
         //animator.speed = agent.speed / data.walkSpeed;
@@ -167,7 +187,6 @@ public class Zombie : MonoBehaviour, IDamagable
 
         SetState(AIState.Wandering);
         agent.SetDestination(GetWanderLocation());
-        Debug.Log("목표 탐색 끝");
     }
 
     Vector3 GetWanderLocation()
@@ -254,9 +273,10 @@ public class Zombie : MonoBehaviour, IDamagable
     public void TakePhysicalDamage(int damage)
     {
         data.maxHealth -= damage;
+        Debug.Log(data.maxHealth);
         if (data.maxHealth <= 0)
         {
-            Die();
+            SetState(AIState.Die);
         }
 
         //데미지 효과
@@ -311,21 +331,25 @@ public class Zombie : MonoBehaviour, IDamagable
         UnityEditor.Handles.Label(textPosition, $"Distance: {playerDistance:F2}");
     }
 
-    public void StopZombie(InputAction.CallbackContext context)
+    public void StopZombie()
     {
-        if (context.phase == InputActionPhase.Started)
-        {
-            Debug.Log("1");
-            isStopped = true;
-        }
+        isStopped = true;
     }
 
-    public void ResumeZombie(InputAction.CallbackContext context)
+    public void ResumeZombie()
     {
-        if (context.phase == InputActionPhase.Started)
-        {
-            Debug.Log("2");
-            isStopped = false;
-        }
+        isStopped = false;
+    }
+
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
