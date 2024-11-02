@@ -6,6 +6,15 @@ public class EquipGun : Equip
     [SerializeField] private ParticleSystem gunFlash;
     [SerializeField] private Transform bulletPos;
 
+
+    void Start()
+    {
+        if (bulletPos == null)
+        {
+            bulletPos = GameObject.Find("BulletPos").transform;
+        }
+    }
+
     public override void OnAttackInput()
     {
         if (itemData is RangeEquipItemSO rangeWeaponData)

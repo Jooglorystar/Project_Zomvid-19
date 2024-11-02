@@ -8,7 +8,8 @@ public enum AIState
 {
     Idle,
     Wandering,
-    Attacking
+    Attacking,
+    AttackingFence
 }
 
 public class Zombie : MonoBehaviour, IDamagable
@@ -19,6 +20,7 @@ public class Zombie : MonoBehaviour, IDamagable
     internal ZombieData data;
 
     [Header("AI")]
+    [SerializeField] private LayerMask fenceMaskLayer;
     private NavMeshAgent agent;
     private AIState aiState;
 
@@ -31,6 +33,7 @@ public class Zombie : MonoBehaviour, IDamagable
     private Coroutine coroutine;
 
     public bool isStopped = true;
+    private IDamagable FenceAttacked;
 
     private void Awake()
     {
@@ -54,7 +57,7 @@ public class Zombie : MonoBehaviour, IDamagable
 
         animator.SetBool("Moving", aiState != AIState.Idle);
 
-        if (isStopped) return;
+        //if (isStopped) return;
 
         switch (aiState)
         {
@@ -67,14 +70,57 @@ public class Zombie : MonoBehaviour, IDamagable
             case AIState.Attacking:
                 AttackingUpdate();
                 break;
-
+            case AIState.AttackingFence:
+                AttackingFenceUpdate();
+                break;
         }
     }
 
+    private void AttackingFenceUpdate()
+    {
+        if (!(playerDistance < data.attackDistance && IsPlayerInFieldOfView()))
+        {
+            if (IsFenceInFront())
+            {
+                if (Time.time - lastAttackTime > data.attackRate)
+                {
+                    if (FenceAttacked != null)
+                    {
+                        lastAttackTime = Time.time;
+                        FenceAttacked.TakeDamage(data.basicATK);
+                        animator.speed = 1;
+                        animator.SetTrigger("Attack");
+                    }
+                }
+            }
+        }
+        else
+        {
+            SetState(AIState.Attacking);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Fence"))
+        {
+            SetState(AIState.AttackingFence);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Fence"))
+        {
+            SetState(AIState.Attacking);
+        }
+    }
 
     public void SetState(AIState state)
     {
         aiState = state;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
 
         switch (aiState)
         {
@@ -90,7 +136,10 @@ public class Zombie : MonoBehaviour, IDamagable
                 agent.speed = data.runSpeed;
                 agent.isStopped = false;
                 break;
-
+            case AIState.AttackingFence:
+                agent.speed = data.runSpeed;
+                agent.isStopped = false;
+                break;
         }
 
         //animator.speed = agent.speed / data.walkSpeed;
@@ -151,7 +200,7 @@ public class Zombie : MonoBehaviour, IDamagable
                 CharacterManager.Instance.player.controller.GetComponent<IDamagable>().TakeDamage(data.basicATK);
                 animator.speed = 1;
                 animator.SetTrigger("Attack");
-            }   
+            }
         }
         else
         {
@@ -178,6 +227,20 @@ public class Zombie : MonoBehaviour, IDamagable
                 SetState(AIState.Wandering);
             }
         }
+    }
+
+    private bool IsFenceInFront()
+    {
+        Ray ray = new Ray(transform.position + Vector3.up * 0.5f, transform.forward);
+        RaycastHit hit;
+
+        //Ray로할지, Tag로할지는 미정
+        if (Physics.Raycast(ray, out hit, data.attackDistance, fenceMaskLayer))
+        {
+            FenceAttacked = hit.collider.GetComponent<IDamagable>();
+            return true;
+        }
+        else return false;
     }
 
     bool IsPlayerInFieldOfView()
@@ -232,7 +295,7 @@ public class Zombie : MonoBehaviour, IDamagable
 
     public void TakeDamage(float damage)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("데미지를 입었습니다.");
     }
 
     private void OnDrawGizmos()

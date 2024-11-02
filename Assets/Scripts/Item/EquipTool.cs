@@ -70,6 +70,7 @@ public class EquipTool : Equip
         {
             if (hit.collider.TryGetComponent<IDamagable>(out IDamagable damagable))
             {
+                Debug.Log("OnHit!");
                 damagable.TakeDamage(damage);
             }
         }
