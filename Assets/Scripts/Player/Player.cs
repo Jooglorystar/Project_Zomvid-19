@@ -1,13 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    internal PlayerData data;
+    internal PlayerData playerData;
     internal PlayerController controller;
     internal PlayerCondition condition;
-    internal Equipment equip;
+    public Equipment equip;
+    internal ItemSO itemData;
+
+    internal UIInventoryTab uiInventoryTab;
+    internal UICraftingTab uICraftingTab;
+
+    internal Action AddItem;
+    internal Transform dropPosition;
 
     private void Awake()
     {
@@ -15,6 +23,6 @@ public class Player : MonoBehaviour
         equip = GetComponent<Equipment>();
         controller = GetComponent<PlayerController>();
         condition = GetComponent<PlayerCondition>();
-        data = GetComponent<PlayerData>();
+        playerData = GetComponent<PlayerData>();
     }
 }

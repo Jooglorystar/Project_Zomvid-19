@@ -14,10 +14,10 @@ public class StatusUI : MonoBehaviour
     {
         CharacterManager.Instance.player.condition.uiCondition = this;
 
-        HP.maxValue = CharacterManager.Instance.player.data.maxHealth;
-        Stamina.maxValue = CharacterManager.Instance.player.data.maxStamina;
-        Hunger.maxValue = CharacterManager.Instance.player.data.maxHunger;
-        Thirst.maxValue = CharacterManager.Instance.player.data.maxThirst;
+        HP.maxValue = CharacterManager.Instance.player.playerData.maxHealth;
+        Stamina.maxValue = CharacterManager.Instance.player.playerData.maxStamina;
+        Hunger.maxValue = CharacterManager.Instance.player.playerData.maxHunger;
+        Thirst.maxValue = CharacterManager.Instance.player.playerData.maxThirst;
         Temperature.maxValue = 30;
     }
 }

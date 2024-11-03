@@ -16,7 +16,7 @@ MonoBehaviour:
   itemDesc: "\uC791\uC740 \uCE7C\uC785\uB2C8\uB2E4. \uD479 \uCC0C\uB985\uB2C8\uB2E4"
   itemType: 0
   icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
+  dropPrefab: {fileID: 4104069821792436589, guid: 80eb44ec1c9ac7d41919e6593fe03a55, type: 3}
   canStack: 0
   MaxStackSize: 0
   ConsumeData: []
@@ -26,5 +26,5 @@ MonoBehaviour:
   attackDistance: 8
   attackRate: 0.5
   useStamina: 20
-  meleePrefab: {fileID: 4524266824791206612, guid: 751fbece1da026b4a9b3dda78d3ecedb, type: 3}
   toolType: 2
+  meleePrefab: {fileID: 4524266824791206612, guid: 751fbece1da026b4a9b3dda78d3ecedb, type: 3}

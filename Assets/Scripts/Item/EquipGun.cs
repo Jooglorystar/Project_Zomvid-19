@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static UnityEditor.Progress;
 
 public class EquipGun : Equip
 {
@@ -7,12 +8,14 @@ public class EquipGun : Equip
     [SerializeField] private Transform bulletPos;
 
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         if (bulletPos == null)
         {
             bulletPos = GameObject.Find("BulletPos").transform;
         }
+        itemObject.itemData = itemData;
     }
 
     public override void OnAttackInput()

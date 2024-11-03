@@ -9,6 +9,6 @@ public class RangeEquipItemSO : ItemSO
     public float attackDistance;    //총알 사거리
     public float attackRate;        //연사속도
     public float useStamina;
-    public GameObject RangePrefab;
     public ToolType toolType;
+    public GameObject rangePrefab;
 }

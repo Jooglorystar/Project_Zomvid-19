@@ -9,12 +9,13 @@ public class ItemSlot : MonoBehaviour
     [SerializeField] private Image slotIcon;
     [SerializeField] private TextMeshProUGUI itemCountText;
 
-    private Outline outline;
+    public Outline outline;
 
     public UIInventoryTab inventoryTab;
 
     public int index;
     public int itemCount;
+    public bool equipped;
 
     private void Awake()
     {

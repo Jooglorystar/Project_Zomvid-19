@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class ItemGainValue
@@ -29,8 +31,15 @@ public class UIInventoryTab : MonoBehaviour
     public GameObject BuildButton;
     public GameObject dropButton;
 
+    private Vector3 dropPos;
+    private PlayerCondition condition;
+    private PlayerController controller;
+
     private void Start()
     {
+        condition = CharacterManager.Instance.player.condition;
+        controller = CharacterManager.Instance.player.controller;
+
         slots = new ItemSlot[Page1.childCount + Page2.childCount];
 
         for (int i = 0; i < slots.Length; i++)
@@ -49,6 +58,8 @@ public class UIInventoryTab : MonoBehaviour
         }
 
         ClearInventorySelectedItemWindow();
+
+        CharacterManager.Instance.player.AddItem += AddItem;
     }
 
     // 창 초기화
@@ -90,14 +101,181 @@ public class UIInventoryTab : MonoBehaviour
             selectedItemStatValue.text += selectedItem.itemData.ConsumeData[i].itemEffectValue.ToString() + "\n";
         }
 
-        useButton.SetActive(selectedItem.itemData.itemType == ItemType.Consume);
-        BuildButton.SetActive(selectedItem.itemData.itemType == ItemType.Build);
-
+        switch (slots[index].itemData.itemType)
+        {
+            case ItemType.Consume:
+                useButton.SetActive(true);
+                break;
+            case ItemType.Equip:
+                if (slots[index].equipped)
+                {
+                    unequipButton.SetActive(true);
+                    break;
+                }
+                else
+                    equipButton.SetActive(true);
+                break;
+            case ItemType.Resource:
+                break;
+            case ItemType.Build:
+                BuildButton.SetActive(true);
+                break;
+        }
         dropButton.SetActive(true);
     }
 
     public void OnDropButton()
     {
         // TODO 드랍 메서드
+        if (slots[selectedItemIndex].equipped == true) return;
+        ThrowItem(selectedItem.itemData);
+        UpdateInventory();
+        RemoveSelectedItem();
+    }
+
+    public void AddItem()
+    {
+        ItemSO data  = CharacterManager.Instance.player.itemData;
+
+        //아이템이 중복가능한지 canStack체크
+        if (data.canStack)
+        {
+            ItemSlot slot = GetItemStack(data);
+            if (slot != null)
+            {
+                slot.itemCount++;
+                UpdateInventory();
+                CharacterManager.Instance.player.itemData = null;
+                return;
+            }
+        }
+        //비어있는 슬롯을 가져온다.
+        ItemSlot emptySlot = GetEmptySlot();
+        //비어있는 슬롯이 있다면
+        if (emptySlot != null)
+        {
+            emptySlot.itemData = data;
+            emptySlot.itemCount = 1;
+            UpdateInventory();
+            CharacterManager.Instance.player.itemData = null;
+            return;
+        }
+
+        //없다면
+        ThrowItem(data);
+        CharacterManager.Instance.player.itemData = null;
+    }
+
+    private void UpdateInventory()
+    {
+        for(int i = 0; i < slots.Length; i++)
+        {
+            if(slots[i].itemData != null)
+            {
+                slots[i].Set();
+            }
+            else
+            {
+                slots[i].Clear();
+            }
+        }
+    }
+
+    private void ThrowItem(ItemSO data)
+    {
+        dropPos = CharacterManager.Instance.player.transform.position + Vector3.up * 1.5f;
+        Instantiate(data.dropPrefab, dropPos, Quaternion.identity);
+    }
+
+    private ItemSlot GetEmptySlot()
+    {
+        return slots.FirstOrDefault(slot => slot.itemData == null);
+    }
+
+    private ItemSlot GetItemStack(ItemSO data)
+    {
+        for(int i = 0; i < slots.Length; i++)
+        {
+            if( slots[i].itemData == data && slots[i].itemCount < data.MaxStackSize)
+            {
+                return slots[i];
+            }
+        }
+        return null;
+    }
+
+    public void RemoveSelectedItem()
+    {
+        slots[selectedItemIndex].itemCount--;
+        if (slots[selectedItemIndex].itemCount <= 0)
+        {
+            slots[selectedItemIndex].itemCount = 0;
+            slots[selectedItemIndex].itemData = null;
+        }
+        UpdateInventory();
+    }
+
+    public void OnUseBtn()
+    {
+        ItemSO ItemData = selectedItem.itemData;
+
+        if (ItemData.itemType == ItemType.Consume)
+        {
+            for (int i = 0; i < ItemData.ConsumeData.Count; i++)
+            {
+                switch (ItemData.ConsumeData[i].consumeType)
+                {
+                    case ConsumeType.Health:
+                        condition.Heal(ItemData.ConsumeData[i].itemEffectValue);
+                        break;
+                    case ConsumeType.Stamina:
+                        condition.GetStamina(ItemData.ConsumeData[i].itemEffectValue);
+                        break;
+                    case ConsumeType.Hunger:
+                        condition.Eat(ItemData.ConsumeData[i].itemEffectValue);
+                        break;
+                    case ConsumeType.Thirst:
+                        condition.Drink(ItemData.ConsumeData[i].itemEffectValue);
+                        break;
+                    case ConsumeType.Temperature:
+                        condition.GetWarm(ItemData.ConsumeData[i].itemEffectValue);
+                        break;
+                }
+            }
+        }
+        RemoveSelectedItem();
+        SelectItem(selectedItemIndex);
+    }
+
+    public void OnEquipBtn()
+    {
+        if(CharacterManager.Instance.player.equip.curEquip != null)
+        {
+            return;
+        }
+        else
+        {
+            selectedItem.outline.enabled = true;
+            selectedItem.equipped = true;
+            Debug.Log($"selectedItem : {selectedItem.itemData} \n selectedItemIndex : {selectedItemIndex}");
+            CharacterManager.Instance.player.equip.newEquip(selectedItem.itemData);
+            UpdateInventory();
+        }
+        SelectItem(selectedItemIndex);
+    }
+
+    public void OnUnEquipBtn()
+    {
+        selectedItem.outline.enabled = false;
+        selectedItem.equipped = false;
+        CharacterManager.Instance.player.equip.unEquip();
+        UpdateInventory();
+        SelectItem(selectedItemIndex);
+    }
+
+    public void OnBuildBtn()
+    {
+
     }
 }
+

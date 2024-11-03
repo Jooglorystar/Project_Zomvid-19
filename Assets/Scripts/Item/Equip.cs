@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Equip : MonoBehaviour
 {
+    protected ItemObject itemObject;
+
+    public virtual void Start()
+    {
+        itemObject = GetComponent<ItemObject>();
+    }
     public virtual void OnAttackInput()
     {
 
