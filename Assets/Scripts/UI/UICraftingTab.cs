@@ -36,6 +36,10 @@ public class UICraftingTab : MonoBehaviour
 
     // 소지한 재료의 갯수 파악용 배열
     private int[] hasMaterialCounts;
+    private void Awake()
+    {
+        CharacterManager.Instance.player.uICraftingTab = this;
+    }
 
     private void Start()
     {
@@ -57,8 +61,6 @@ public class UICraftingTab : MonoBehaviour
         }
         ClearCraftingItemWindow();
 
-        CharacterManager.Instance.player.uICraftingTab = this;
-        CharacterManager.Instance.player.uiInventoryTab = inventoryTab;
     }
 
     // 창 초기화

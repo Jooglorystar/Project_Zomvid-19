@@ -42,6 +42,7 @@ public enum ItemIdentifier
     Foundation,
     Pillar,
     Fence,
+    Campfire,
 
     TestRsource1 = 10000, TestRsource2 = 10001
 }
