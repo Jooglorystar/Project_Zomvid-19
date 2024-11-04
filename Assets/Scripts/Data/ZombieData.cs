@@ -18,5 +18,5 @@ public class ZombieData : EntityData
     public float detectDistance;
     public float fieldOfView = 120f;
 
-    //public ItemData[] dropOnDeath;
+    public ItemSO[] dropOnDeath;
 }

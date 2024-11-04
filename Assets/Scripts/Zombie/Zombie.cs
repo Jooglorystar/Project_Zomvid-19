@@ -289,13 +289,14 @@ public class Zombie : MonoBehaviour, IDamagable
 
     void Die()
     {
-        ////아이템 드롭부분
-        //for (int i = 0; i < dropOnDeath.Length; i++)
-        //{
-        //    Instantiate(dropOnDeath[i].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
-        //}
+        //아이템 드롭부분
+        for (int i = 0; i < data.dropOnDeath.Length; i++)
+        {
+            Debug.Log($"{data.dropOnDeath[i].dropPrefab}");
+            //Instantiate(data.dropOnDeath[i].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
+        }
 
-        Destroy(data.gameObject);   //data.gameObject를 파괴하는 이유가..? 죽을 때 모션이후에 죽고싶으면 리지드바디나 다른 컴포넌트들을 제거해야할지도
+        Destroy(gameObject);
     }
 
     IEnumerator DamageFlash()
