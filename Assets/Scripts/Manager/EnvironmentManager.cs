@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public enum Weather
@@ -18,6 +19,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     [SerializeField] private float timeSpeed;  // 시간 흐름 배율
     [HideInInspector] public bool TimeStopped;                            // 시간 멈춤
     [HideInInspector] public float WorldTime { get; private set; }        // 현재 시간
+    [HideInInspector] public int WorldTimeDay { get; private set; }       // 현재 날짜
     [HideInInspector] public float WorldTimeHour { get; private set; }    // 현재 시간(소수점만)
     private readonly PriorityQueue<Action> alarm = new();
     private float deltaTimeRatio;
@@ -43,9 +45,12 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     [SerializeField] private float weatherCloudyWeight; // 날씨 가중치
     [SerializeField] private float weatherRainyWeight;  // 날씨 가중치
     [SerializeField] private float weatherSnowyWeight;  // 날씨 가중치
+    private float sumWeatherWeight1, sumWeatherWeight2, sumWeatherWeight3, sumWeatherWeight4;
+
     [HideInInspector] public bool IsDayTime { get; private set; }         // 낮인지 여부
     [HideInInspector] public Weather CurrentWeather { get; private set; } // 현재 날씨
     private bool isTargetNight;
+    private Weather reservedWeather;
     private Weather targetWeather;
     private float targetWeatherTime;
     private bool dayNightTransition;
@@ -69,7 +74,12 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         currentWeatherOption = dayWeatherSO.weathers[0];
         RenderSettings.skybox = LerpWeatherOption(currentWeatherOption, currentWeatherOption, currentWeatherOption, 0.5f, 0).SkyBox;
         RenderSettings.fogColor = currentWeatherOption.FogColor;
-        WeatherWeather1();
+
+        sumWeatherWeight1 = weatherClearWeight;
+        sumWeatherWeight2 = weatherClearWeight + weatherCloudyWeight;
+        sumWeatherWeight3 = weatherClearWeight + weatherCloudyWeight + weatherRainyWeight;
+        sumWeatherWeight4 = weatherClearWeight + weatherCloudyWeight + weatherRainyWeight + weatherSnowyWeight;
+        ReserveNextWeather();
     }
 
     private void Update()
@@ -84,6 +94,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         if (TimeStopped) return;
 
         WorldTime += Time.deltaTime * deltaTimeRatio;
+        WorldTimeDay = (int)Mathf.Ceil(WorldTime);
         WorldTimeHour = WorldTime % 1.0f;
 
         // 가장 첫 알람 시간과 비교해서 시간이 지났으면 시간이 지난 모든 알람 발생
@@ -192,6 +203,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
             {
                 Debug.Log("날씨 변경 시작");
                 weatherTransition = true;
+                targetWeather = reservedWeather;
                 startWeatherTransitionTime = WorldTime;
 
                 if (dayNightTransition == false)
@@ -218,6 +230,8 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
                 targetWeatherOption1 = targetWeatherOption2;
 
                 startTransitionTime1 = startTransitionTime2;
+
+                ReserveNextWeather(); // 다음 날씨 예약
             }
         }
     }
@@ -241,6 +255,21 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
             RenderSettings.skybox = lerpWeatherOption.SkyBox;
             RenderSettings.fogColor = lerpWeatherOption.FogColor;
         }
+    }
+
+    public void ReserveNextWeather()
+    {
+        float nextTransitionTime = WorldTime + Random.Range(weatherChangeIntervalMin, weatherChangeIntervalMax);
+        float nextWeather = Random.Range(0, sumWeatherWeight4);
+
+        Weather nextTransitionWeather = Weather.Clear;
+        if (nextWeather < sumWeatherWeight1) nextTransitionWeather = Weather.Clear;
+        else if (nextWeather < sumWeatherWeight2) nextTransitionWeather = Weather.Cloudy;
+        else if (nextWeather < sumWeatherWeight3) nextTransitionWeather = Weather.Rainy;
+        else nextTransitionWeather = Weather.Snowy;
+        
+        targetWeatherTime = nextTransitionTime;
+        reservedWeather = nextTransitionWeather;
     }
 
 
@@ -291,11 +320,11 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         blendedSkyboxMaterial.SetTexture("_Tex3", weather3.SkyBox.mainTexture);
         blendedSkyboxMaterial.SetFloat("_Exposure1", weather1.SkyBox.GetFloat("_Exposure"));
         blendedSkyboxMaterial.SetFloat("_Exposure2", weather2.SkyBox.GetFloat("_Exposure"));
-        blendedSkyboxMaterial.SetFloat("_Exposure2", weather3.SkyBox.GetFloat("_Exposure"));
+        blendedSkyboxMaterial.SetFloat("_Exposure3", weather3.SkyBox.GetFloat("_Exposure"));
         blendedSkyboxMaterial.SetFloat("_Blend", t1);
         blendedSkyboxMaterial.SetFloat("_Blend2", t2);
-
         weatherOption.SkyBox = blendedSkyboxMaterial;
+
         if (t2 == 0)
         {
             weatherOption.FogColor = Color.Lerp(weather1.FogColor, weather2.FogColor, t1);
@@ -336,13 +365,5 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     {
         float targetTime = Mathf.Floor(WorldTime) + (targetTimeHour % 1.0f);
         alarm.Enqueue(callback, targetTime);
-    }
-
-
-    private void WeatherWeather1()
-    {
-        //targetWeather = Weather.Cloudy;
-        //targetWeatherTime = 0.75f;
-        targetWeatherTime = float.MaxValue;
     }
 }

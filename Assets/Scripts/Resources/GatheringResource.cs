@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
@@ -7,7 +8,7 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
     [Serializable]
     private class ItemStack
     {
-        public int itemID;
+        public ItemSO itemSO;
         public int stack;
     }
 
@@ -15,7 +16,7 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
     [SerializeField] private float durability; // 최대 체력
     private float curDurability;
 
-    //[SerializeField] private EquipType[] availableTools;      // 파밍 가능 장비 타입
+    [SerializeField] private List<ToolType> availableTools;      // 파밍 가능 장비 타입
     [SerializeField] private string requiredToolDescription;    // 파밍 가능 장비 설명
     [SerializeField] private string gatherDescription;          // 파밍 키 설명
 
@@ -34,13 +35,6 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
     private void Start()
     {
         curDurability = durability;
-
-        //EnvironmentManager.Instance.SetAlarm(0.7f, DamageDamage);
-        //EnvironmentManager.Instance.SetAlarm(1.0f, DamageDamage);
-    }
-    void DamageDamage()
-    {
-        TakeDamage(50);
     }
 
     public void OnInteraction() // 없음
@@ -70,7 +64,7 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
         if (depleted == true || CanGather() == false) return;
 
         float after = Mathf.Max(curDurability - damage, 0);
-        Dictionary<int, int> gatherItems = new Dictionary<int, int>();
+        Dictionary<ItemIdentifier, int> gatherItems = new();
 
         foreach (ItemStack item in ListEarlyGatherings)
         {
@@ -79,7 +73,7 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
             int gather = beforeRemain - afterRemain;
             if (gather >= 0)
             {
-                gatherItems.Add(item.itemID, gather);
+                gatherItems.Add(item.itemSO.identifier, gather);
             }
         }
         if (gatherItems.Count > 0)
@@ -98,9 +92,18 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
 
     private bool CanGather()
     {
-        // TODO : 플레이어 착용 장비가 캘 수 있는 장비인지 반환
+        if (CharacterManager.Instance.player.equip.curEquip is EquipTool equipTool)
+        {
+            //if (equipTool.itemData is MeleeEquipItemSO meleeEquip)
+            //{
+            //    if (availableTools.Contains(meleeEquip.toolType))
+            //    {
+            //        return true;
+            //    }
+            //}
+        }
 
-        return true;
+        return false;
     }
 
     private void Depleted()
