@@ -11,7 +11,7 @@ public class EquipTool : Equip
     private float attackRate;
     private float useStamina;
 
-    [SerializeField] private ItemSO itemData;
+    public ItemSO itemData;
 
     private Animator animator;
     private Camera cam;
