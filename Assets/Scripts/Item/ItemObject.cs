@@ -3,8 +3,16 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour, IInteractable
 {
     public ItemSO itemData;
-    public int stack;
+    [SerializeField] private GameObject parent;
+    [HideInInspector] public int stack;
 
+
+    public void InitializeObject(ItemSO _itemData, int _stack, Vector3 dropPosition)
+    {
+
+
+        Instantiate(itemData.dropPrefab, dropPosition, Quaternion.Euler(0, Random.Range(0, 360), 0));
+    }
 
     public void OnInteraction()
     {

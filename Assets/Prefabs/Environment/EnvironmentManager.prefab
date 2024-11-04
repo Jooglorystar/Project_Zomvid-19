@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &22180966081042564
+--- !u!1 &3773337316163829069
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4672149815074943379}
-  - component: {fileID: 5089577718278267536}
+  - component: {fileID: 1696559476986552779}
+  - component: {fileID: 6785861077981444079}
   m_Layer: 0
   m_Name: EnvironmentManager
   m_TagString: Untagged
@@ -17,39 +17,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4672149815074943379
+--- !u!4 &1696559476986552779
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22180966081042564}
+  m_GameObject: {fileID: 3773337316163829069}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 471.0773, y: 26.847733, z: 253.40805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 840914665588688937}
+  - {fileID: 2665777870566060390}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5089577718278267536
+--- !u!114 &6785861077981444079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22180966081042564}
+  m_GameObject: {fileID: 3773337316163829069}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18ffd06947f03f4a859c533f8331b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 0.65
-  timeSpeed: 1000
+  startTime: 0.4
+  timeSpeed: 60
   TimeStopped: 0
   noon: {x: 90, y: 0, z: 0}
-  Sun: {fileID: 2223193537124084149}
+  Sun: {fileID: 2402970585010832578}
   sunColor:
     serializedVersion: 2
     key0: {r: 0.023529412, g: 0.13725491, b: 1, a: 1}
@@ -257,13 +257,13 @@ MonoBehaviour:
   cloudNightWeatherSO: {fileID: 11400000, guid: 20d1b3fcc728cdd4e9ba9b956745f87b, type: 2}
   weatherTransitionTime: 0.1
   blendedSkyboxMaterial: {fileID: 2100000, guid: 5a33002da6d3903489a65bfd8ae01c40, type: 2}
-  weatherChangeIntervalMin: 0
-  weatherChangeIntervalMax: 0
-  weatherClearWeight: 0
-  weatherCloudyWeight: 0
-  weatherRainyWeight: 0
-  weatherSnowyWeight: 0
---- !u!1 &7270012152184655598
+  weatherChangeIntervalMin: 0.5
+  weatherChangeIntervalMax: 1.5
+  weatherClearWeight: 2
+  weatherCloudyWeight: 0.35
+  weatherRainyWeight: 0.7
+  weatherSnowyWeight: 0.5
+--- !u!1 &4927651062605212854
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -271,8 +271,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 840914665588688937}
-  - component: {fileID: 2223193537124084149}
+  - component: {fileID: 2665777870566060390}
+  - component: {fileID: 2402970585010832578}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -280,28 +280,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &840914665588688937
+--- !u!4 &2665777870566060390
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7270012152184655598}
+  m_GameObject: {fileID: 4927651062605212854}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6830127, y: -0.18301266, z: 0.18301266, w: 0.6830127}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4672149815074943379}
+  m_Father: {fileID: 1696559476986552779}
   m_LocalEulerAnglesHint: {x: 90, y: -30, z: 0}
---- !u!108 &2223193537124084149
+--- !u!108 &2402970585010832578
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7270012152184655598}
+  m_GameObject: {fileID: 4927651062605212854}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 1

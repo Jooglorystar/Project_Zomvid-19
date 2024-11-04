@@ -18,6 +18,12 @@ public enum ConsumeType
     Temperature
 }
 
+// 아이템 식별 코드
+public enum ItemIdentifier
+{
+    TestRsource1 = 10000, TestRsource2 = 10001
+}
+
 [System.Serializable]
 public class ConsumeData
 {
@@ -36,6 +42,7 @@ public class ItemInRecipe
 public class ItemSO : ScriptableObject
 {
     [Header("Item Infomation")]
+    public ItemIdentifier identifier;
     public string itemName;
     public string itemDesc;
     public ItemType itemType;
