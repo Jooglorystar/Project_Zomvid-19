@@ -73,6 +73,11 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         Thirst.Add(amount);
     }
 
+    public void SetTemperature(float temperature)
+    {
+        Temperature.ControlValue(temperature);
+    }
+
     public void GetWarm(float amount)
     {
         Temperature.Add(amount);

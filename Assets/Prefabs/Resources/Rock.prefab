@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4134949093698471134}
   - component: {fileID: 249282948565788262}
   - component: {fileID: 8559169759594423295}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_PyriteOre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1550149740614900060}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}

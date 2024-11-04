@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4293266001913888679}
   - component: {fileID: 3006691095501750069}
   - component: {fileID: 1605974462200393642}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,6 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 85cc8425c6f9d7542a6a54c0a7d03343, type: 2}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 11400000, guid: 85cc8425c6f9d7542a6a54c0a7d03343, type: 2}
+    stack: 1

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6541242469784178688}
   - component: {fileID: 3587686309431948934}
   - component: {fileID: 4960564245718339884}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908502064138629455}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.902863, y: 0.5, z: -1.1970453}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -96,6 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: f0ccc0d2eaeddb649adefaccd93988f9, type: 2}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 11400000, guid: f0ccc0d2eaeddb649adefaccd93988f9, type: 2}
+    stack: 1
