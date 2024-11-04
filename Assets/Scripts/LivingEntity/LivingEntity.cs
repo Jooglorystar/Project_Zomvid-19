@@ -10,26 +10,87 @@ public enum AIState
     Wandering,
     Attacking,
     AttackingFence,
+    Escape,
     Die
 }
 
-public abstract class LivingEntity<T> : MonoBehaviour where T : EntityData, IDamagable
+public abstract class LivingEntity<T> : MonoBehaviour where T : LivingEntityData
 {
     protected T data;
 
     [Header("AI")]
-    private NavMeshAgent agent;
-    private AIState aiState;
+    protected NavMeshAgent agent;
+    protected AIState aiState;
+
+    protected float playerDistance;
 
     private Animator animator;
     private SkinnedMeshRenderer[] meshRenderers;
 
     private Coroutine coroutine;
 
+    //테스트용
+    public bool isStopped;
+
     private void Awake()
     {
         data = GetComponent<T>();
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
+
+    private void Start()
+    {
+        SetState(AIState.Wandering);
+    }
+
+    void Update()
+    {
+        playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.player.transform.position);
+
+        animator.SetBool("Moving", aiState != AIState.Idle);
+
+        if (isStopped) return;
+
+        switch (aiState)
+        {
+            case AIState.Idle:
+                PassiveUpdate();
+                break;
+            case AIState.Wandering:
+                PassiveUpdate();
+                break;
+            case AIState.Attacking:
+                AttackingUpdate();
+                break;
+            case AIState.AttackingFence:
+                AttackingFenceUpdate();
+                break;
+            case AIState.Escape:
+                EscapeUpdate();
+                break;
+        }
+    }
+
+    void PassiveUpdate()
+    {
+        if (aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
+        {
+            SetState(AIState.Idle);
+            Debug.Log("목표 탐색 시작");
+            Invoke("WanderToNewLocation", Random.Range(data.minWanderWaitTime, data.maxWanderWaitTime));
+        }
+
+        if (playerDistance < data.detectDistance)
+        {
+            DetectPlayer();
+        }
+    }
+    protected abstract void DetectPlayer();// ex : SetState(AIState.Attacking)
+    protected virtual void AttackingUpdate() { }
+    protected virtual void AttackingFenceUpdate() { }
+    protected virtual void EscapeUpdate() { }
 
     public void SetState(AIState state)
     {
@@ -55,6 +116,10 @@ public abstract class LivingEntity<T> : MonoBehaviour where T : EntityData, IDam
                 agent.speed = data.runSpeed;
                 agent.isStopped = false;
                 break;
+            case AIState.Escape:
+                agent.speed = data.runSpeed;
+                agent.isStopped = false;
+                break;
             case AIState.Die:
                 agent.speed = 0;
                 agent.isStopped = true;
@@ -65,6 +130,40 @@ public abstract class LivingEntity<T> : MonoBehaviour where T : EntityData, IDam
         }
 
         animator.SetFloat("Speed", agent.speed);
+    }
+
+    void WanderToNewLocation()
+    {
+        if (aiState != AIState.Idle) return;
+
+        SetState(AIState.Wandering);
+        agent.SetDestination(GetWanderLocation());
+    }
+
+    protected Vector3 GetWanderLocation()
+    {
+        NavMeshHit hit;
+
+        float wanderRagne = Random.Range(data.minWanderDistance, data.maxWanderDistance);
+        NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * wanderRagne), out hit, data.maxWanderDistance, NavMesh.AllAreas);
+
+        int i = 0;
+
+        while (Vector3.Distance(transform.position, hit.position) < data.detectDistance)
+        {
+            NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(data.minWanderDistance, data.maxWanderDistance)), out hit, data.maxWanderDistance, NavMesh.AllAreas);
+            i++;
+            if (i == 30) break;
+        }
+
+        return hit.position;
+    }
+    protected bool IsPlayerInFieldOfView()
+    {
+        Vector3 directionToPlayer = CharacterManager.Instance.player.transform.position - transform.position;
+        float angle = Vector3.Angle(transform.forward, directionToPlayer);
+
+        return angle < data.fieldOfView * 0.5f;
     }
 
     public virtual void TakeDamage(float damage)
