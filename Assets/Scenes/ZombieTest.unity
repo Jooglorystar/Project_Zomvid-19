@@ -1184,13 +1184,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 290630638}
         m_TargetAssemblyTypeName: Zombie, Assembly-CSharp
-        m_MethodName: TakePhysicalDamage
-        m_Mode: 3
+        m_MethodName: TakeDamage
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 50
-          m_FloatArgument: 0
+          m_FloatArgument: 50
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
