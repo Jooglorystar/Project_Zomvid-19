@@ -4843,6 +4843,7 @@ GameObject:
   - component: {fileID: 8807392190801607199}
   - component: {fileID: 7327083119850866046}
   - component: {fileID: 5570287935100792681}
+  - component: {fileID: -8504809963070793877}
   m_Layer: 9
   m_Name: pistol_001
   m_TagString: Untagged
@@ -4954,6 +4955,20 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: ea79fc2cc4aab364cac94dad37adba05, type: 2}
   gunFlash: {fileID: 3458260733457894666}
   bulletPos: {fileID: 0}
+--- !u!114 &-8504809963070793877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976122341353580055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 0}
+  stack: 0
 --- !u!1 &6045985410549901337
 GameObject:
   m_ObjectHideFlags: 0

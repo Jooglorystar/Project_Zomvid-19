@@ -62,6 +62,11 @@ public class UIInventoryTab : MonoBehaviour
         CharacterManager.Instance.player.AddItem += AddItem;
     }
 
+    private void OnDisable()
+    {
+        ClearInventorySelectedItemWindow();
+    }
+
     // 창 초기화
     private void ClearInventorySelectedItemWindow()
     {
@@ -69,7 +74,11 @@ public class UIInventoryTab : MonoBehaviour
         selectedItemDesc.text = string.Empty;
         selectedItemStatName.text = string.Empty;
         selectedItemStatValue.text = string.Empty;
+        ClearButtons();
+    }
 
+    private void ClearButtons()
+    {
         useButton.SetActive(false);
         equipButton.SetActive(false);
         unequipButton.SetActive(false);
@@ -100,6 +109,8 @@ public class UIInventoryTab : MonoBehaviour
             selectedItemStatName.text += selectedItem.itemData.ConsumeData[i].consumeType.ToString() + "\n";
             selectedItemStatValue.text += selectedItem.itemData.ConsumeData[i].itemEffectValue.ToString() + "\n";
         }
+
+        ClearButtons();
 
         switch (slots[index].itemData.itemType)
         {
@@ -257,7 +268,6 @@ public class UIInventoryTab : MonoBehaviour
         {
             selectedItem.outline.enabled = true;
             selectedItem.equipped = true;
-            Debug.Log($"selectedItem : {selectedItem.itemData} \n selectedItemIndex : {selectedItemIndex}");
             CharacterManager.Instance.player.equip.newEquip(selectedItem.itemData);
             UpdateInventory();
         }
