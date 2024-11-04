@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4373426255094626605}
   - component: {fileID: 7213246167633896399}
   - component: {fileID: 4288925645107856426}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8074704427817728684}
   - component: {fileID: 3755721755963056112}
   - component: {fileID: 2776119084331643053}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestResource1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,8 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 061da941b79a64c4e9ae0b2089a7ca3a, type: 2}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 11400000, guid: 061da941b79a64c4e9ae0b2089a7ca3a, type: 2}
+    stack: 1
 --- !u!65 &3755721755963056112
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -178,5 +179,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0

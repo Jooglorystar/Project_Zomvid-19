@@ -35,7 +35,6 @@ public class Equipment : MonoBehaviour
                 curEquip = Instantiate(rangeEquipItem.rangePrefab, HandPos).GetComponent<Equip>();
             }
         }
-        Debug.Log(curEquip);
         curEquip.gameObject.SetActive(true);
     }
 

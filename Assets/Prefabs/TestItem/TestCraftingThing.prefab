@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1198615567661788182}
   - component: {fileID: 5543397318040156503}
   - component: {fileID: 4722740293561991311}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestCraftingThing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 72959d49cb330d7459fef9d730bc0d2e, type: 2}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 11400000, guid: 72959d49cb330d7459fef9d730bc0d2e, type: 2}
+    stack: 1
 --- !u!65 &5543397318040156503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -108,7 +109,7 @@ GameObject:
   - component: {fileID: 3191814259162943576}
   - component: {fileID: 8836220451998005070}
   - component: {fileID: 4506905240972067881}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

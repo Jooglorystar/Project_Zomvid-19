@@ -58,8 +58,6 @@ public class UIInventoryTab : MonoBehaviour
         }
 
         ClearInventorySelectedItemWindow();
-
-        CharacterManager.Instance.player.AddItem += AddItem;
     }
 
     private void OnDisable()
@@ -144,7 +142,7 @@ public class UIInventoryTab : MonoBehaviour
         RemoveSelectedItem();
     }
 
-    public void AddItem()
+    public void AddItem(ItemStack stack)
     {
         ItemSO data  = CharacterManager.Instance.player.itemData;
 

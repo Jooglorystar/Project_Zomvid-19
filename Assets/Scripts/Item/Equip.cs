@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Equip : MonoBehaviour
 {
-    protected ItemObject itemObject;
+    [HideInInspector]
+    public ItemObject itemData;
 
     public virtual void Start()
     {
-        itemObject = GetComponent<ItemObject>();
+        itemData = GetComponent<ItemObject>();
     }
     public virtual void OnAttackInput()
     {
 
     }
-
     public virtual void OnRunInput(bool isRunning)
     {
 

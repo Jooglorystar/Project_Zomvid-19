@@ -320,15 +320,17 @@ public class Zombie : MonoBehaviour, IDamagable
 
     private void OnDrawGizmos()
     {
-        // Gizmo 색상을 설정
-        Gizmos.color = Color.red;
+        if(data != null)
+        {        // Gizmo 색상을 설정
+            Gizmos.color = Color.red;
 
-        // 공격 범위를 원형으로 표시
-        Gizmos.DrawWireSphere(transform.position, data.attackDistance);
+            // 공격 범위를 원형으로 표시
+            Gizmos.DrawWireSphere(transform.position, data.attackDistance);
 
-        // 씬 뷰에 거리 값을 표시
-        Vector3 textPosition = (transform.position + CharacterManager.Instance.player.transform.position) / 2;
-        UnityEditor.Handles.Label(textPosition, $"Distance: {playerDistance:F2}");
+            // 씬 뷰에 거리 값을 표시
+            Vector3 textPosition = (transform.position + CharacterManager.Instance.player.transform.position) / 2;
+            UnityEditor.Handles.Label(textPosition, $"Distance: {playerDistance:F2}");
+        }
     }
 
     public void StopZombie()
