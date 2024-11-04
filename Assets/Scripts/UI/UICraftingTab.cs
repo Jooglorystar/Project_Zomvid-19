@@ -56,6 +56,9 @@ public class UICraftingTab : MonoBehaviour
             slots[i].craftingTab = this;
         }
         ClearCraftingItemWindow();
+
+        CharacterManager.Instance.player.uICraftingTab = this;
+        CharacterManager.Instance.player.uiInventoryTab = inventoryTab;
     }
 
     // 창 초기화
@@ -194,7 +197,24 @@ public class UICraftingTab : MonoBehaviour
     {
         // TODO 아이템 제작하는 메서드
         // 재료 아이템을 필요한 양 만큼 깎고
+        for (int j = 0; j < inventoryTab.slots.Length; j++)
+        {
+            for (int i = 0; i < selectedItem.itemData.itemMaterials.Count; i++)
+            {
+                if (inventoryTab.slots[j].itemData == selectedItem.itemData.itemMaterials[i].item)
+                {
+                    inventoryTab.slots[j].itemCount--;
+                }
+            }
+        }
         // 만든 만큼 인벤토리 추가하기
+        CharacterManager.Instance.player.itemData = selectedItem.itemData;
+        for(int i = 0; i < craftQuantity; i++)
+        {
+            inventoryTab.AddItem();
+        }
+        CharacterManager.Instance.player.itemData = null;
+        SelectItem(selectedItemIndex);
     }
 
     // 재료 부족시 경고 메세지 띄우는 메서드

@@ -8,8 +8,8 @@ public class MeleeEquipItemSO : ItemSO
     public float attackDistance;
     public float attackRate;
     public float useStamina;
-    public GameObject meleePrefab;
     public ToolType toolType;
+    public GameObject meleePrefab;
 }
 
 public enum ToolType

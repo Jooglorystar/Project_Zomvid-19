@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour, IMovable
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        walkSpeed = CharacterManager.Instance.player.data.walkSpeed;
+        walkSpeed = CharacterManager.Instance.player.playerData.walkSpeed;
 
         if (context.phase == InputActionPhase.Performed)
         {
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour, IMovable
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        mouseSensitivity = CharacterManager.Instance.player.data.mouseSensitivity;
+        mouseSensitivity = CharacterManager.Instance.player.playerData.mouseSensitivity;
 
         if (context.phase == InputActionPhase.Performed)
         {
@@ -123,8 +123,8 @@ public class PlayerController : MonoBehaviour, IMovable
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        jumpPower = CharacterManager.Instance.player.data.jumpPower;
-        jumpStamina = CharacterManager.Instance.player.data.jumpStamina;
+        jumpPower = CharacterManager.Instance.player.playerData.jumpPower;
+        jumpStamina = CharacterManager.Instance.player.playerData.jumpStamina;
 
         if (context.phase == InputActionPhase.Started && IsGround())
         {
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour, IMovable
     {
         if (context.phase == InputActionPhase.Started)
         {
-            runSpeed = CharacterManager.Instance.player.data.runSpeed;
+            runSpeed = CharacterManager.Instance.player.playerData.runSpeed;
             CharacterManager.Instance.player.equip.curEquip?.OnRunInput(true);
         }
         else if (context.phase == InputActionPhase.Canceled)

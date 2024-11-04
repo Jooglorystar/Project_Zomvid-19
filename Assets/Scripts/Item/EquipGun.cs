@@ -1,10 +1,22 @@
 ﻿using UnityEngine;
+using static UnityEditor.Progress;
 
 public class EquipGun : Equip
 {
     [SerializeField] private ItemSO itemData;
     [SerializeField] private ParticleSystem gunFlash;
     [SerializeField] private Transform bulletPos;
+
+
+    public override void Start()
+    {
+        base.Start();
+        if (bulletPos == null)
+        {
+            bulletPos = GameObject.Find("BulletPos").transform;
+        }
+        itemObject.itemData = itemData;
+    }
 
     public override void OnAttackInput()
     {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InventorySlot
   - CraftingSlot
+  - Fence
   layers:
   - Default
   - TransparentFX
@@ -18,9 +19,9 @@ TagManager:
   - Interactable
   - Equip
   - Bullet
-  - 
-  - 
-  - 
+  - Resource
+  - Fence
+  - Enemy
   - 
   - 
   - 

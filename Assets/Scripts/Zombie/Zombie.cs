@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public enum AIState
 {
     Idle,
     Wandering,
-    Attacking
+    Attacking,
+    AttackingFence,
+    Die
 }
 
 public class Zombie : MonoBehaviour, IDamagable
 {
+    //public InputActionAsset inputActions;
+    //private InputActionMap inputMap;
+
     internal ZombieData data;
 
     [Header("AI")]
+    [SerializeField] private LayerMask fenceMaskLayer;
     private NavMeshAgent agent;
     private AIState aiState;
 
@@ -26,6 +33,9 @@ public class Zombie : MonoBehaviour, IDamagable
 
     private Coroutine coroutine;
 
+    public bool isStopped;
+    private IDamagable FenceAttacked;
+
     private void Awake()
     {
         data = GetComponent<ZombieData>();
@@ -36,13 +46,31 @@ public class Zombie : MonoBehaviour, IDamagable
 
     private void Start()
     {
+        //키보드
+        //inputMap  = inputActions.actionMaps[0];
+        //inputMap.FindAction("Stop") += StopZombie;
+
         SetState(AIState.Wandering);
     }
     void Update()
     {
-        playerDistance = Vector2.Distance(transform.position, CharacterManager.Instance.player.transform.position);
+        // 1번 키 입력 처리
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            LockCursor();
+        }
 
-        //animator.SetBool("Moving", aiState != AIState.Idle);
+        // 2번 키 입력 처리
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UnlockCursor();
+        }
+
+        playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.player.transform.position);
+
+        animator.SetBool("Moving", aiState != AIState.Idle);
+
+        if (isStopped) return;
 
         switch (aiState)
         {
@@ -55,14 +83,57 @@ public class Zombie : MonoBehaviour, IDamagable
             case AIState.Attacking:
                 AttackingUpdate();
                 break;
-
+            case AIState.AttackingFence:
+                AttackingFenceUpdate();
+                break;
         }
     }
 
+    private void AttackingFenceUpdate()
+    {
+        if (!(playerDistance < data.attackDistance && IsPlayerInFieldOfView()))
+        {
+            if (IsFenceInFront())
+            {
+                if (Time.time - lastAttackTime > data.attackRate)
+                {
+                    if (FenceAttacked != null)
+                    {
+                        lastAttackTime = Time.time;
+                        FenceAttacked.TakeDamage(data.basicATK);
+                        animator.speed = 1;
+                        animator.SetTrigger("Attack");
+                    }
+                }
+            }
+        }
+        else
+        {
+            SetState(AIState.Attacking);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Fence"))
+        {
+            SetState(AIState.AttackingFence);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Fence"))
+        {
+            SetState(AIState.Attacking);
+        }
+    }
 
     public void SetState(AIState state)
     {
         aiState = state;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
 
         switch (aiState)
         {
@@ -78,10 +149,21 @@ public class Zombie : MonoBehaviour, IDamagable
                 agent.speed = data.runSpeed;
                 agent.isStopped = false;
                 break;
+            case AIState.AttackingFence:
+                agent.speed = data.runSpeed;
+                agent.isStopped = false;
+                break;
+            case AIState.Die:
+                agent.speed = 0;
+                agent.isStopped = true;
+                animator.SetTrigger("Dying");
+                Invoke("Die", 4.0f);
+                break;
 
         }
 
-        animator.speed = agent.speed / data.walkSpeed;
+        //animator.speed = agent.speed / data.walkSpeed;
+        animator.SetFloat("Speed", agent.speed);
     }
 
     void PassiveUpdate()
@@ -89,6 +171,7 @@ public class Zombie : MonoBehaviour, IDamagable
         if (aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
         {
             SetState(AIState.Idle);
+            Debug.Log("목표 탐색 시작");
             Invoke("WanderToNewLocation", Random.Range(data.minWanderWaitTime, data.maxWanderWaitTime));
         }
 
@@ -111,10 +194,8 @@ public class Zombie : MonoBehaviour, IDamagable
         NavMeshHit hit;
 
         float wanderRagne = Random.Range(data.minWanderDistance, data.maxWanderDistance);
-        Debug.Log($"더해질 값 : {wanderRagne}");
         NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * wanderRagne), out hit, data.maxWanderDistance, NavMesh.AllAreas);
 
-        Debug.Log($"현재 곰 위치 : {transform.position}");
         int i = 0;
 
         while (Vector3.Distance(transform.position, hit.position) < data.detectDistance)
@@ -167,6 +248,20 @@ public class Zombie : MonoBehaviour, IDamagable
         }
     }
 
+    private bool IsFenceInFront()
+    {
+        Ray ray = new Ray(transform.position + Vector3.up * 0.5f, transform.forward);
+        RaycastHit hit;
+
+        //Ray로할지, Tag로할지는 미정
+        if (Physics.Raycast(ray, out hit, data.attackDistance, fenceMaskLayer))
+        {
+            FenceAttacked = hit.collider.GetComponent<IDamagable>();
+            return true;
+        }
+        else return false;
+    }
+
     bool IsPlayerInFieldOfView()
     {
         Vector3 directionToPlayer = CharacterManager.Instance.player.transform.position - transform.position;
@@ -178,9 +273,10 @@ public class Zombie : MonoBehaviour, IDamagable
     public void TakePhysicalDamage(int damage)
     {
         data.maxHealth -= damage;
+        Debug.Log(data.maxHealth);
         if (data.maxHealth <= 0)
         {
-            Die();
+            SetState(AIState.Die);
         }
 
         //데미지 효과
@@ -199,7 +295,7 @@ public class Zombie : MonoBehaviour, IDamagable
         //    Instantiate(dropOnDeath[i].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
         //}
 
-        Destroy(data.gameObject);
+        Destroy(data.gameObject);   //data.gameObject를 파괴하는 이유가..? 죽을 때 모션이후에 죽고싶으면 리지드바디나 다른 컴포넌트들을 제거해야할지도
     }
 
     IEnumerator DamageFlash()
@@ -219,6 +315,41 @@ public class Zombie : MonoBehaviour, IDamagable
 
     public void TakeDamage(float damage)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("데미지를 입었습니다.");
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Gizmo 색상을 설정
+        Gizmos.color = Color.red;
+
+        // 공격 범위를 원형으로 표시
+        Gizmos.DrawWireSphere(transform.position, data.attackDistance);
+
+        // 씬 뷰에 거리 값을 표시
+        Vector3 textPosition = (transform.position + CharacterManager.Instance.player.transform.position) / 2;
+        UnityEditor.Handles.Label(textPosition, $"Distance: {playerDistance:F2}");
+    }
+
+    public void StopZombie()
+    {
+        isStopped = true;
+    }
+
+    public void ResumeZombie()
+    {
+        isStopped = false;
+    }
+
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

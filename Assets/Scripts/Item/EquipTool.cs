@@ -17,11 +17,13 @@ public class EquipTool : Equip
     private Camera cam;
 
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         InitMelee();
         animator = GetComponent<Animator>();
         cam = Camera.main;
+        itemObject.itemData = itemData;
     }
 
     public void InitMelee()
@@ -70,6 +72,7 @@ public class EquipTool : Equip
         {
             if (hit.collider.TryGetComponent<IDamagable>(out IDamagable damagable))
             {
+                Debug.Log("OnHit!");
                 damagable.TakeDamage(damage);
             }
         }

@@ -16,14 +16,21 @@ public class Equipment : MonoBehaviour
         }
     }
 
-    public void newEquip(MeleeEquipItemSO equip)
+    public void newEquip(ItemSO equip)
     {
         if (curEquip == equip) return;
         else if (curEquip != null)
         {
             unEquip();
+            if (equip is MeleeEquipItemSO meleeEquipItem)
+            {
+                curEquip = Instantiate(meleeEquipItem.meleePrefab, HandPos).GetComponent<Equip>();
+            }
+            else if(equip is RangeEquipItemSO rangeEquipItem)
+            {
+                curEquip = Instantiate(rangeEquipItem.rangePrefab, HandPos).GetComponent<Equip>();
+            }
         }
-        curEquip = Instantiate(equip.meleePrefab, HandPos).GetComponent<Equip>();
         curEquip.gameObject.SetActive(true);
     }
 
