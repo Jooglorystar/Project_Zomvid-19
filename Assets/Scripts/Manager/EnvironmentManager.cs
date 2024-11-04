@@ -27,9 +27,6 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     [SerializeField] private Light Sun;
     [SerializeField] private Gradient sunColor;
     [SerializeField] private AnimationCurve sunIntensity;
-    [SerializeField] private Light Moon;
-    [SerializeField] private Gradient moonColor;
-    [SerializeField] private AnimationCurve moonIntensity;
     [SerializeField] private AnimationCurve lightingIntensityMultiplier;
     [SerializeField] private AnimationCurve reflectionIntensityMultiplier;
 
@@ -38,7 +35,14 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     [SerializeField] private WeatherSO nightWeatherSO;
     [SerializeField] private WeatherSO cloudDayWeatherSO;
     [SerializeField] private WeatherSO cloudNightWeatherSO;
-    [SerializeField] private float weatherTransitionTime; // 단위 : 하루
+    [SerializeField] private float weatherTransitionTime;    // 단위 : 하루
+    [SerializeField] private Material blendedSkyboxMaterial; // 스카이박스 트랜지션을 위해 특수 제작된 셰이더를 사용하는 Material
+    [SerializeField] private float weatherChangeIntervalMin;
+    [SerializeField] private float weatherChangeIntervalMax;
+    [SerializeField] private float weatherClearWeight;  // 날씨 가중치
+    [SerializeField] private float weatherCloudyWeight; // 날씨 가중치
+    [SerializeField] private float weatherRainyWeight;  // 날씨 가중치
+    [SerializeField] private float weatherSnowyWeight;  // 날씨 가중치
     [HideInInspector] public bool IsDayTime { get; private set; }         // 낮인지 여부
     [HideInInspector] public Weather CurrentWeather { get; private set; } // 현재 날씨
     private bool isTargetNight;
@@ -63,8 +67,9 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         targetWeather = Weather.Clear;
 
         currentWeatherOption = dayWeatherSO.weathers[0];
-        RenderSettings.skybox = currentWeatherOption.SkyBox;
+        RenderSettings.skybox = LerpWeatherOption(currentWeatherOption, currentWeatherOption, currentWeatherOption, 0.5f, 0).SkyBox;
         RenderSettings.fogColor = currentWeatherOption.FogColor;
+        WeatherWeather1();
     }
 
     private void Update()
@@ -107,7 +112,6 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         }
 
         UpdateLighting(Sun, sunColor, sunIntensity);
-        UpdateLighting(Moon, moonColor, moonIntensity);
 
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(WorldTimeHour);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(WorldTimeHour);
@@ -115,11 +119,13 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
 
     private void UpdateWeather()
     {
-        if (WorldTime >= targetWeatherTime)
-        {
-            CurrentWeather = targetWeather;
-        }
+        DayNightTransition();
+        WeatherTransition();
+        ApplyWeatherTransition();
+    }
 
+    private void DayNightTransition()
+    {
         if (dayNightTransition == false)
         {
             if (isTargetNight == false && WorldTimeHour > 0.8 - weatherTransitionTime / 2)
@@ -163,7 +169,7 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         {
             if (WorldTime > startDayTransitionTime + weatherTransitionTime)
             {
-                Debug.Log("전환 끝");
+                Debug.Log("낮밤 전환 끝");
                 dayNightTransition = false;
 
                 currentWeatherOption = targetWeatherOption1;
@@ -172,25 +178,72 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
                 startTransitionTime1 = startTransitionTime2;
             }
         }
+    }
+    private void WeatherTransition()
+    {
+        if (WorldTime >= targetWeatherTime)
+        {
+            CurrentWeather = targetWeather;
+        }
 
-        WeatherOption nextWeatherOption = null;
+        if (weatherTransition == false)
+        {
+            if (WorldTime > targetWeatherTime - weatherTransitionTime / 2)
+            {
+                Debug.Log("날씨 변경 시작");
+                weatherTransition = true;
+                startWeatherTransitionTime = WorldTime;
+
+                if (dayNightTransition == false)
+                {
+                    targetWeatherOption1 = GetWeatherOption(isTargetNight, targetWeather);
+                    startTransitionTime1 = WorldTime;
+                }
+                else
+                {
+                    targetWeatherOption2 = GetWeatherOption(isTargetNight, targetWeather);
+                    startTransitionTime2 = WorldTime;
+                }
+            }
+        }
+        else
+        {
+            if (WorldTime > targetWeatherTime + weatherTransitionTime / 2)
+            {
+                Debug.Log("날씨 전환 끝");
+                weatherTransition = false;
+                targetWeatherTime = float.MaxValue;
+
+                currentWeatherOption = targetWeatherOption1;
+                targetWeatherOption1 = targetWeatherOption2;
+
+                startTransitionTime1 = startTransitionTime2;
+            }
+        }
+    }
+    private void ApplyWeatherTransition()
+    {
+        WeatherOption lerpWeatherOption = null;
         if (dayNightTransition || weatherTransition)
         {
-            nextWeatherOption = LerpWeatherOption(currentWeatherOption, targetWeatherOption1, (WorldTime - startTransitionTime1) / weatherTransitionTime);
-
-            if (dayNightTransition && weatherTransition)
+            if (!dayNightTransition || !weatherTransition)
             {
-                nextWeatherOption = LerpWeatherOption(nextWeatherOption, targetWeatherOption2, (WorldTime - startTransitionTime2) / weatherTransitionTime);
+                lerpWeatherOption = LerpWeatherOption(currentWeatherOption, targetWeatherOption1, currentWeatherOption, (WorldTime - startTransitionTime1) / weatherTransitionTime, 0);
+            }
+            else
+            {
+                lerpWeatherOption = LerpWeatherOption(currentWeatherOption, targetWeatherOption1, targetWeatherOption2, (WorldTime - startTransitionTime1) / weatherTransitionTime, (WorldTime - startTransitionTime2) / weatherTransitionTime);
             }
         }
 
-        if (nextWeatherOption != null)
+        if (lerpWeatherOption != null)
         {
-            RenderSettings.skybox = nextWeatherOption.SkyBox;
-            RenderSettings.fogColor = nextWeatherOption.FogColor;
+            RenderSettings.skybox = lerpWeatherOption.SkyBox;
+            RenderSettings.fogColor = lerpWeatherOption.FogColor;
         }
     }
-    
+
+
     private WeatherOption GetWeatherOption(bool isNight, Weather weather)
     {
         WeatherOption weatherOption = new WeatherOption();
@@ -226,13 +279,31 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
         return weatherOption;
     }
 
-    private WeatherOption LerpWeatherOption(WeatherOption weather1, WeatherOption weather2, float t)
+    private WeatherOption LerpWeatherOption(WeatherOption weather1, WeatherOption weather2, WeatherOption weather3, float t1, float t2)
     {
-        WeatherOption weatherOption = new WeatherOption();
-        weatherOption.SkyBox = weather1.SkyBox;
+        WeatherOption weatherOption = new()
+        {
+            SkyBox = weather1.SkyBox
+        };
+        
+        blendedSkyboxMaterial.SetTexture("_Tex1", weather1.SkyBox.mainTexture);
+        blendedSkyboxMaterial.SetTexture("_Tex2", weather2.SkyBox.mainTexture);
+        blendedSkyboxMaterial.SetTexture("_Tex3", weather3.SkyBox.mainTexture);
+        blendedSkyboxMaterial.SetFloat("_Exposure1", weather1.SkyBox.GetFloat("_Exposure"));
+        blendedSkyboxMaterial.SetFloat("_Exposure2", weather2.SkyBox.GetFloat("_Exposure"));
+        blendedSkyboxMaterial.SetFloat("_Exposure2", weather3.SkyBox.GetFloat("_Exposure"));
+        blendedSkyboxMaterial.SetFloat("_Blend", t1);
+        blendedSkyboxMaterial.SetFloat("_Blend2", t2);
 
-        weatherOption.SkyBox.Lerp(weather1.SkyBox, weather2.SkyBox, t);
-        weatherOption.FogColor = Color.Lerp(weather1.FogColor, weather2.FogColor, t);
+        weatherOption.SkyBox = blendedSkyboxMaterial;
+        if (t2 == 0)
+        {
+            weatherOption.FogColor = Color.Lerp(weather1.FogColor, weather2.FogColor, t1);
+        }
+        else
+        {
+            weatherOption.FogColor = Color.Lerp(Color.Lerp(weather1.FogColor, weather2.FogColor, t1), weather3.FogColor, t2);
+        }
 
         return weatherOption;
     }
@@ -243,19 +314,16 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     {
         float intensity = intensityCurve.Evaluate(WorldTimeHour);
 
-        lightSource.transform.eulerAngles = (WorldTimeHour - (lightSource == Sun ? 0.25f : 0.75f)) * noon * 4f;
+        if (0.25 < WorldTimeHour && WorldTimeHour < 0.75)
+        {
+            lightSource.transform.eulerAngles = (WorldTimeHour - 0.25f) * noon * 4f;
+        }
+        else
+        {
+            lightSource.transform.eulerAngles = (WorldTimeHour - 0.75f) * noon * 4f;
+        }
         lightSource.color = gradient.Evaluate(WorldTimeHour);
         lightSource.intensity = intensity;
-
-        GameObject go = lightSource.gameObject;
-        if (lightSource.intensity == 0 && go.activeInHierarchy)
-        {
-            go.SetActive(false);
-        }
-        else if (lightSource.intensity > 0 && !go.activeInHierarchy)
-        {
-            go.SetActive(true);
-        }
     }
 
 
@@ -268,5 +336,13 @@ public class EnvironmentManager : Singleton<EnvironmentManager>
     {
         float targetTime = Mathf.Floor(WorldTime) + (targetTimeHour % 1.0f);
         alarm.Enqueue(callback, targetTime);
+    }
+
+
+    private void WeatherWeather1()
+    {
+        //targetWeather = Weather.Cloudy;
+        //targetWeatherTime = 0.75f;
+        targetWeatherTime = float.MaxValue;
     }
 }
