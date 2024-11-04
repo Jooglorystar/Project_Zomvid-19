@@ -21,6 +21,28 @@ public enum ConsumeType
 // 아이템 식별 코드
 public enum ItemIdentifier
 {
+    //무기 100번
+    Axe = 100,
+    Bat,
+    Knife,
+    Pistol,
+    Hand,
+    Pickaxe,
+
+    //기초자원 1000번
+    Wood_Log = 1000,
+    Stone,
+
+    //음식자원 2000번
+    Pork_raw = 2000,
+    Chicken,
+
+    //가공자원 = 3000번
+    Wood_Plank = 3000,
+    Foundation,
+    Pillar,
+    Fence,
+
     TestRsource1 = 10000, TestRsource2 = 10001
 }
 

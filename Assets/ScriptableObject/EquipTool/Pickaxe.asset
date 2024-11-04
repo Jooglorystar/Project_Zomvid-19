@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108fe3b1cdc6deb46b1ee4aaeb1aaa80, type: 3}
   m_Name: Pickaxe
   m_EditorClassIdentifier: 
+  identifier: 105
   itemName: "\uACE1\uAD2D\uC774"
   itemDesc: "\uB3CC\uC744 \uCE90\uAC70\uB098 \uC880\uBE44\uB97C \uCEA1\uB2C8\uB2E4"
   itemType: 0
