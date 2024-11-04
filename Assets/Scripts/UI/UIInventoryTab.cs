@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemGainValue
 {
@@ -175,6 +177,85 @@ public class UIInventoryTab : MonoBehaviour
         //없다면
         ThrowItem(data);
         CharacterManager.Instance.player.itemData = null;
+    }
+
+    public void AddItem(List<ItemStack> itemStacks)
+    {
+        foreach (ItemStack itemStack in itemStacks)
+        {
+            //아이템이 중복가능한지 canStack체크
+            if (itemStack.itemSO.canStack)
+            {
+                while (itemStack.stack <= 0)
+                {
+                    ItemSlot slot = GetItemStack(itemStack.itemSO);
+                    if (slot != null)
+                    {
+                        if (slot.itemCount + itemStack.stack <= itemStack.itemSO.MaxStackSize)
+                        {
+                            slot.itemCount += itemStack.stack;
+                            itemStack.stack = 0;
+                        }
+                        else
+                        {
+                            itemStack.stack += slot.itemCount - itemStack.itemSO.MaxStackSize;
+                            slot.itemCount = itemStack.itemSO.MaxStackSize;
+                        }
+                    }
+                    else
+                    {
+                        ItemSlot emptySlot = GetEmptySlot();
+                        if (emptySlot != null)
+                        {
+                            if (itemStack.stack <= itemStack.itemSO.MaxStackSize)
+                            {
+                                slot.itemCount = itemStack.stack;
+                                itemStack.stack = 0;
+                            }
+                            else
+                            {
+                                itemStack.stack -= itemStack.itemSO.MaxStackSize;
+                                slot.itemCount = itemStack.itemSO.MaxStackSize;
+                            }
+                        }
+                        else
+                        {
+                            DropItem(itemStack);
+                            itemStack.stack = 0;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                ItemSlot emptySlot = GetEmptySlot();
+                if (emptySlot != null)
+                {
+                    emptySlot.itemData = itemStack.itemSO;
+                    emptySlot.itemCount = 1;
+                    return;
+                }
+                else
+                {
+                    DropItem(itemStack);
+                }
+            }
+
+            CharacterManager.Instance.player.itemData = null;
+            UpdateInventory();
+        }
+    }
+
+    private void DropItem(ItemStack itemStack)
+    {
+        dropPos = CharacterManager.Instance.player.transform.position + Vector3.up * 1.5f;
+        GameObject drops = Instantiate(itemStack.itemSO.dropPrefab, dropPos, Quaternion.identity);
+        drops.transform.parent = WorldLevelManager.Instance.ItemObjects;
+        var itemObject = drops.GetComponent<ItemObject>();
+        if (itemObject != null)
+        {
+            itemObject.itemStack.stack = itemStack.stack;
+        }
     }
 
     private void UpdateInventory()
