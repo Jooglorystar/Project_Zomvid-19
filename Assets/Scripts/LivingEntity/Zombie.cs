@@ -4,6 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
+public enum AIState
+{
+    Idle,
+    Wandering,
+    Attacking,
+    AttackingFence,
+    Die
+}
+
 public class Zombie : MonoBehaviour, IDamagable
 {
     //public InputActionAsset inputActions;
@@ -153,6 +162,7 @@ public class Zombie : MonoBehaviour, IDamagable
 
         }
 
+        //animator.speed = agent.speed / data.walkSpeed;
         animator.SetFloat("Speed", agent.speed);
     }
 
@@ -260,10 +270,10 @@ public class Zombie : MonoBehaviour, IDamagable
         return angle < data.fieldOfView * 0.5f;
     }
 
-    public void TakeDamage(float damage)
+    public void TakePhysicalDamage(int damage)
     {
         data.maxHealth -= damage;
-
+        Debug.Log(data.maxHealth);
         if (data.maxHealth <= 0)
         {
             SetState(AIState.Die);
@@ -279,14 +289,13 @@ public class Zombie : MonoBehaviour, IDamagable
 
     void Die()
     {
-        //아이템 드롭부분
-        for (int i = 0; i < data.dropOnDeath.Length; i++)
-        {
-            Debug.Log($"{data.dropOnDeath[i].dropPrefab}");
-            //Instantiate(data.dropOnDeath[i].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
-        }
+        ////아이템 드롭부분
+        //for (int i = 0; i < dropOnDeath.Length; i++)
+        //{
+        //    Instantiate(dropOnDeath[i].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
+        //}
 
-        Destroy(gameObject);
+        Destroy(data.gameObject);   //data.gameObject를 파괴하는 이유가..? 죽을 때 모션이후에 죽고싶으면 리지드바디나 다른 컴포넌트들을 제거해야할지도
     }
 
     IEnumerator DamageFlash()
@@ -304,18 +313,25 @@ public class Zombie : MonoBehaviour, IDamagable
         }
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    // Gizmo 색상을 설정
-    //    Gizmos.color = Color.red;
+    public void TakeDamage(float damage)
+    {
+        Debug.Log("데미지를 입었습니다.");
+    }
 
-    //    // 공격 범위를 원형으로 표시
-    //    Gizmos.DrawWireSphere(transform.position, data.attackDistance);
+    private void OnDrawGizmos()
+    {
+        if(data != null)
+        {        // Gizmo 색상을 설정
+            Gizmos.color = Color.red;
 
-    //    // 씬 뷰에 거리 값을 표시
-    //    Vector3 textPosition = (transform.position + CharacterManager.Instance.player.transform.position) / 2;
-    //    UnityEditor.Handles.Label(textPosition, $"Distance: {playerDistance:F2}");
-    //}
+            // 공격 범위를 원형으로 표시
+            Gizmos.DrawWireSphere(transform.position, data.attackDistance);
+
+            // 씬 뷰에 거리 값을 표시
+            Vector3 textPosition = (transform.position + CharacterManager.Instance.player.transform.position) / 2;
+            UnityEditor.Handles.Label(textPosition, $"Distance: {playerDistance:F2}");
+        }
+    }
 
     public void StopZombie()
     {

@@ -211,7 +211,8 @@ public class UICraftingTab : MonoBehaviour
         CharacterManager.Instance.player.itemData = selectedItem.itemData;
         for(int i = 0; i < craftQuantity; i++)
         {
-            inventoryTab.AddItem();
+            //인벤토리에 완성아이템 추가
+            //inventoryTab.AddItem();
         }
         CharacterManager.Instance.player.itemData = null;
         SelectItem(selectedItemIndex);

@@ -91,7 +91,7 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
     {
         if (CharacterManager.Instance.player.equip.curEquip is EquipTool equipTool)
         {
-            if (equipTool.itemData is MeleeEquipItemSO meleeEquip)
+            if (equipTool.itemData.itemStack.itemSO is MeleeEquipItemSO meleeEquip)
             {
                 if (availableTools.Contains(meleeEquip.toolType))
                 {

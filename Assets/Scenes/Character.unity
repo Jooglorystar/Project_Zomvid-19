@@ -545,9 +545,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &109327261
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,9 +674,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &129407743
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,9 +803,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &186543948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,9 +1016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &212672433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,6 +1577,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (8)
@@ -2087,9 +2095,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1001 &369980900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2098,6 +2106,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (12)
@@ -2283,9 +2299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &405031530
 GameObject:
   m_ObjectHideFlags: 0
@@ -2378,6 +2394,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (14)
@@ -3021,9 +3045,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &546682371
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,9 +3308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &571967153
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,9 +3655,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &614472907
 GameObject:
   m_ObjectHideFlags: 0
@@ -3844,9 +3868,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &627093095
 GameObject:
   m_ObjectHideFlags: 0
@@ -4106,9 +4130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &661707296
 GameObject:
   m_ObjectHideFlags: 0
@@ -4578,9 +4602,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1001 &727376745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4589,6 +4613,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (3)
@@ -4984,9 +5016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &745138021
 GameObject:
   m_ObjectHideFlags: 0
@@ -5079,6 +5111,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (7)
@@ -5580,9 +5620,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!4 &916828601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3471138323905582834, guid: ea52588b28f20c040a878579339b999e, type: 3}
@@ -5785,6 +5825,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (13)
@@ -5852,6 +5900,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (4)
@@ -5956,25 +6012,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 235373222822712277, guid: b41fd907b4e1ee84885a4cfa28c1937f, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 1268902441288177287, guid: b41fd907b4e1ee84885a4cfa28c1937f, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5872447815216970933, guid: b41fd907b4e1ee84885a4cfa28c1937f, type: 3}
       propertyPath: m_Name
       value: TestResource2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5872447815216970933, guid: b41fd907b4e1ee84885a4cfa28c1937f, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5952020740649137686, guid: b41fd907b4e1ee84885a4cfa28c1937f, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7815577800386128350, guid: b41fd907b4e1ee84885a4cfa28c1937f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6029,6 +6069,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (6)
@@ -6524,9 +6572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1001 &1071685709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6535,25 +6583,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2094572617574559607, guid: 1cdc21cdacd637a48b9ce79ed7984ad9, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776119084331643053, guid: 1cdc21cdacd637a48b9ce79ed7984ad9, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 3755721755963056112, guid: 1cdc21cdacd637a48b9ce79ed7984ad9, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6542617424550535336, guid: 1cdc21cdacd637a48b9ce79ed7984ad9, type: 3}
       propertyPath: m_Name
       value: TestResource1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6542617424550535336, guid: 1cdc21cdacd637a48b9ce79ed7984ad9, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8952217264365931848, guid: 1cdc21cdacd637a48b9ce79ed7984ad9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6730,6 +6762,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (11)
@@ -6881,6 +6921,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (2)
@@ -7234,9 +7282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1152428719
 GameObject:
   m_ObjectHideFlags: 0
@@ -7539,9 +7587,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1167493455
 GameObject:
   m_ObjectHideFlags: 0
@@ -8073,6 +8121,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (9)
@@ -9179,9 +9235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1378573414
 GameObject:
   m_ObjectHideFlags: 0
@@ -9308,9 +9364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1390695217 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
@@ -9500,9 +9556,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1465210232
 GameObject:
   m_ObjectHideFlags: 0
@@ -9800,6 +9856,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (1)
@@ -10175,9 +10239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1552530177 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
@@ -10651,9 +10715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1610291082
 GameObject:
   m_ObjectHideFlags: 0
@@ -11622,9 +11686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1843183267
 GameObject:
   m_ObjectHideFlags: 0
@@ -11938,14 +12002,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestCraftingThing
       objectReference: {fileID: 0}
-    - target: {fileID: 3610078595000354093, guid: c0c9a4063d6a85047825522c8746d3bf, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176020473288600231, guid: c0c9a4063d6a85047825522c8746d3bf, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4260239811498974032, guid: c0c9a4063d6a85047825522c8746d3bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.3612685
@@ -11984,10 +12040,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4260239811498974032, guid: c0c9a4063d6a85047825522c8746d3bf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5543397318040156503, guid: c0c9a4063d6a85047825522c8746d3bf, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12181,9 +12233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1908113379
 GameObject:
   m_ObjectHideFlags: 0
@@ -12394,9 +12446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1936431561
 GameObject:
   m_ObjectHideFlags: 0
@@ -12522,6 +12574,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (5)
@@ -12707,9 +12767,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1970276350
 GameObject:
   m_ObjectHideFlags: 0
@@ -12836,9 +12896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1973554338
 GameObject:
   m_ObjectHideFlags: 0
@@ -12965,9 +13025,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  parent: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 0}
+    stack: 0
 --- !u!1 &1977926285 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
@@ -13202,6 +13262,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (15)
@@ -13269,6 +13337,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log (10)
@@ -23488,6 +23564,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4960564245718339884, guid: 93f8e0b79765c8d4e96a03ea056f1bb2, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4960564245718339884, guid: 93f8e0b79765c8d4e96a03ea056f1bb2, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: f0ccc0d2eaeddb649adefaccd93988f9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23784,6 +23868,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 467595887}
     m_Modifications:
+    - target: {fileID: 933252182947751907, guid: ea52588b28f20c040a878579339b999e, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 933252182947751907, guid: ea52588b28f20c040a878579339b999e, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: ea79fc2cc4aab364cac94dad37adba05, type: 2}
     - target: {fileID: 3471138323905582834, guid: ea52588b28f20c040a878579339b999e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -28273,6 +28365,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2206898834244151085, guid: 17032a4c4486abc4886de4f481ffc0b8, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206898834244151085, guid: 17032a4c4486abc4886de4f481ffc0b8, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e1a34b7d42a26914da8397e5f4473d8c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28746,6 +28846,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 350
       objectReference: {fileID: 0}
+    - target: {fileID: 5326554435611072481, guid: f2a9d9ec4eb706940b4cacc0236dc3d6, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5326554435611072481, guid: f2a9d9ec4eb706940b4cacc0236dc3d6, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 390e2ae84993f3e4a933a5a844ae20ec, type: 2}
     - target: {fileID: 5681461494806619471, guid: f2a9d9ec4eb706940b4cacc0236dc3d6, type: 3}
       propertyPath: m_Size.y
       value: 1.0271717
@@ -29036,6 +29144,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat
       objectReference: {fileID: 0}
+    - target: {fileID: 6099608673486163861, guid: 169c48a908854144895ef9c525456227, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099608673486163861, guid: 169c48a908854144895ef9c525456227, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b05beb1fe87f39468aab4f23162a0e9, type: 2}
     - target: {fileID: 7467471932934160314, guid: 169c48a908854144895ef9c525456227, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.1200001
@@ -40421,6 +40537,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4296801150003827061, guid: d3fd5269bd266954ab2cf84f8ded9929, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4296801150003827061, guid: d3fd5269bd266954ab2cf84f8ded9929, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 14bdb69df114ceb41a499b259d893c5a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -42564,6 +42688,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: knife
       objectReference: {fileID: 0}
+    - target: {fileID: 7733029135184348961, guid: 80eb44ec1c9ac7d41919e6593fe03a55, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733029135184348961, guid: 80eb44ec1c9ac7d41919e6593fe03a55, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: c28bafa68739dd64da933a8cb45c9e66, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -46096,6 +46228,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1605974462200393642, guid: 34e18df3fbbf9774cb3eed0ed2913fc9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605974462200393642, guid: 34e18df3fbbf9774cb3eed0ed2913fc9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 85cc8425c6f9d7542a6a54c0a7d03343, type: 2}
     - target: {fileID: 1753490359277294878, guid: 34e18df3fbbf9774cb3eed0ed2913fc9, type: 3}
       propertyPath: m_Name
       value: Stone
@@ -46792,6 +46932,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 70034822}
     m_Modifications:
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731421551286392854, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
     - target: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
       propertyPath: m_Name
       value: Wood_Log
@@ -46992,6 +47140,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickaxe
       objectReference: {fileID: 0}
+    - target: {fileID: 3842961483065849344, guid: c88d21a3334b8eb4695ff9080e7ca36d, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842961483065849344, guid: c88d21a3334b8eb4695ff9080e7ca36d, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: af1e48ffab8086b46b8612e84a3f695b, type: 2}
     - target: {fileID: 7533464370977211579, guid: c88d21a3334b8eb4695ff9080e7ca36d, type: 3}
       propertyPath: m_Size.x
       value: 0.009378886
@@ -48682,6 +48838,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fence
       objectReference: {fileID: 0}
+    - target: {fileID: 1802190036978420352, guid: d66280b63ac530b468355e11dee1d6ca, type: 3}
+      propertyPath: itemStack.stack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802190036978420352, guid: d66280b63ac530b468355e11dee1d6ca, type: 3}
+      propertyPath: itemStack.itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 43fa7599d4a6a2c4488108e50f00a8e2, type: 2}
     - target: {fileID: 4630095481123013159, guid: d66280b63ac530b468355e11dee1d6ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.172528
