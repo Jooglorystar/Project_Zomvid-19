@@ -35,8 +35,8 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
     {
         curDurability = durability;
 
-        EnvironmentManager.Instance.SetAlarm(0.7f, DamageDamage);
-        EnvironmentManager.Instance.SetAlarm(1.0f, DamageDamage);
+        //EnvironmentManager.Instance.SetAlarm(0.7f, DamageDamage);
+        //EnvironmentManager.Instance.SetAlarm(1.0f, DamageDamage);
     }
     void DamageDamage()
     {
