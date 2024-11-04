@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: "\uACE1\uAD2D\uC774"
   itemDesc: "\uB3CC\uC744 \uCE90\uAC70\uB098 \uC880\uBE44\uB97C \uCEA1\uB2C8\uB2E4"
   itemType: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5925e228edd58f44582101f30410d6aa, type: 3}
   dropPrefab: {fileID: 3196601159132732871, guid: c88d21a3334b8eb4695ff9080e7ca36d, type: 3}
   canStack: 0
   MaxStackSize: 0
