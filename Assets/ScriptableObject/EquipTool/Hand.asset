@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108fe3b1cdc6deb46b1ee4aaeb1aaa80, type: 3}
   m_Name: Hand
   m_EditorClassIdentifier: 
+  identifier: 104
   itemName: "\uB9E8\uC190"
   itemDesc: "\uB9E8\uC190\uC785\uB2C8\uB2E4"
   itemType: 0

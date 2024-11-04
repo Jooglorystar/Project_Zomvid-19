@@ -123,6 +123,68 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &76855086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 76855087}
+  m_Layer: 0
+  m_Name: DropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &76855087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76855086}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1370171658}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &458143263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 458143264}
+  m_Layer: 0
+  m_Name: DropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &458143264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458143263}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 526549618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526549616
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,11 +216,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceName: "\uC559\uC0C1\uD55C \uB098\uBB34"
   durability: 80
+  availableTools: 
   requiredToolDescription: "\uCC44\uC9D1\uD558\uAE30 \uC704\uD574\uC120 \uB3CC\uC774\uB098
     \uB3C4\uB07C\uAC00 \uD544\uC694\uD569\uB2C8\uB2E4"
   gatherDescription: "\uACF5\uACA9 \uD0A4\uB85C \uCC44\uC9D1\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4"
   ListEarlyGatherings: []
-  ListEndGatherings: []
+  ListEndGatherings:
+  - itemSO: {fileID: 0}
+    stack: 0
+  dropPoint: {fileID: 458143264}
   normalModel: {fileID: 1247918135393984433}
   depletedModel: {fileID: 1985148155}
   regenerative: 1
@@ -178,7 +244,39 @@ Transform:
   m_Children:
   - {fileID: 1247918135393984433}
   - {fileID: 1985148155}
+  - {fileID: 458143264}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1349652952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1349652953}
+  m_Layer: 0
+  m_Name: ItemObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1349652953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349652952}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7609300968009997693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1370171657
 GameObject:
@@ -212,6 +310,7 @@ Transform:
   m_Children:
   - {fileID: 5623342359511943357}
   - {fileID: 8671538390814542094}
+  - {fileID: 76855087}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1370171659
@@ -228,11 +327,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceName: "\uB098\uBB34"
   durability: 100
+  availableTools: 00000000
   requiredToolDescription: "\uCC44\uC9D1\uD558\uAE30 \uC704\uD574\uC120 \uB3CC\uC774\uB098
     \uB3C4\uB07C\uAC00 \uD544\uC694\uD569\uB2C8\uB2E4"
   gatherDescription: "\uACF5\uACA9 \uD0A4\uB85C \uCC44\uC9D1\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4"
-  ListEarlyGatherings: []
-  ListEndGatherings: []
+  ListEarlyGatherings:
+  - itemSO: {fileID: 11400000, guid: 061da941b79a64c4e9ae0b2089a7ca3a, type: 2}
+    stack: 10
+  ListEndGatherings:
+  - itemSO: {fileID: 11400000, guid: ea1c4447b9d3a5144919282b66375974, type: 2}
+    stack: 3
+  dropPoint: {fileID: 76855087}
   normalModel: {fileID: 5623342359511943357}
   depletedModel: {fileID: 8671538390814542094}
   regenerative: 1
@@ -909,7 +1014,7 @@ GameObject:
   - component: {fileID: 1247918135393984433}
   - component: {fileID: 6272213867559102656}
   m_Layer: 0
-  m_Name: normal
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1363,6 +1468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7609300968009997693}
+  - component: {fileID: 7609300968009997694}
   m_Layer: 0
   m_Name: WorldLevel
   m_TagString: Untagged
@@ -1569,7 +1675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTime: 0.4
-  timeSpeed: 60
+  timeSpeed: 3600
   TimeStopped: 0
   noon: {x: 90, y: 0, z: 0}
   Sun: {fileID: 4537784006699406706}
@@ -1814,7 +1920,7 @@ GameObject:
   - component: {fileID: 5623342359511943358}
   - component: {fileID: 599048828583378892}
   m_Layer: 0
-  m_Name: normal
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2631,8 +2737,22 @@ Transform:
   - {fileID: 5282655256127028245}
   - {fileID: 8524736592542181861}
   - {fileID: 4620543192906693255}
+  - {fileID: 1349652953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7609300968009997694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4120426180518757398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16f7de53313b194ab06950a13a776a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemObjects: {fileID: 1349652953}
 --- !u!33 &7680231446827463447
 MeshFilter:
   m_ObjectHideFlags: 0

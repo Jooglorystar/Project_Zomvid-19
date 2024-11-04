@@ -1,35 +1,40 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+
+[Serializable]
+public class ItemStack
+{
+    public ItemSO itemSO;
+    public int stack;
+
+    public ItemStack(ItemSO itemSO, int stack)
+    {
+        this.itemSO = itemSO;
+        this.stack = stack;
+    }
+}
 
 public class ItemObject : MonoBehaviour, IInteractable
 {
-    public ItemSO itemData;
-    [SerializeField] private GameObject parent;
-    [HideInInspector] public int stack;
-
-
-    public void InitializeObject(ItemSO _itemData, int _stack, Vector3 dropPosition)
-    {
-
-
-        Instantiate(itemData.dropPrefab, dropPosition, Quaternion.Euler(0, Random.Range(0, 360), 0));
-    }
+    public ItemStack itemStack;
 
     public void OnInteraction()
     {
-        // TODO : 인벤토리 호출 -> 아이템 소매넣기
-        CharacterManager.Instance.player.itemData = itemData;
-        Debug.Log(itemData.itemName);
-        CharacterManager.Instance.player.AddItem?.Invoke();
+        Debug.Log(itemStack.itemSO.itemName);
+        List<ItemStack> itemStacks = new();
+        itemStacks.Add(new ItemStack (itemStack.itemSO, itemStack.stack));
+        CharacterManager.Instance.player.uiInventoryTab.AddItem(itemStacks);
         Destroy(gameObject);
     }
 
     public string GetInteractPromptName()
     {
-        return itemData.name;
+        return itemStack.itemSO.name;
     }
 
     public string GetInteractPromptDescription()
     {
-        return itemData.itemDesc;
+        return itemStack.itemSO.itemDesc;
     }
 }

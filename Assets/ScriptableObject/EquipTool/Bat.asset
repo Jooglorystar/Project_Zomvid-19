@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108fe3b1cdc6deb46b1ee4aaeb1aaa80, type: 3}
   m_Name: Bat
   m_EditorClassIdentifier: 
+  identifier: 101
   itemName: "\uC57C\uAD6C\uBC30\uD2B8"
   itemDesc: "\uC774\uBC88\uC57C\uAD6C\uACF5\uC740 \uC0AC\uB78C\uC5BC\uAD74\uBAA8\uC591\uC774\uB124\uC694"
   itemType: 0

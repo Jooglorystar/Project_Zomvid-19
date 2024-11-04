@@ -2,16 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
 {
-    [Serializable]
-    private class ItemStack
-    {
-        public ItemSO itemSO;
-        public int stack;
-    }
-
     [SerializeField] private string resourceName;
     [SerializeField] private float durability; // 최대 체력
     private float curDurability;
@@ -22,6 +16,7 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
 
     [SerializeField] private List<ItemStack> ListEarlyGatherings; // 체력이 깎일 때마다 비율로 반환
     [SerializeField] private List<ItemStack> ListEndGatherings;   // 체력이 전부 깎였을 때 한번에 반환
+    [SerializeField] private Transform dropPoint;                 // 아이템 드롭 포지션
 
     [SerializeField] private Transform normalModel;
     [SerializeField] private Transform depletedModel;
@@ -35,7 +30,9 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
     private void Start()
     {
         curDurability = durability;
+        EnvironmentManager.Instance.SetAlarm(0.6f, Depleted);
     }
+    
 
     public void OnInteraction() // 없음
     {
@@ -94,13 +91,13 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
     {
         if (CharacterManager.Instance.player.equip.curEquip is EquipTool equipTool)
         {
-            //if (equipTool.itemData is MeleeEquipItemSO meleeEquip)
-            //{
-            //    if (availableTools.Contains(meleeEquip.toolType))
-            //    {
-            //        return true;
-            //    }
-            //}
+            if (equipTool.itemData is MeleeEquipItemSO meleeEquip)
+            {
+                if (availableTools.Contains(meleeEquip.toolType))
+                {
+                    return true;
+                }
+            }
         }
 
         return false;
@@ -108,7 +105,16 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
 
     private void Depleted()
     {
-        // TODO : ListEndGatherings 전부 게임오브젝트로
+        foreach (ItemStack item in ListEndGatherings)
+        {
+            GameObject drops = Instantiate(item.itemSO.dropPrefab, dropPoint.position, Quaternion.Euler(0, Random.Range(0, 360), 0));
+            drops.transform.parent = WorldLevelManager.Instance.ItemObjects;
+            var itemObject = drops.GetComponent<ItemObject>();
+            if (itemObject != null)
+            {
+                itemObject.itemStack.stack = item.stack;
+            }
+        }
 
         normalModel.gameObject.SetActive(false);
         depletedModel.gameObject.SetActive(true);
