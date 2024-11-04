@@ -3,7 +3,6 @@ using static UnityEditor.Progress;
 
 public class EquipGun : Equip
 {
-    [SerializeField] private ItemSO itemData;
     [SerializeField] private ParticleSystem gunFlash;
     [SerializeField] private Transform bulletPos;
 
@@ -15,12 +14,11 @@ public class EquipGun : Equip
         {
             bulletPos = GameObject.Find("BulletPos").transform;
         }
-        itemObject.itemData = itemData;
     }
 
     public override void OnAttackInput()
     {
-        if (itemData is RangeEquipItemSO rangeWeaponData)
+        if (itemData.itemStack.itemSO is RangeEquipItemSO rangeWeaponData)
         {
             SetBullet(rangeWeaponData);
             gunFlash.Play();
@@ -39,5 +37,4 @@ public class EquipGun : Equip
     {
 
     }
-
 }

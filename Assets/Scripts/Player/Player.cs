@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     internal UIInventoryTab uiInventoryTab;
     internal UICraftingTab uICraftingTab;
 
-    internal Action AddItem;
     internal Transform dropPosition;
 
     private void Awake()

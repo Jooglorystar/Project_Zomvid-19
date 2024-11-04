@@ -11,8 +11,6 @@ public class EquipTool : Equip
     private float attackRate;
     private float useStamina;
 
-    public ItemSO itemData;
-
     private Animator animator;
     private Camera cam;
 
@@ -23,12 +21,11 @@ public class EquipTool : Equip
         InitMelee();
         animator = GetComponent<Animator>();
         cam = Camera.main;
-        itemObject.itemData = itemData;
     }
 
     public void InitMelee()
     {
-        if (itemData is MeleeEquipItemSO meleeData)
+        if (itemData.itemStack.itemSO is MeleeEquipItemSO meleeData)
         {
             damage = meleeData.damage;
             attackDistance = meleeData.attackDistance;
