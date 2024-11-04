@@ -22,15 +22,20 @@ public class Equipment : MonoBehaviour
         else if (curEquip != null)
         {
             unEquip();
+
+        }
+        else
+        {
             if (equip is MeleeEquipItemSO meleeEquipItem)
             {
                 curEquip = Instantiate(meleeEquipItem.meleePrefab, HandPos).GetComponent<Equip>();
             }
-            else if(equip is RangeEquipItemSO rangeEquipItem)
+            else if (equip is RangeEquipItemSO rangeEquipItem)
             {
                 curEquip = Instantiate(rangeEquipItem.rangePrefab, HandPos).GetComponent<Equip>();
             }
         }
+        Debug.Log(curEquip);
         curEquip.gameObject.SetActive(true);
     }
 
