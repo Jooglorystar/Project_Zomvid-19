@@ -6,13 +6,6 @@ using Random = UnityEngine.Random;
 
 public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
 {
-    [Serializable]
-    private class ItemStack
-    {
-        public ItemSO itemSO;
-        public int stack;
-    }
-
     [SerializeField] private string resourceName;
     [SerializeField] private float durability; // 최대 체력
     private float curDurability;
@@ -119,7 +112,7 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
             var itemObject = drops.GetComponent<ItemObject>();
             if (itemObject != null)
             {
-                itemObject.stack = item.stack;
+                itemObject.itemStack.stack = item.stack;
             }
         }
 
