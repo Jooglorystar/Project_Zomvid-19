@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Plank
   m_EditorClassIdentifier: 
   identifier: 3000
-  itemName: "\uB098\uBB34 \uC6D0\uBAA9"
-  itemDesc: "\uAC00\uACF5\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  itemName: "\uB098\uBB34\uD310\uC790"
+  itemDesc: "\uAC00\uACF5\uB41C \uB098\uBB34\uC785\uB2C8\uB2E4."
   itemType: 2
   icon: {fileID: 21300000, guid: f2e33a51b0599e8469a5d3689101d7ad, type: 3}
   dropPrefab: {fileID: 490711462827457198, guid: 17032a4c4486abc4886de4f481ffc0b8, type: 3}

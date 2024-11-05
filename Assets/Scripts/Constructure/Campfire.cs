@@ -8,7 +8,15 @@ public class Campfire : MonoBehaviour
     {
         if(other.TryGetComponent<PlayerCondition>(out PlayerCondition condition))
         {
-            condition.SetTemperature(warmTemperature);
+            condition.nearFire = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<PlayerCondition>(out PlayerCondition condition))
+        {
+            condition.nearFire = false;
         }
     }
 }

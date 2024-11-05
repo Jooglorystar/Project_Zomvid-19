@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public interface IDamagable
@@ -18,6 +19,17 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     private Condition Temperature { get { return uiCondition.Temperature; } }
 
     public event Action OnTakeDamage;
+    public float PlayerTemperature { get; private set; }
+
+    [Header("Temperature")]
+    public float dayTemperature = 30;
+    public float nightTemperature = 20;
+    public float cloudyDiff = 5;
+    public float rainyDiff = 10;
+    public float snowyDiff = 15;
+    public bool nearFire;
+
+    public TextMeshProUGUI curTemperature;
 
     private void Update()
     {
@@ -29,10 +41,47 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         Hunger.Subtract(Hunger.PassiveValue * Time.deltaTime);
         Thirst.Subtract(Thirst.PassiveValue * Time.deltaTime);
         Stamina.Add(Stamina.PassiveValue * Time.deltaTime);
+
+        TemperatureDamage();
+        SetPlayerTemperature();
+        curTemperature.text = PlayerTemperature.ToString();
     }
 
+    public void TemperatureDamage()
+    {
+        if(Temperature.curValue < 5 || Temperature.curValue > 35)
+        {
+            Temperature.Subtract(Temperature.PassiveValue * Time.deltaTime);
+        }
+    }
 
+    private void SetPlayerTemperature()
+    {
+        float TemperDiff = 0;
+        if (EnvironmentManager.Instance.IsDayTime || nearFire)
+        {
+            PlayerTemperature = dayTemperature;
+        }
+        else
+        {
+            PlayerTemperature = nightTemperature;
+        }
 
+        switch (EnvironmentManager.Instance.CurrentWeather)
+        {
+            case Weather.Cloudy:
+                TemperDiff += cloudyDiff;
+                break;
+            case Weather.Snowy:
+                TemperDiff += snowyDiff;
+                break;
+            case Weather.Rainy:
+                TemperDiff += rainyDiff;
+                break;
+        }
+        PlayerTemperature -= TemperDiff;
+        SetTemperature(PlayerTemperature);
+    }
 
     public void TakeDamage(float damage)
     {
@@ -73,9 +122,9 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         Thirst.Add(amount);
     }
 
-    public void SetTemperature(float temperature)
+    public void SetTemperature(float targetTemperature)
     {
-        Temperature.ControlValue(temperature);
+        StartCoroutine(Temperature.ControlValue(targetTemperature));
     }
 
     public void GetWarm(float amount)

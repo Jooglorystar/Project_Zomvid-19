@@ -47,8 +47,16 @@ public class Condition : MonoBehaviour
         maxValue = Mathf.Max(0, maxValue + amount);
     }
 
-    public void ControlValue(float value)
+    public IEnumerator ControlValue(float targetValue)
     {
-        curValue = value;
+        float increment = 0.1f;
+        increment = targetValue < curValue? -increment : increment;
+
+        while (Mathf.Approximately(curValue, targetValue))
+        {
+            yield return null;
+            yield return null;
+            curValue += increment;
+        }
     }
 }
