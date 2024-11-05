@@ -4,7 +4,9 @@ using UnityEngine;
 
 public enum PoolObject
 {
-    bullet
+    bullet,
+    rabit,
+    zombie
 }
 
 public class ObjectPool : MonoBehaviour
