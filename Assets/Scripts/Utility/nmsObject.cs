@@ -22,7 +22,7 @@ public class nmsObject : MonoBehaviour
 
     private bool IsFarFromPlayer()
     {
-        if(Vector3.Distance(transform.position, CharacterManager.Instance.player.transform.position) > 30)
+        if(Vector3.Distance(transform.position, CharacterManager.Instance.player.transform.position) > 150)
         {
             transform.position = CharacterManager.Instance.player.transform.position;
             return true;

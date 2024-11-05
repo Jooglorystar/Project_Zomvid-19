@@ -11,6 +11,8 @@ public class Condition : MonoBehaviour
     public float curValue;
     private Image ConditionUI;
 
+    private Coroutine curCoroutine;
+
     private void Awake()
     {
         ConditionUI = GetComponent<Image>();
@@ -49,14 +51,20 @@ public class Condition : MonoBehaviour
 
     public IEnumerator ControlValue(float targetValue)
     {
-        float increment = 0.1f;
-        increment = targetValue < curValue? -increment : increment;
-
-        while (Mathf.Approximately(curValue, targetValue))
+        while(!Mathf.Approximately(curValue, targetValue))
         {
-            yield return null;
-            yield return null;
-            curValue += increment;
+            curValue = Mathf.MoveTowards(curValue, targetValue, Time.deltaTime);
         }
+        yield return null;
+    }
+
+    public void StartControlValueCoroutine(float targetValue)
+    {
+        if(curCoroutine != null)
+        {
+            StopCoroutine(curCoroutine);
+        }
+
+        curCoroutine = StartCoroutine(ControlValue(targetValue));
     }
 }

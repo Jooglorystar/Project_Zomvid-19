@@ -12,7 +12,8 @@ public interface IMovable
 
 public class PlayerController : MonoBehaviour, IMovable
 {
-    private Rigidbody rb;
+    [HideInInspector]
+    public Rigidbody rb;
     private PlayerCondition condition;
 
     [Header("Move")]
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour, IMovable
     private float runSpeed = 1;
     private float jumpPower;
     private float jumpStamina;
+    public float debuff = 1;
 
     [Header("Look")]
     [SerializeField] CinemachineVirtualCamera virtualCamera;
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour, IMovable
         moveDirection = transform.forward * inputVector.y + transform.right * inputVector.x;
         moveDirection.Normalize();
 
-        Vector3 horizontalVector = moveDirection * walkSpeed * runSpeed;
+        Vector3 horizontalVector = moveDirection * walkSpeed * runSpeed * debuff;
         rb.velocity = new Vector3(horizontalVector.x, rb.velocity.y, horizontalVector.z);
     }
 

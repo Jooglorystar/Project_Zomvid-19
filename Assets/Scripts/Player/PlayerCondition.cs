@@ -10,7 +10,8 @@ public interface IDamagable
 public class PlayerCondition : MonoBehaviour, IDamagable
 {
     public StatusUI uiCondition;
-    private float damageWhenHungry = 15;
+    public float damageWhenHungry = 15;
+    public float damageWhenCold = 15;
 
     private Condition HP { get { return uiCondition.HP; } }
     private Condition Stamina { get { return uiCondition.Stamina; } }
@@ -26,7 +27,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public float nightTemperature = 20;
     public float cloudyDiff = 5;
     public float rainyDiff = 10;
-    public float snowyDiff = 15;
+    public float snowyDiff = 20;
     public bool nearFire;
 
     public TextMeshProUGUI curTemperature;
@@ -42,16 +43,25 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         Thirst.Subtract(Thirst.PassiveValue * Time.deltaTime);
         Stamina.Add(Stamina.PassiveValue * Time.deltaTime);
 
-        TemperatureDamage();
         SetPlayerTemperature();
-        curTemperature.text = PlayerTemperature.ToString();
+        HandleTemperatureDebuff();
+        curTemperature.text = PlayerTemperature.ToString() + "\n" + Temperature.curValue + "\n" + CharacterManager.Instance.player.controller.rb.velocity.magnitude;
     }
 
-    public void TemperatureDamage()
+    public void HandleTemperatureDebuff()
     {
         if(Temperature.curValue < 5 || Temperature.curValue > 35)
         {
-            Temperature.Subtract(Temperature.PassiveValue * Time.deltaTime);
+            HP.Subtract(damageWhenCold * Time.deltaTime);
+            CharacterManager.Instance.player.controller.debuff = 0.5f;
+        }
+        else if (Temperature.curValue < 20)
+        {
+            CharacterManager.Instance.player.controller.debuff = 0.75f;
+        }
+        else
+        {
+            CharacterManager.Instance.player.controller.debuff = 1f;
         }
     }
 
@@ -124,7 +134,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void SetTemperature(float targetTemperature)
     {
-        StartCoroutine(Temperature.ControlValue(targetTemperature));
+        Temperature.StartControlValueCoroutine(targetTemperature);
     }
 
     public void GetWarm(float amount)
