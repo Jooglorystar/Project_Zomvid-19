@@ -14,18 +14,14 @@ public class Rabit : LivingEntity
     }
     protected override void EscapeUpdate() 
     {
-        Debug.Log($"상태: {aiState}");
-        //플레이어가 앞에있고 감지거리내에 있다면
+        //플레이어가 감지거리내에 있다면
         if (playerDistance < data.detectDistance)
         {
             if (!isEscaping)
             {
-                Debug.Log($"if상태: {aiState}");
-                Debug.Log("도망");
                 escapeDestination = GetAdjustedWanderLocation();
                 agent.SetDestination(escapeDestination);
                 isEscaping = true; // 도망 상태로 전환
-                Debug.Log($"도망 위치: {escapeDestination}");
             }
 
             if (agent.remainingDistance < 0.1f)
@@ -33,11 +29,10 @@ public class Rabit : LivingEntity
                 isEscaping = false;
             }
         }
-        //플레이어가 시야 내에 없고 감지거리내에 없다면
+        //플레이어가 감지거리 내에 없다면
         else
         {
-            Debug.Log($"else상태: {aiState}");
-            if (!isEscaping) return;
+            if (!isEscaping) return; //도망중이 아니라면 리턴
             agent.SetDestination(transform.position);
             agent.isStopped = true;
             SetState(AIState.Wandering);
