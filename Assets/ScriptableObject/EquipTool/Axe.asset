@@ -24,7 +24,7 @@ MonoBehaviour:
   canCrafting: 0
   itemMaterials: []
   damage: 30
-  attackDistance: 3
+  attackDistance: 5
   attackRate: 0.5
   useStamina: 30
   toolType: 0
