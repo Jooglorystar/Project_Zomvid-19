@@ -5090,7 +5090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560bd797fd65e3744ba2ea3c2722dbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: ea79fc2cc4aab364cac94dad37adba05, type: 2}
+  itemData: {fileID: 0}
   gunFlash: {fileID: 5258221547051992810}
   bulletPos: {fileID: 0}
 --- !u!114 &933252182947751907
@@ -5105,5 +5105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  stack: 1
+  itemStack:
+    itemSO: {fileID: 11400000, guid: ea79fc2cc4aab364cac94dad37adba05, type: 2}
+    stack: 1

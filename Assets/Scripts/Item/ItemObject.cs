@@ -21,11 +21,10 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void OnInteraction()
     {
-        Debug.Log(itemStack.itemSO.itemName);
         List<ItemStack> itemStacks = new();
         itemStacks.Add(new ItemStack (itemStack.itemSO, itemStack.stack));
         CharacterManager.Instance.player.uiInventoryTab.AddItem(itemStacks);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public string GetInteractPromptName()

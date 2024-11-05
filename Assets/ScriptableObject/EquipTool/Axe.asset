@@ -21,8 +21,12 @@ MonoBehaviour:
   canStack: 0
   MaxStackSize: 0
   ConsumeData: []
-  canCrafting: 0
-  itemMaterials: []
+  canCrafting: 1
+  itemMaterials:
+  - item: {fileID: 11400000, guid: 85cc8425c6f9d7542a6a54c0a7d03343, type: 2}
+    itemCount: 3
+  - item: {fileID: 11400000, guid: e1a34b7d42a26914da8397e5f4473d8c, type: 2}
+    itemCount: 2
   damage: 30
   attackDistance: 5
   attackRate: 0.5

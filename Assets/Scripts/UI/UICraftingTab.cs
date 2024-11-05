@@ -198,25 +198,22 @@ public class UICraftingTab : MonoBehaviour
     private void CraftItem()
     {
         // TODO 아이템 제작하는 메서드
-        // 재료 아이템을 필요한 양 만큼 깎고
+        // 재료 아이템을 필요한 양 만큼 깎고 => 이부분 지금 무조건 1개씩 깍임
         for (int j = 0; j < inventoryTab.slots.Length; j++)
         {
             for (int i = 0; i < selectedItem.itemData.itemMaterials.Count; i++)
             {
                 if (inventoryTab.slots[j].itemData == selectedItem.itemData.itemMaterials[i].item)
                 {
-                    inventoryTab.slots[j].itemCount--;
+                    inventoryTab.slots[j].itemCount -= selectedItem.itemData.itemMaterials[i].itemCount * craftQuantity;
                 }
             }
         }
         // 만든 만큼 인벤토리 추가하기
-        CharacterManager.Instance.player.itemData = selectedItem.itemData;
-        for(int i = 0; i < craftQuantity; i++)
-        {
-            //인벤토리에 완성아이템 추가
-            //inventoryTab.AddItem();
-        }
-        CharacterManager.Instance.player.itemData = null;
+        List<ItemStack> itemStacks = new();
+        itemStacks.Add(new ItemStack(selectedItem.itemData, craftQuantity));
+        //인벤토리에 완성아이템 추가
+        inventoryTab.AddItem(itemStacks);
         SelectItem(selectedItemIndex);
     }
 

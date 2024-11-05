@@ -149,9 +149,9 @@ public class UIInventoryTab : MonoBehaviour
         RemoveSelectedItem();
     }
 
-    public void AddItem(ItemStack stack)
+    public void AddItem()
     {
-        ItemSO data  = CharacterManager.Instance.player.itemData;
+        ItemSO data = CharacterManager.Instance.player.itemData;
 
         //아이템이 중복가능한지 canStack체크
         if (data.canStack)
@@ -189,7 +189,7 @@ public class UIInventoryTab : MonoBehaviour
             //아이템이 중복가능한지 canStack체크
             if (itemStack.itemSO.canStack)
             {
-                while (itemStack.stack <= 0)
+                while (itemStack.stack > 0)
                 {
                     ItemSlot slot = GetItemStack(itemStack.itemSO);
                     if (slot != null)
@@ -210,15 +210,16 @@ public class UIInventoryTab : MonoBehaviour
                         ItemSlot emptySlot = GetEmptySlot();
                         if (emptySlot != null)
                         {
+                            emptySlot.itemData = itemStack.itemSO;
                             if (itemStack.stack <= itemStack.itemSO.MaxStackSize)
                             {
-                                slot.itemCount = itemStack.stack;
+                                emptySlot.itemCount = itemStack.stack;
                                 itemStack.stack = 0;
                             }
                             else
                             {
                                 itemStack.stack -= itemStack.itemSO.MaxStackSize;
-                                slot.itemCount = itemStack.itemSO.MaxStackSize;
+                                emptySlot.itemCount = itemStack.itemSO.MaxStackSize;
                             }
                         }
                         else
@@ -236,6 +237,7 @@ public class UIInventoryTab : MonoBehaviour
                 {
                     emptySlot.itemData = itemStack.itemSO;
                     emptySlot.itemCount = 1;
+                    UpdateInventory();
                     return;
                 }
                 else
@@ -243,10 +245,9 @@ public class UIInventoryTab : MonoBehaviour
                     DropItem(itemStack);
                 }
             }
-
-            CharacterManager.Instance.player.itemData = null;
-            UpdateInventory();
         }
+        CharacterManager.Instance.player.itemData = null;
+        UpdateInventory();
     }
 
     private void DropItem(ItemStack itemStack)
@@ -263,9 +264,9 @@ public class UIInventoryTab : MonoBehaviour
 
     private void UpdateInventory()
     {
-        for(int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
-            if(slots[i].itemData != null)
+            if (slots[i].itemData != null)
             {
                 slots[i].Set();
             }
@@ -289,9 +290,9 @@ public class UIInventoryTab : MonoBehaviour
 
     private ItemSlot GetItemStack(ItemSO data)
     {
-        for(int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
-            if( slots[i].itemData == data && slots[i].itemCount < data.MaxStackSize)
+            if (slots[i].itemData == data && slots[i].itemCount < data.MaxStackSize)
             {
                 return slots[i];
             }
@@ -344,7 +345,7 @@ public class UIInventoryTab : MonoBehaviour
 
     public void OnEquipBtn()
     {
-        if(CharacterManager.Instance.player.equip.curEquip != null)
+        if (CharacterManager.Instance.player.equip.curEquip != null)
         {
             return;
         }

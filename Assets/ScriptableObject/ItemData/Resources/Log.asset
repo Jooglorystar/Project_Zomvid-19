@@ -16,10 +16,10 @@ MonoBehaviour:
   itemName: "\uB098\uBB34 \uC6D0\uBAA9"
   itemDesc: "\uAC00\uACF5\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   itemType: 2
-  icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2d1a7b9e344362b41a38d0e085f3e98a, type: 3}
+  dropPrefab: {fileID: 4797059742687572699, guid: bd0f31914dc1bc141a1e501f5d651ec9, type: 3}
   canStack: 1
-  MaxStackSize: 30
+  MaxStackSize: 999
   ConsumeData: []
   canCrafting: 0
   itemMaterials: []
