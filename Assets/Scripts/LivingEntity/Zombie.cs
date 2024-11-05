@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
-public enum AIState
-{
-    Idle,
-    Wandering,
-    Attacking,
-    AttackingFence,
-    Die
-}
+//public enum AIState
+//{
+//    Idle,
+//    Wandering,
+//    Attacking,
+//    AttackingFence,
+//    Die
+//}
 
 public class Zombie : MonoBehaviour, IDamagable
 {
@@ -223,7 +223,6 @@ public class Zombie : MonoBehaviour, IDamagable
         }
         else
         {
-            //공격범위안에는 있지만
             if (playerDistance < data.detectDistance)
             {
                 agent.isStopped = false;
@@ -270,7 +269,7 @@ public class Zombie : MonoBehaviour, IDamagable
         return angle < data.fieldOfView * 0.5f;
     }
 
-    public void TakePhysicalDamage(int damage)
+    public void TakeDamage(float damage)
     {
         data.maxHealth -= damage;
         Debug.Log(data.maxHealth);
@@ -311,11 +310,6 @@ public class Zombie : MonoBehaviour, IDamagable
         {
             meshRenderers[x].material.color = Color.white;
         }
-    }
-
-    public void TakeDamage(float damage)
-    {
-        Debug.Log("데미지를 입었습니다.");
     }
 
     private void OnDrawGizmos()

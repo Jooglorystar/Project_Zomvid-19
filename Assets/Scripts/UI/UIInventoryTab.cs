@@ -37,6 +37,11 @@ public class UIInventoryTab : MonoBehaviour
     private PlayerCondition condition;
     private PlayerController controller;
 
+    private void Awake()
+    {
+        CharacterManager.Instance.player.uiInventoryTab = this;
+    }
+
     private void Start()
     {
         condition = CharacterManager.Instance.player.condition;

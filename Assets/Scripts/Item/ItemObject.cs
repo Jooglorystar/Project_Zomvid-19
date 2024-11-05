@@ -24,7 +24,7 @@ public class ItemObject : MonoBehaviour, IInteractable
         Debug.Log(itemStack.itemSO.itemName);
         List<ItemStack> itemStacks = new();
         itemStacks.Add(new ItemStack (itemStack.itemSO, itemStack.stack));
-        //CharacterManager.Instance.player.uiInventoryTab.AddItem(itemStacks);
+        CharacterManager.Instance.player.uiInventoryTab.AddItem(itemStacks);
         Destroy(gameObject);
     }
 
