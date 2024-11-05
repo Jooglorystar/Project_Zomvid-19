@@ -13,7 +13,7 @@ public class CollectableResources : MonoBehaviour, IInteractable
     public void OnInteraction()
     {
         CharacterManager.Instance.player.uiInventoryTab.AddItem(itemStacks);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public string GetInteractPromptName()
