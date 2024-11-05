@@ -72,6 +72,11 @@ public class EquipTool : Equip
                 Debug.Log("OnHit!");
                 damagable.TakeDamage(damage);
             }
+            else if (hit.collider.transform.parent.TryGetComponent<IDamagable>(out IDamagable damagable2))
+            {
+                Debug.Log("OnHit!");
+                damagable2.TakeDamage(damage);
+            }
         }
     }
 }

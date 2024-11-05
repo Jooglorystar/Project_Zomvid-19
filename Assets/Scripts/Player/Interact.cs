@@ -15,6 +15,7 @@ public class Interact : MonoBehaviour
     [SerializeField] private TextMeshProUGUI NamePrompt;
     [SerializeField] private TextMeshProUGUI DescriptionPrompt;
     [SerializeField] private LayerMask InteractableLayerMask;
+    [SerializeField] private LayerMask ResourceLayerMask;
     [SerializeField] private float inspectDistance = 5;
     [SerializeField] private float checkRate = 0.05f;
     private float lastCheckTime;
@@ -47,6 +48,16 @@ public class Interact : MonoBehaviour
         if(Physics.Raycast(ray, out hit, inspectDistance, InteractableLayerMask))
         {
             if(hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
+            {
+                curInteractable = interactable;
+                curInteractGameObject = hit.collider.gameObject;
+                SetNamePrompt(interactable.GetInteractPromptName());
+                SetDescriptionPrompt(interactable.GetInteractPromptDescription());
+            }
+        }
+        else if (Physics.Raycast(ray, out hit, inspectDistance, ResourceLayerMask))
+        {
+            if (hit.collider.transform.parent.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 curInteractable = interactable;
                 curInteractGameObject = hit.collider.gameObject;
