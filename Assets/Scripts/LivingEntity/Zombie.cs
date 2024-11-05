@@ -70,7 +70,7 @@ public class Zombie : MonoBehaviour, IDamagable
 
         animator.SetBool("Moving", aiState != AIState.Idle);
 
-        if (isStopped) return;
+        //if (isStopped) return;
 
         switch (aiState)
         {

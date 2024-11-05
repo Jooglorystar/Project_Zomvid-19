@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beaa29554f98c694693ae9340dc04d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 9791b70b37d55084c9dcd5ea2f66ae10, type: 2}
+  itemData: {fileID: 0}
 --- !u!95 &6219410177924042381
 Animator:
   serializedVersion: 5
@@ -156,5 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  stack: 0
+  itemStack:
+    itemSO: {fileID: 11400000, guid: 9791b70b37d55084c9dcd5ea2f66ae10, type: 2}
+    stack: 1
