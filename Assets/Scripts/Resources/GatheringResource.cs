@@ -11,8 +11,8 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
     private float curDurability;
 
     [SerializeField] private List<ToolType> availableTools;      // 파밍 가능 장비 타입
-    [SerializeField] private string requiredToolDescription;    // 파밍 가능 장비 설명
-    [SerializeField] private string gatherDescription;          // 파밍 키 설명
+    [Multiline][SerializeField] private string requiredToolDescription;    // 파밍 가능 장비 설명
+    [Multiline][SerializeField] private string gatherDescription;          // 파밍 키 설명
 
     [SerializeField] private List<ItemStack> ListEarlyGatherings; // 체력이 깎일 때마다 비율로 반환
     [SerializeField] private List<ItemStack> ListEndGatherings;   // 체력이 전부 깎였을 때 한번에 반환
@@ -30,7 +30,6 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
     private void Start()
     {
         curDurability = durability;
-        EnvironmentManager.Instance.SetAlarm(0.6f, Depleted);
     }
     
 
@@ -61,7 +60,7 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
         if (depleted == true || CanGather() == false) return;
 
         float after = Mathf.Max(curDurability - damage, 0);
-        Dictionary<ItemIdentifier, int> gatherItems = new();
+        List<ItemStack> gatherItems = new();
 
         foreach (ItemStack item in ListEarlyGatherings)
         {
@@ -70,12 +69,13 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
             int gather = beforeRemain - afterRemain;
             if (gather >= 0)
             {
-                gatherItems.Add(item.itemSO.identifier, gather);
+                gatherItems.Add(new ItemStack(item.itemSO, gather));
             }
         }
+
         if (gatherItems.Count > 0)
         {
-            // TODO : 인벤토리 호출 -> 아이템 소매넣기
+            CharacterManager.Instance.player.uiInventoryTab.AddItem(gatherItems);
         }
         curDurability = after;
 
