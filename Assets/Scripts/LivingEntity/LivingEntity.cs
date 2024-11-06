@@ -196,4 +196,8 @@ public abstract class LivingEntity : MonoBehaviour, IDamagable
             meshRenderers[x].material.color = Color.white;
         }
     }
+    void OnDisable()
+    {
+        CancelInvoke("WanderToNewLocation");
+    }
 }

@@ -44,7 +44,7 @@ public class ZombieSpawnZone : MonoBehaviour
 
     private IEnumerator DeactivateZombiesCoroutine()
     {
-        for(int i = 1; i < SpawnZombies.Count; i++)
+        for(int i = 0; i < SpawnZombies.Count; i++)
         {
             if (SpawnZombies[i] != null)
             {

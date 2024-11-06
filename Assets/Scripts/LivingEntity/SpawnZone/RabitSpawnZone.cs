@@ -44,7 +44,7 @@ public class RabitSpawnZone : MonoBehaviour
 
     private IEnumerator DeactivateRabbitsCoroutine()
     {
-        for (int i = 1; i < SpawnRabbits.Count; i++)
+        for (int i = 0; i < SpawnRabbits.Count; i++)
         {
             if (SpawnRabbits[i] != null)
             {

@@ -316,6 +316,11 @@ public class Zombie : MonoBehaviour, IDamagable
         }
     }
 
+    void OnDisable()
+    {
+        CancelInvoke("WanderToNewLocation");
+    }
+
     private void OnDrawGizmos()
     {
         if(data != null)

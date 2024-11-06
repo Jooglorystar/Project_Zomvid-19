@@ -15,8 +15,16 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject SpawnEnemies(Vector3 spawnLocation, PoolObject poolObject)
     {
-        Vector3 randomOffset = new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
+        Vector3 randomOffset = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
         Vector3 spawnPos = spawnLocation + randomOffset;
+        if (Physics.Raycast(spawnPos + Vector3.up * 10, Vector3.down, out RaycastHit hitInfo, 20f))
+        {
+            spawnPos.y = hitInfo.point.y; // 바닥에 위치를 맞춤
+        }
+        else
+        {
+            spawnPos.y = spawnLocation.y; // 레이캐스트 실패 시 기본 위치
+        }
 
         // Object Pool에서 좀비나 토끼 가져오기
         GameObject entity = GameManager.Instance.objectPool.GetFromPool(poolObject);
@@ -24,11 +32,6 @@ public class SpawnManager : MonoBehaviour
         entity.SetActive(true);
 
         NavMeshAgent agent = entity.GetComponent<NavMeshAgent>();
-
-        if (agent != null)
-        {
-            agent.enabled = true; // NavMeshAgent 활성화
-        }
 
         return entity;
     }
