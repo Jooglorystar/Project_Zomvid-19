@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject SpawnEnemies(Vector3 spawnLocation, PoolObject poolObject)
     {
-        Vector3 randomOffset = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+        Vector3 randomOffset = new Vector3(Random.Range(-20, 20), 0, Random.Range(-20, 20));
         Vector3 spawnPos = spawnLocation + randomOffset;
         if (Physics.Raycast(spawnPos + Vector3.up * 10, Vector3.down, out RaycastHit hitInfo, 20f))
         {
