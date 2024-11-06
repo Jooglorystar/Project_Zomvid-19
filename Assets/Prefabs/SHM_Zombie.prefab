@@ -1820,6 +1820,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   isStopped: 1
+  dropOnDeath:
+  - {fileID: 11400000, guid: be46480e19ba49943b3f8028632df6fb, type: 2}
 --- !u!114 &5704701659671148346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1834,7 +1836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   walkSpeed: 1
-  runSpeed: 5
+  runSpeed: 4
   basicATK: 5
   Temperature: 100
   minWanderDistance: 2

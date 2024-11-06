@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 9026211664134305522}
   - component: {fileID: 3937606554352205298}
   - component: {fileID: 6915978161190985427}
+  - component: {fileID: 2180885653495923064}
   m_Layer: 8
   m_Name: Campfire
   m_TagString: Untagged
@@ -254,6 +255,22 @@ MonoBehaviour:
   buildType: 2
   durability: 20
   BreakResources: []
+--- !u!208 &2180885653495923064
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297095410132199051}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1785514778111766550
 GameObject:
   m_ObjectHideFlags: 0

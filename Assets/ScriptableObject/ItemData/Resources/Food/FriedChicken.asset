@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ce2ef2de24278f46a5c6e4b0e36fd79, type: 3}
-  m_Name: Steak
+  m_Name: FriedChicken
   m_EditorClassIdentifier: 
-  identifier: 2002
-  itemName: "\uAD6C\uC6B4\uACE0\uAE30"
+  identifier: 2010
+  itemName: "\uAD6C\uC6B4\uB2ED\uD1A0\uB07C\uACE0\uAE30"
   itemDesc: "\uB9DB\uC788\uC2B5\uB2C8\uB2E4."
   itemType: 1
   icon: {fileID: 21300000, guid: 5f0a1a06ce6c38c4c82f2f9e4e43b963, type: 3}
@@ -29,5 +29,5 @@ MonoBehaviour:
     itemEffectValue: 100
   canCrafting: 1
   itemMaterials:
-  - item: {fileID: 11400000, guid: be46480e19ba49943b3f8028632df6fb, type: 2}
+  - item: {fileID: 11400000, guid: e9bb7845ac54f45468af6faaceb67b1a, type: 2}
     itemCount: 1
