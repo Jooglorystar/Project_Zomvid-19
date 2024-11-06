@@ -57,18 +57,4 @@ public class RabitSpawnZone : MonoBehaviour
         }
         deactivateRabbitsCoroutine = null; 
     }
-
-    private void OnDrawGizmos()
-    {
-        // 원하는 색 설정
-        Gizmos.color = new Color(0, 1, 0, 0.3f); // 예: 초록색, 불투명도 30%
-
-        // BoxCollider의 사이즈와 위치에 맞춰 사각형 Gizmo를 그림
-        BoxCollider boxCollider = GetComponent<BoxCollider>();
-        if (boxCollider != null)
-        {
-            Gizmos.matrix = transform.localToWorldMatrix;
-            Gizmos.DrawCube(boxCollider.center, boxCollider.size);
-        }
-    }
 }

@@ -174,7 +174,6 @@ public class Zombie : MonoBehaviour, IDamagable
         if (aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
         {
             SetState(AIState.Idle);
-            Debug.Log("목표 탐색 시작");
             Invoke("WanderToNewLocation", Random.Range(data.minWanderWaitTime, data.maxWanderWaitTime));
         }
 
