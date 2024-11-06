@@ -382,5 +382,24 @@ public class UIInventoryTab : MonoBehaviour
             CharacterManager.Instance.player.controller.isBuilding = true;
         }
     }
+
+    public void FillWithLiquid(ItemSO itemData)
+    {
+        int stack = 0;
+
+        for(int i  = 0; i < slots.Length; i++)
+        {
+            if (slots[i].itemData != null && slots[i].itemData.identifier == ItemIdentifier.WaterBottle_Empty)
+            {
+                stack += slots[i].itemCount;
+                slots[i].itemCount = 0;
+                slots[i].Clear();
+            }
+        }
+        Debug.Log(stack);
+        List<ItemStack> water_Full = new List<ItemStack>();
+        water_Full.Add(new ItemStack(itemData, stack));
+        AddItem(water_Full);
+    }
 }
 

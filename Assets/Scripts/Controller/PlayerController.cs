@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour, IMovable
         }
     }
 
-    private bool IsGround()
+    public bool IsGround()
     {
         Ray[] ray = new Ray[4]
         {

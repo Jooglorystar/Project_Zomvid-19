@@ -6,6 +6,8 @@ public class EquipGun : Equip
     [SerializeField] private ParticleSystem gunFlash;
     [SerializeField] private Transform bulletPos;
 
+    [SerializeField] private AudioClip FireClip;
+    private AudioSource audioSource;
 
     public override void Start()
     {
@@ -14,6 +16,7 @@ public class EquipGun : Equip
         {
             bulletPos = GameObject.Find("BulletPos").transform;
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void OnAttackInput()
@@ -22,6 +25,7 @@ public class EquipGun : Equip
         {
             SetBullet(rangeWeaponData);
             gunFlash.Play();
+            audioSource.PlayOneShot(FireClip);
         }
     }
 
