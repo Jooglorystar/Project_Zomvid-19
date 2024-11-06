@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bb474ce51aff2499b1cfd97ea7b7f4, type: 3}
+  m_Name: Fence
+  m_EditorClassIdentifier: 
+  identifier: 4003
+  buildType: 2
+  Preview: {fileID: 1423279869370046243, guid: e77b9aa3f039c694e975e787229da211, type: 3}
+  Building: {fileID: 1800114026007042058, guid: b22f3f2dbef07144597380659ffda881, type: 3}
