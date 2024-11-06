@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bb474ce51aff2499b1cfd97ea7b7f4, type: 3}
+  m_Name: Campfire
+  m_EditorClassIdentifier: 
+  identifier: 4004
+  buildType: 2
+  Preview: {fileID: 6309477218407261072, guid: f5f778b044987ce459353f196eb1f813, type: 3}
+  Building: {fileID: 1297095410132199051, guid: 0485fd6173cd3c048b55ce018ad17fb8, type: 3}

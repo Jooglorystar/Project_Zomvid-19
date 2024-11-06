@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3575346316957919512}
   - component: {fileID: 6373621824348155646}
   - component: {fileID: 313126098217829628}
-  - component: {fileID: 4296801150003827061}
   - component: {fileID: 6111210504777812846}
   - component: {fileID: 5961077381024330449}
+  - component: {fileID: 4296801150003827061}
   m_Layer: 8
   m_Name: Foundation
   m_TagString: Untagged
@@ -87,21 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4296801150003827061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136050951254581224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemStack:
-    itemSO: {fileID: 11400000, guid: a1795a3f8633c6c42998a7e057c384bb, type: 2}
-    stack: 1
 --- !u!65 &6111210504777812846
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -150,3 +135,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4296801150003827061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136050951254581224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1fd69a1f66bf945aea7b642a125e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemStack:
+    itemSO: {fileID: 11400000, guid: a1795a3f8633c6c42998a7e057c384bb, type: 2}
+    stack: 1
