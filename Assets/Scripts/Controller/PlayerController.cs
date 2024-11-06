@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,10 @@ public class PlayerController : MonoBehaviour, IMovable
     private float maxVerticalRotation = 80;
     private float minVerticalRotation = -80;
     public bool canLook = true;
+
+
+    [HideInInspector] public Action ToggleInventory;
+    [HideInInspector] public bool isBuilding;
 
 
     private void Start()

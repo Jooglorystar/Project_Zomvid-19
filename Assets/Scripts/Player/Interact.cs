@@ -33,10 +33,16 @@ public class Interact : MonoBehaviour
 
     private void Update()
     {
-        if(Time.time - lastCheckTime > checkRate)
+        if(CharacterManager.Instance.player.controller.isBuilding == false && Time.time - lastCheckTime > checkRate)
         {
             lastCheckTime = Time.time;
             Search();
+        }
+        else if (CharacterManager.Instance.player.controller.isBuilding == true)
+        {
+            curInteractGameObject = null;
+            curInteractable = null;
+            ClearPrompt();
         }
     }
 
@@ -93,11 +99,26 @@ public class Interact : MonoBehaviour
     {
         if(context.phase == InputActionPhase.Performed)
         {
-            curInteractable?.OnInteraction();
+            if (CharacterManager.Instance.player.controller.isBuilding == false)
+            {
+                curInteractable?.OnInteraction();
 
-            curInteractGameObject = null;
-            curInteractable = null;
-            ClearPrompt();
+                curInteractGameObject = null;
+                curInteractable = null;
+                ClearPrompt();
+            }
+            else
+            {
+                if (WorldLevelManager.Instance.buildingSystem.OnBuild())
+                {
+                    if (CharacterManager.Instance.player.uiInventoryTab.RemoveSelectedItem())
+                    {
+                        // 자원 다썼으면 건설 종료
+                        CharacterManager.Instance.player.controller.isBuilding = false;
+                        WorldLevelManager.Instance.buildingSystem.ExitBuild();
+                    }
+                }
+            }
         }
     }
 }

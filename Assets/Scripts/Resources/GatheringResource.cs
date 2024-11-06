@@ -108,7 +108,7 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
         foreach (ItemStack item in ListEndGatherings)
         {
             GameObject drops = Instantiate(item.itemSO.dropPrefab, dropPoint.position, Quaternion.Euler(0, Random.Range(0, 360), 0));
-            drops.transform.parent = WorldLevelManager.Instance.ItemObjects;
+            drops.transform.parent = WorldLevelManager.Instance.ItemObjectsParent;
             var itemObject = drops.GetComponent<ItemObject>();
             if (itemObject != null)
             {
