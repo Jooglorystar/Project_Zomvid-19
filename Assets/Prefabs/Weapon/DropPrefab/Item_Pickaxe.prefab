@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 1766813793664622245}
   - component: {fileID: 245822295547476188}
   - component: {fileID: 8367565856269151744}
-  - component: {fileID: 7533464370977211579}
-  - component: {fileID: 8698987998040411719}
   - component: {fileID: 3566842065923252286}
+  - component: {fileID: 7533464370977211579}
   - component: {fileID: 3842961483065849344}
   m_Layer: 8
   m_Name: Item_Pickaxe
@@ -89,40 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7533464370977211579
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3196601159132732871}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.009378886, y: 0.0035326926, z: 0.018230818}
-  m_Center: {x: -0.0005314564, y: 0.000042702723, z: 0.0013239624}
---- !u!114 &8698987998040411719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3196601159132732871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beaa29554f98c694693ae9340dc04d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
 --- !u!95 &3566842065923252286
 Animator:
   serializedVersion: 5
@@ -144,6 +109,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &7533464370977211579
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3196601159132732871}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009378886, y: 0.0035326926, z: 0.018230818}
+  m_Center: {x: -0.0005314564, y: 0.000042702723, z: 0.0013239624}
 --- !u!114 &3842961483065849344
 MonoBehaviour:
   m_ObjectHideFlags: 0

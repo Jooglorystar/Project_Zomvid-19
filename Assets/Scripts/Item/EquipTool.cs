@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class EquipTool : Equip
 {
@@ -14,6 +15,9 @@ public class EquipTool : Equip
     private Animator animator;
     private Camera cam;
 
+    [SerializeField] private AudioClip swingClip;
+    [SerializeField] private AudioClip attackClip;
+    private AudioSource audioSource;
 
     public override void Start()
     {
@@ -21,6 +25,7 @@ public class EquipTool : Equip
         InitMelee();
         animator = GetComponent<Animator>();
         cam = Camera.main;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void InitMelee()
@@ -43,6 +48,8 @@ public class EquipTool : Equip
                 isAttacking = true;
                 animator.SetTrigger("OnAttack");
                 Invoke("OnCanAttack", attackRate);
+                if(swingClip != null)
+                    audioSource.PlayOneShot(swingClip);
             }
         }
     }
@@ -54,7 +61,7 @@ public class EquipTool : Equip
 
 
 
-    private void OnCanAttack()
+    public void OnCanAttack()
     {
         isAttacking = false;
     }
@@ -78,6 +85,8 @@ public class EquipTool : Equip
                 {
                     Debug.Log("OnHit!");
                     damagable2.TakeDamage(damage);
+                    if(attackClip != null)
+                        audioSource.PlayOneShot(attackClip);
                 }
             }
         }
