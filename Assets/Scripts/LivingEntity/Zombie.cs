@@ -33,7 +33,7 @@ public class Zombie : MonoBehaviour, IDamagable
 
     private Coroutine coroutine;
     private Collider collider;
-    private bool isDead = false; // 상태를 체크할 변수
+    private bool isDead = false;
 
     public bool isStopped;
     private IDamagable FenceAttacked;
@@ -275,10 +275,9 @@ public class Zombie : MonoBehaviour, IDamagable
     public void TakeDamage(float damage)
     {
         data.maxHealth -= damage;
-        Debug.Log(data.maxHealth);
         if (data.maxHealth <= 0 && !isDead)
         {
-            isDead = true; // 이미 죽었다고 표시
+            isDead = true;
             SetState(AIState.Die);
         }
 
