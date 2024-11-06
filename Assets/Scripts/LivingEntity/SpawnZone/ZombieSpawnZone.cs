@@ -5,12 +5,14 @@ using UnityEngine.AI;
 
 public class ZombieSpawnZone : MonoBehaviour
 {
+    public float despawnDistance = 15f;    //비활성화 할 거리
+    public int spawnCount = 5;
+    
     private SpawnManager spawnManager;
     private Transform playerTransform;
     private List<GameObject> SpawnZombies = new List<GameObject>();
-    private float despawnDistance = 15f;    //비활성화 할 거리
     private Coroutine deactivateZombiesCoroutine;
-    private int spawnCount = 5;
+
     private void Start()
     {
         spawnManager = GetComponent<SpawnManager>();

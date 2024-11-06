@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class RabitSpawnZone : MonoBehaviour
 {
+    public float despawnDistance = 150f;    //비활성화 할 거리
+    private int spawnCount = 5;
     private SpawnManager spawnManager;
     private Transform playerTransform;
     private List<GameObject> SpawnRabbits = new List<GameObject>();
-    private float despawnDistance = 15f;    //비활성화 할 거리
     private Coroutine deactivateRabbitsCoroutine;
-    private int spawnCount = 5;
+
     private void Start()
     {
         spawnManager = GetComponent<SpawnManager>();
