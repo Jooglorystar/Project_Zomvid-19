@@ -23,7 +23,8 @@ public class Rabit : LivingEntity
                 isEscaping = true;
             }
 
-            if (agent.remainingDistance < 0.1f)
+            //목표한지점까지 0.5가 남았다면 그리고 agent가 목표지점까지 경로계산을 마쳤다면.
+            if (agent.remainingDistance < 1.0f && !agent.pathPending)
             {
                 isEscaping = false;
             }
