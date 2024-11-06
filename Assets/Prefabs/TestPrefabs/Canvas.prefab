@@ -6771,7 +6771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PassiveValue: 1
-  startValue: 80
+  startValue: 30
   maxValue: 0
   curValue: 0
 --- !u!1 &2962171325757293511

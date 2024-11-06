@@ -32,6 +32,8 @@ public class Zombie : MonoBehaviour, IDamagable
     private SkinnedMeshRenderer[] meshRenderers;
 
     private Coroutine coroutine;
+    private Collider collider;
+    private bool isDead = false; // 상태를 체크할 변수
 
     public bool isStopped;
     private IDamagable FenceAttacked;
@@ -42,6 +44,7 @@ public class Zombie : MonoBehaviour, IDamagable
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        collider = GetComponent<Collider>();
     }
 
     private void Start()
@@ -273,8 +276,9 @@ public class Zombie : MonoBehaviour, IDamagable
     {
         data.maxHealth -= damage;
         Debug.Log(data.maxHealth);
-        if (data.maxHealth <= 0)
+        if (data.maxHealth <= 0 && !isDead)
         {
+            isDead = true; // 이미 죽었다고 표시
             SetState(AIState.Die);
         }
 
@@ -294,7 +298,7 @@ public class Zombie : MonoBehaviour, IDamagable
         //    Instantiate(dropOnDeath[i].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
         //}
 
-        Destroy(data.gameObject);   //data.gameObject를 파괴하는 이유가..? 죽을 때 모션이후에 죽고싶으면 리지드바디나 다른 컴포넌트들을 제거해야할지도
+        gameObject.SetActive(false);   //data.gameObject를 파괴하는 이유가..? 죽을 때 모션이후에 죽고싶으면 리지드바디나 다른 컴포넌트들을 제거해야할지도
     }
 
     IEnumerator DamageFlash()

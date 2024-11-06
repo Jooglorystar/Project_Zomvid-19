@@ -11,6 +11,8 @@ public class Condition : MonoBehaviour
     public float curValue;
     private Image ConditionUI;
 
+    private Coroutine curCoroutine;
+
     private void Awake()
     {
         ConditionUI = GetComponent<Image>();
@@ -47,8 +49,22 @@ public class Condition : MonoBehaviour
         maxValue = Mathf.Max(0, maxValue + amount);
     }
 
-    public void ControlValue(float value)
+    public IEnumerator ControlValue(float targetValue)
     {
-        curValue = value;
+        while(!Mathf.Approximately(curValue, targetValue))
+        {
+            curValue = Mathf.MoveTowards(curValue, targetValue, Time.deltaTime);
+        }
+        yield return null;
+    }
+
+    public void StartControlValueCoroutine(float targetValue)
+    {
+        if(curCoroutine != null)
+        {
+            StopCoroutine(curCoroutine);
+        }
+
+        curCoroutine = StartCoroutine(ControlValue(targetValue));
     }
 }

@@ -14,10 +14,9 @@ public enum AIState
     Die
 }
 
-public abstract class LivingEntity<T> : MonoBehaviour where T : LivingEntityData
+public abstract class LivingEntity : MonoBehaviour, IDamagable
 {
-    protected T data;
-
+    internal LivingEntityData data;
     [Header("AI")]
     protected NavMeshAgent agent;
     protected AIState aiState;
@@ -34,7 +33,7 @@ public abstract class LivingEntity<T> : MonoBehaviour where T : LivingEntityData
 
     private void Awake()
     {
-        data = GetComponent<T>();
+        data = GetComponent<LivingEntityData>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();

@@ -36,6 +36,10 @@ public enum ItemIdentifier
     //음식자원 2000번
     Pork_raw = 2000,
     Chicken,
+    Steak,
+    WaterBottle_Full,
+    WaterBottle_Empty,
+    Apple,
 
     //가공자원 = 3000번
     Wood_Plank = 3000,

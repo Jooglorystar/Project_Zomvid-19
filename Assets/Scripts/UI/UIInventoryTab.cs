@@ -39,11 +39,11 @@ public class UIInventoryTab : MonoBehaviour
 
     private void Awake()
     {
-        CharacterManager.Instance.player.uiInventoryTab = this;
     }
 
     private void Start()
     {
+        CharacterManager.Instance.player.uiInventoryTab = this;
         condition = CharacterManager.Instance.player.condition;
         controller = CharacterManager.Instance.player.controller;
 
@@ -109,7 +109,7 @@ public class UIInventoryTab : MonoBehaviour
         selectedItemStatName.text = string.Empty;
         selectedItemStatValue.text = string.Empty;
 
-        for (int i = 0; 0 < selectedItem.itemData.ConsumeData.Count; i++)
+        for (int i = 0; i < selectedItem.itemData.ConsumeData.Count; i++)
         {
             selectedItemStatName.text += selectedItem.itemData.ConsumeData[i].consumeType.ToString() + "\n";
             selectedItemStatValue.text += selectedItem.itemData.ConsumeData[i].itemEffectValue.ToString() + "\n";
