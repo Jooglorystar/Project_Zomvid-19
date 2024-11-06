@@ -28,6 +28,7 @@ public enum ItemIdentifier
     Pistol,
     Hand,
     Pickaxe,
+    Rifle,
 
     //기초자원 1000번
     Wood_Log = 1000,
@@ -51,6 +52,7 @@ public enum ItemIdentifier
     Pillar,
     Fence,
     Campfire,
+    Metal,
 
     //건설자원 = 4000번
     Build_Foundation = 4000,

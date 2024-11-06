@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Stone
   m_EditorClassIdentifier: 
   identifier: 1001
-  itemName: "\uAE08\uC18D(\uB3CC)"
-  itemDesc: "\uAC00\uACF5 \uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  itemName: "\uB3CC"
+  itemDesc: "\uB3CC\uB9F9\uC774\uC785\uB2C8\uB2E4."
   itemType: 2
-  icon: {fileID: 21300000, guid: 6065c049469000d4dbd2b6de109cccc0, type: 3}
-  dropPrefab: {fileID: 1753490359277294878, guid: 34e18df3fbbf9774cb3eed0ed2913fc9, type: 3}
+  icon: {fileID: 21300000, guid: d74b85e1ba1f5da4b9591a9d026b5879, type: 3}
+  dropPrefab: {fileID: 8986870262611611632, guid: bfa3f2b3c7996d743bff8a405dde00ce, type: 3}
   canStack: 1
   MaxStackSize: 999
   ConsumeData: []

@@ -29,7 +29,7 @@ MonoBehaviour:
     itemCount: 2
   damage: 15
   attackDistance: 5
-  attackRate: 0.3
+  attackRate: 1
   useStamina: 15
   toolType: 2
   meleePrefab: {fileID: 1155917094026964738, guid: 4af366860e0c4014896446053ae322e7, type: 3}

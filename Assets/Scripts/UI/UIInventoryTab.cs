@@ -32,6 +32,7 @@ public class UIInventoryTab : MonoBehaviour
     public GameObject unequipButton;
     public GameObject BuildButton;
     public GameObject dropButton;
+    private ItemSlot equipItemSlot;
 
     private Vector3 dropPos;
     private PlayerCondition condition;
@@ -357,9 +358,10 @@ public class UIInventoryTab : MonoBehaviour
         }
         else
         {
-            selectedItem.outline.enabled = true;
-            selectedItem.equipped = true;
-            CharacterManager.Instance.player.equip.newEquip(selectedItem.itemData);
+            equipItemSlot = selectedItem;
+            equipItemSlot.outline.enabled = true;
+            equipItemSlot.equipped = true;
+            CharacterManager.Instance.player.equip.newEquip(equipItemSlot.itemData);
             UpdateInventory();
         }
         SelectItem(selectedItemIndex);
@@ -367,8 +369,9 @@ public class UIInventoryTab : MonoBehaviour
 
     public void OnUnEquipBtn()
     {
-        selectedItem.outline.enabled = false;
-        selectedItem.equipped = false;
+        equipItemSlot.outline.enabled = false;
+        equipItemSlot.equipped = false;
+        equipItemSlot = null;
         CharacterManager.Instance.player.equip.unEquip();
         UpdateInventory();
         SelectItem(selectedItemIndex);
@@ -378,9 +381,29 @@ public class UIInventoryTab : MonoBehaviour
     {
         if (WorldLevelManager.Instance.buildingSystem.LoadBuildObject(selectedItem.itemData.identifier))
         {
+            OnUnEquipBtn(); // 장착 해제
             CharacterManager.Instance.player.controller.ToggleInventory?.Invoke();
             CharacterManager.Instance.player.controller.isBuilding = true;
         }
+    }
+
+    public void FillWithLiquid(ItemSO itemData)
+    {
+        int stack = 0;
+
+        for(int i  = 0; i < slots.Length; i++)
+        {
+            if (slots[i].itemData != null && slots[i].itemData.identifier == ItemIdentifier.WaterBottle_Empty)
+            {
+                stack += slots[i].itemCount;
+                slots[i].itemCount = 0;
+                slots[i].Clear();
+            }
+        }
+        Debug.Log(stack);
+        List<ItemStack> water_Full = new List<ItemStack>();
+        water_Full.Add(new ItemStack(itemData, stack));
+        AddItem(water_Full);
     }
 }
 

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5973175669666987810}
   - component: {fileID: 4134949093698471134}
   - component: {fileID: 249282948565788262}
-  - component: {fileID: 8559169759594423295}
   m_Layer: 8
   m_Name: SM_PyriteOre
   m_TagString: Untagged
@@ -135,58 +134,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2574198537337322307, guid: cb5d64069f4ce724e813d8d3151176a4, type: 3}
---- !u!114 &8559169759594423295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411859233038111662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e2bd9f5befd9f4c8cb26008e447fba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pieces: {fileID: 4966714731715051410, guid: e068b0cfd3ff6904db432c95463c7d96, type: 3}
-  refinedPickup: {fileID: 1263286933431157752, guid: e1d2690e333b09348bc57bf07996f6e0, type: 3}
-  dropOnHit: 1
-  hitsToDestroy: 4
-  dropOnDestroy: 4
-  knockAngle: {x: 0, y: 0, z: 10}
-  knockCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.003173828
-      inSlope: 2.793537
-      outSlope: 2.793537
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.336861
-      value: 0.6130293
-      inSlope: -0.7031339
-      outSlope: -0.7031339
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.9988403
-      value: 0.001586914
-      inSlope: 1.845958
-      outSlope: 1.845958
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  knockDuration: 0.25
 --- !u!1 &5147989396336197159
 GameObject:
   m_ObjectHideFlags: 0

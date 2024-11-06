@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class BuildingSystem : MonoBehaviour
 {
+    [SerializeField] private Terrain terrain;
+
     [SerializeField] private List<BuildObjectSO> buildObjects = new();
     private BuildObjectSO currentObject;
     private PreviewObject currentPreview;
@@ -13,9 +16,9 @@ public class BuildingSystem : MonoBehaviour
     [SerializeField] private Transform cam;
     [SerializeField] private LayerMask buildPosTargetLayer;
 
+    [SerializeField] private float rayDistance = 5.0f;
     [SerializeField] private float offset = 1.0f;
-    [SerializeField] private float gridSize = 1.0f;
-
+    [SerializeField] private Vector3 gridSize = new Vector3(2.0f, 0.5f, 2.0f);
 
     private void Update()
     {
@@ -40,7 +43,7 @@ public class BuildingSystem : MonoBehaviour
 
     private void UpdatePreview()
     {
-        if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, 10, buildPosTargetLayer))
+        if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, rayDistance, buildPosTargetLayer))
         {
             currentPreview.gameObject.SetActive(true);
             if (hit.transform != transform)
@@ -56,12 +59,27 @@ public class BuildingSystem : MonoBehaviour
 
     private void NormalizePosition(RaycastHit hit)
     {
-        currentPos = hit.point;
-        currentPos -= Vector3.one * offset;
-        currentPos /= gridSize;
-        currentPos = new Vector3(Mathf.Round(currentPos.x), Mathf.Round(currentPos.y), Mathf.Round(currentPos.z));
-        currentPos *= gridSize;
-        currentPos += Vector3.one * offset;
+        Vector3 NormalizedVector = hit.point;
+
+        if (currentObject.buildType != BuildObjectSO.BuildType.Ground)
+        {
+            NormalizedVector -= Vector3.one * offset;
+            NormalizedVector.Scale(new Vector3(1 / gridSize.x, 1 / gridSize.y, 1 / gridSize.z));
+            NormalizedVector = new Vector3(Mathf.Round(NormalizedVector.x), Mathf.Round(NormalizedVector.y), Mathf.Round(NormalizedVector.z));
+            NormalizedVector.Scale(gridSize);
+            NormalizedVector += Vector3.one * offset;
+        }
+
+        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground")) // 땅 레이어에 닿았는지 확인
+        {
+            float groundHeight = terrain.SampleHeight(currentPos) + terrain.transform.position.y;
+            while (NormalizedVector.y < groundHeight) // 땅의 높이보다 낮으면
+            {
+                NormalizedVector.y += gridSize.y;     // 위치를 땅의 높이로 올림
+            }
+        }
+
+        currentPos = NormalizedVector;
         currentPreview.transform.position = currentPos;
     }
 

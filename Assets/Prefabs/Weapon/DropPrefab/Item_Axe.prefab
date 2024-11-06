@@ -157,8 +157,6 @@ GameObject:
   - component: {fileID: 9057626931816495148}
   - component: {fileID: 9195470484759807813}
   - component: {fileID: 5681461494806619471}
-  - component: {fileID: 2520595390282913682}
-  - component: {fileID: 1641367039312734570}
   - component: {fileID: 5326554435611072481}
   m_Layer: 8
   m_Name: Item_Axe
@@ -254,40 +252,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.10041062, y: 1.0271717, z: 0.4873457}
   m_Center: {x: 0.00000026462567, y: 0.4809425, z: 0.0006472133}
---- !u!95 &2520595390282913682
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6530310343261983324}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fc63d97200d6e2a4e8033ec763e517d1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1641367039312734570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6530310343261983324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beaa29554f98c694693ae9340dc04d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
 --- !u!114 &5326554435611072481
 MonoBehaviour:
   m_ObjectHideFlags: 0

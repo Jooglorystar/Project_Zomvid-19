@@ -17,6 +17,8 @@ public class Bullet : MonoBehaviour
         cam = Camera.main;
         Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 10);
         dir = (cam.ScreenToWorldPoint(screenCenter) - cam.transform.position).normalized;
+
+        Invoke("DestroyThisBullet", 2f);
     }
 
     private void FixedUpdate()
@@ -36,5 +38,10 @@ public class Bullet : MonoBehaviour
         {
             damagable.TakeDamage(damage);
         }
+    }
+
+    private void DestroyThisBullet()
+    {
+        gameObject.SetActive(false);
     }
 }

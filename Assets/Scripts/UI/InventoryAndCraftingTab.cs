@@ -52,9 +52,9 @@ public class InventoryAndCraftingTab : MonoBehaviour
             wholeTab.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             // ´Ù½Ã Ç°
+            //CharacterManager.Instance.player.controller.canMove = true;
             //CharacterManager.Instance.player.controller.canLook = true;
-            //CharacterManager.Instance.player.controller.canLook = true;
-            
+
         }
         else
         {

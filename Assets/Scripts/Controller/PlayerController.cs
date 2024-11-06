@@ -32,8 +32,8 @@ public class PlayerController : MonoBehaviour, IMovable
     private Vector2 mouseDelta = Vector2.zero;
     private float verticalRotation;
     private float mouseSensitivity;
-    private float maxVerticalRotation = 80;
-    private float minVerticalRotation = -80;
+    private float maxVerticalRotation = 65;
+    private float minVerticalRotation = -65;
     public bool canLook = true;
 
 
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour, IMovable
         }
     }
 
-    private bool IsGround()
+    public bool IsGround()
     {
         Ray[] ray = new Ray[4]
         {
