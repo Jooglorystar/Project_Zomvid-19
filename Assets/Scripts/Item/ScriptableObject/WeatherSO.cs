@@ -8,7 +8,7 @@ public class WeatherOption
     public Color FogColor;
 }
 
-[CreateAssetMenu(fileName = "WeatherSO", menuName = "WeatherOptionSO", order = 2)]
+[CreateAssetMenu(fileName = "WeatherSO", menuName = "WeatherOptionSO", order = 3)]
 public class WeatherSO : ScriptableObject
 {
     public List<WeatherOption> weathers;

@@ -44,6 +44,13 @@ public enum ItemIdentifier
     Fence,
     Campfire,
 
+    //건설자원 = 4000번
+    Build_Foundation = 4000,
+    Build_Wall,
+    Build_Pillar,
+    Build_Fence,
+    Build_Campfire,
+
     TestRsource1 = 10000, TestRsource2 = 10001
 }
 

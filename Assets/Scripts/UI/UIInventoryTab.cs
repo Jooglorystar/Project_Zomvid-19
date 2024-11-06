@@ -254,7 +254,7 @@ public class UIInventoryTab : MonoBehaviour
     {
         dropPos = CharacterManager.Instance.player.transform.position + Vector3.up * 1.5f;
         GameObject drops = Instantiate(itemStack.itemSO.dropPrefab, dropPos, Quaternion.identity);
-        drops.transform.parent = WorldLevelManager.Instance.ItemObjects;
+        drops.transform.parent = WorldLevelManager.Instance.ItemObjectsParent;
         var itemObject = drops.GetComponent<ItemObject>();
         if (itemObject != null)
         {
@@ -300,15 +300,21 @@ public class UIInventoryTab : MonoBehaviour
         return null;
     }
 
-    public void RemoveSelectedItem()
+    public bool RemoveSelectedItem() //고갈 상태 반환
     {
+        bool Depleted = false;
+
         slots[selectedItemIndex].itemCount--;
         if (slots[selectedItemIndex].itemCount <= 0)
         {
             slots[selectedItemIndex].itemCount = 0;
             slots[selectedItemIndex].itemData = null;
+
+            Depleted = true;
         }
         UpdateInventory();
+
+        return Depleted;
     }
 
     public void OnUseBtn()
@@ -370,7 +376,11 @@ public class UIInventoryTab : MonoBehaviour
 
     public void OnBuildBtn()
     {
-
+        if (WorldLevelManager.Instance.buildingSystem.LoadBuildObject(selectedItem.itemData.identifier))
+        {
+            CharacterManager.Instance.player.controller.ToggleInventory?.Invoke();
+            CharacterManager.Instance.player.controller.isBuilding = true;
+        }
     }
 }
 

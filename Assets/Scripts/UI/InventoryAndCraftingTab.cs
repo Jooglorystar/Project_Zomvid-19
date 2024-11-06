@@ -30,6 +30,8 @@ public class InventoryAndCraftingTab : MonoBehaviour
 
         _state = InventoryState.Inventory;
         wholeTab.SetActive(false);
+
+        CharacterManager.Instance.player.controller.ToggleInventory = ToggleInventoryUI;
     }
 
     public void OnInventoryUI(InputAction.CallbackContext context)
@@ -61,6 +63,12 @@ public class InventoryAndCraftingTab : MonoBehaviour
             // 인벤토리 오픈 시 움직임 및 회전을 막음
             //CharacterManager.Instance.player.controller.canMove = false;
             //CharacterManager.Instance.player.controller.canLook = false;
+
+            if (CharacterManager.Instance.player.controller.isBuilding) // 건설 종료
+            {
+                CharacterManager.Instance.player.controller.isBuilding = false;
+                WorldLevelManager.Instance.buildingSystem.ExitBuild();
+            }
         }
     }
 
