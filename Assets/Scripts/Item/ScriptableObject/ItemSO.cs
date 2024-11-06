@@ -40,6 +40,10 @@ public enum ItemIdentifier
     WaterBottle_Full,
     WaterBottle_Empty,
     Apple,
+    Bread,
+    Burger,
+    Donut,
+    Soda,
 
     //가공자원 = 3000번
     Wood_Plank = 3000,
