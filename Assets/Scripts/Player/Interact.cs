@@ -12,6 +12,7 @@ public interface IInteractable
 
 public class Interact : MonoBehaviour
 {
+    [SerializeField] private GameObject Prompt;
     [SerializeField] private TextMeshProUGUI NamePrompt;
     [SerializeField] private TextMeshProUGUI DescriptionPrompt;
     [SerializeField] private LayerMask InteractableLayerMask;
@@ -40,6 +41,7 @@ public class Interact : MonoBehaviour
         }
         else if (CharacterManager.Instance.player.controller.isBuilding == true)
         {
+            Prompt.SetActive(false);
             curInteractGameObject = null;
             curInteractable = null;
             ClearPrompt();
@@ -59,6 +61,7 @@ public class Interact : MonoBehaviour
                 curInteractGameObject = hit.collider.gameObject;
                 SetNamePrompt(interactable.GetInteractPromptName());
                 SetDescriptionPrompt(interactable.GetInteractPromptDescription());
+                Prompt.SetActive(true);
             }
         }
         else if (Physics.Raycast(ray, out hit, inspectDistance, ResourceLayerMask))
@@ -69,10 +72,12 @@ public class Interact : MonoBehaviour
                 curInteractGameObject = hit.collider.gameObject;
                 SetNamePrompt(interactable.GetInteractPromptName());
                 SetDescriptionPrompt(interactable.GetInteractPromptDescription());
+                Prompt.SetActive(true);
             }
         }
         else
         {
+            Prompt.SetActive(false);
             curInteractGameObject = null;
             curInteractable = null;
             ClearPrompt();
@@ -103,6 +108,7 @@ public class Interact : MonoBehaviour
             {
                 curInteractable?.OnInteraction();
 
+                Prompt.SetActive(false);
                 curInteractGameObject = null;
                 curInteractable = null;
                 ClearPrompt();

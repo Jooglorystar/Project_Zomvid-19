@@ -38,9 +38,8 @@ public class UIInventoryTab : MonoBehaviour
     private PlayerCondition condition;
     private PlayerController controller;
 
-    private void Awake()
-    {
-    }
+    [Header("Toast Alarm")]
+    [SerializeField] private ToastAlarm toastAlarm;
 
     private void Start()
     {
@@ -190,6 +189,7 @@ public class UIInventoryTab : MonoBehaviour
             //아이템이 중복가능한지 canStack체크
             if (itemStack.itemSO.canStack)
             {
+                int addCount = 0;
                 while (itemStack.stack > 0)
                 {
                     ItemSlot slot = GetItemStack(itemStack.itemSO);
@@ -198,11 +198,13 @@ public class UIInventoryTab : MonoBehaviour
                         if (slot.itemCount + itemStack.stack <= itemStack.itemSO.MaxStackSize)
                         {
                             slot.itemCount += itemStack.stack;
+                            addCount += itemStack.stack;
                             itemStack.stack = 0;
                         }
                         else
                         {
                             itemStack.stack += slot.itemCount - itemStack.itemSO.MaxStackSize;
+                            addCount += itemStack.itemSO.MaxStackSize - slot.itemCount;
                             slot.itemCount = itemStack.itemSO.MaxStackSize;
                         }
                     }
@@ -215,12 +217,14 @@ public class UIInventoryTab : MonoBehaviour
                             if (itemStack.stack <= itemStack.itemSO.MaxStackSize)
                             {
                                 emptySlot.itemCount = itemStack.stack;
+                                addCount += itemStack.stack;
                                 itemStack.stack = 0;
                             }
                             else
                             {
                                 itemStack.stack -= itemStack.itemSO.MaxStackSize;
                                 emptySlot.itemCount = itemStack.itemSO.MaxStackSize;
+                                addCount += itemStack.itemSO.MaxStackSize;
                             }
                         }
                         else
@@ -230,6 +234,7 @@ public class UIInventoryTab : MonoBehaviour
                         }
                     }
                 }
+                toastAlarm.ShowToast($"{itemStack.itemSO.name} + {addCount}", true);
             }
             else
             {
@@ -238,6 +243,7 @@ public class UIInventoryTab : MonoBehaviour
                 {
                     emptySlot.itemData = itemStack.itemSO;
                     emptySlot.itemCount = 1;
+                    toastAlarm.ShowToast($"{itemStack.itemSO.name} + 1", true);
                     UpdateInventory();
                     return;
                 }
@@ -381,7 +387,8 @@ public class UIInventoryTab : MonoBehaviour
     {
         if (WorldLevelManager.Instance.buildingSystem.LoadBuildObject(selectedItem.itemData.identifier))
         {
-            OnUnEquipBtn(); // 장착 해제
+            equipItemSlot = null;
+            CharacterManager.Instance.player.equip.unEquip(); // 장착 해제
             CharacterManager.Instance.player.controller.ToggleInventory?.Invoke();
             CharacterManager.Instance.player.controller.isBuilding = true;
         }
