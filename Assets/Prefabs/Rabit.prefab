@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8073245044118639629}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: foot_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8815449979390401687}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: spine3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4554913885816816144}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: arm_handle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1122172085319143258}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: hip_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1124029923264578339}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2243626130609246714}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3507854009368905378}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Rabbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8485160240506585594}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: foot_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9129800312483462770}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ear_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5166053170491733566}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8581107504627402902}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: arm_handle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5993334304728873131}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1658682900876173988}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: hip_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8656006352982831691}
   - component: {fileID: 776180273207608799}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Rabbit_Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,7 +538,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 499384569354929655}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1111152871383598103}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: shoulder_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4911666716770611494}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ear_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4354190226782571141}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: shoulder_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -665,7 +665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1921928015335016053}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: leg_handle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +697,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 634386296772896519}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,7 +728,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2812412253632277720}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4516730479437350478}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -794,7 +794,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8916224857529917720}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -825,7 +825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 756841991670578166}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -856,7 +856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5535176719338483661}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: leg_handle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -888,7 +888,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5174629128957287321}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: leg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 924389189268918229}
   - component: {fileID: 7414780808325318492}
   - component: {fileID: 819004366419930616}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Rabit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -981,6 +981,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f09021df50f7a48a76b9017da110ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropOnDeath:
+  - {fileID: 11400000, guid: e9bb7845ac54f45468af6faaceb67b1a, type: 2}
+  - {fileID: 11400000, guid: e9bb7845ac54f45468af6faaceb67b1a, type: 2}
   isStopped: 0
 --- !u!114 &7664005783743047210
 MonoBehaviour:
@@ -1086,7 +1089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6314916903108324507}
   - component: {fileID: 3745759614397102588}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Rabbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1194,7 +1197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3705686559879304237}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -45,6 +45,7 @@ public enum ItemIdentifier
     Burger,
     Donut,
     Soda,
+    FriedChicken,
 
     //가공자원 = 3000번
     Wood_Plank = 3000,

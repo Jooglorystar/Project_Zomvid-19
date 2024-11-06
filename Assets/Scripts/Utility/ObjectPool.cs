@@ -6,7 +6,8 @@ public enum PoolObject
 {
     bullet,
     rabit,
-    zombie
+    zombie,
+    zombie_Nurse
 }
 
 public class ObjectPool : MonoBehaviour

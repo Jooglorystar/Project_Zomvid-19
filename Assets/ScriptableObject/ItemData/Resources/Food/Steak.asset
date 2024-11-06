@@ -27,5 +27,7 @@ MonoBehaviour:
     itemEffectValue: 100
   - consumeType: 1
     itemEffectValue: 100
-  canCrafting: 0
-  itemMaterials: []
+  canCrafting: 1
+  itemMaterials:
+  - item: {fileID: 11400000, guid: be46480e19ba49943b3f8028632df6fb, type: 2}
+    itemCount: 1

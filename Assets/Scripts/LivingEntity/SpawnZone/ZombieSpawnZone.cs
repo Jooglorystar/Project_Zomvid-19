@@ -25,7 +25,19 @@ public class ZombieSpawnZone : MonoBehaviour
         {
             for (int i = 0; i < spawnCount; i++)
             {
-                GameObject zombie = spawnManager.SpawnEnemies(transform.position, PoolObject.zombie);//이 위치에서 스폰
+                //j는 0, 1, 2, 3
+                int j = Random.Range(0, 4);
+                GameObject zombie;
+
+                //25% 확률로 간호사좀비 소환
+                if (j == 0)
+                {
+                    zombie = spawnManager.SpawnEnemies(transform.position, PoolObject.zombie_Nurse);//이 위치에서 스폰
+                }
+                else
+                {
+                    zombie = spawnManager.SpawnEnemies(transform.position, PoolObject.zombie);//이 위치에서 스폰
+                }
                 SpawnZombies.Add(zombie);
             }
         }

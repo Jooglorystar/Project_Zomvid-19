@@ -12,11 +12,16 @@ public class nmsObject : MonoBehaviour
         nms = GetComponent<NavMeshSurface>();
     }
 
+    private void Start()
+    {
+        nms.BuildNavMesh();
+    }
+
     private void Update()
     {
         if (IsFarFromPlayer())
         {
-            nms.BuildNavMesh();
+            //nms.BuildNavMesh();
         }
     }
 

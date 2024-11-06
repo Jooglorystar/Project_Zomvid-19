@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 313126098217829628}
   - component: {fileID: 7860200636879089582}
   - component: {fileID: 5232313180271273035}
+  - component: {fileID: 476987060605168053}
   m_Layer: 14
   m_Name: Foundation
   m_TagString: Untagged
@@ -122,3 +123,19 @@ MonoBehaviour:
   buildType: 0
   durability: 50
   BreakResources: []
+--- !u!208 &476987060605168053
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136050951254581224}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.010000001, y: 0.001, z: 0.010000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
