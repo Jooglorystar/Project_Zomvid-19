@@ -999,8 +999,8 @@ MonoBehaviour:
   runSpeed: 10
   basicATK: 0
   Temperature: 0
-  minWanderDistance: 1
-  maxWanderDistance: 5
+  minWanderDistance: 3
+  maxWanderDistance: 15
   minWanderWaitTime: 1
   maxWanderWaitTime: 3
   detectDistance: 10
@@ -1040,7 +1040,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 3000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

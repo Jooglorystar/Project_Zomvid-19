@@ -13,7 +13,6 @@ public class ZombieSpawnZone : MonoBehaviour
     private int spawnCount = 5;
     private void Start()
     {
-        Debug.Log("RabitSpawnZoneΩ√¿€");
         spawnManager = GetComponent<SpawnManager>();
         playerTransform = CharacterManager.Instance.player.transform;
     }
