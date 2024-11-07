@@ -25,7 +25,7 @@ Unity 3D Zombie Survival Project
 ## 팀원구성
 
 - 손형민(팀장) - 인벤토리, 크래프팅시스템, 좀비AI조정, 플레이어 및 아이템 관련 시스템
-- 이지혜(팀원) -
+- 이지혜(팀원) - 좀비, 토끼, 스폰존 제작
 - 성요셉(팀원) - Terrain 맵 제작, 날씨 및 환경, 환경 자원, 건축 시스템
 - 주창규(팀원) - 
 
@@ -65,6 +65,10 @@ WASD와 마우스를 통해 움직일 수 있고, Space를 눌러 점프할 수 
 <br>
 
 - 기능 6. 전투
+![image](https://github.com/user-attachments/assets/07b17f8b-24c2-49ee-bf8f-7a1fa5513c3a)
+좀비가 플레이어를 공격할 수 있다. 플레이어는 마우스 좌클릭을 통해 좀비를 공격할 수 있다.
+![image](https://github.com/user-attachments/assets/e592a4ff-7474-4bcf-8f8a-0725b99577d0)
+토끼는 플레이어 감지 시 도망간다. 플레이어는 마우스 좌클릭을 통해 토끼를 공격할 수 있다.
 
 <br>
 
@@ -107,9 +111,9 @@ WASD와 마우스를 통해 움직일 수 있고, Space를 눌러 점프할 수 
   <summary>이지혜 : </summary>
     <div markdown="1">
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
+          <li>좀비가 플레이어 발견 시 움직임이 지나치게 빨라졌습니다.</li>
+        <li>원래는 걷기 모션만 이용하기위해 anget스피드에 맞춰 움직임속도를 조정해줬었습니다.</li>
+        <li>달리기 모션을 추가하면서 조정해주는 코드를 지워주지 않아 생겼던 문제였습니다.</li>
       </ul>
     </div>
 </details>
