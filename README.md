@@ -20,7 +20,6 @@ Unity 3D Zombie Survival Project
 
 - 추위와 좀비가 가득한 세상에서 자원을 수집하고 홀로 생존하는 고독한 서바이벌 게임
 - Secne/Final/MainScene
-- BGM Made With Suno
 
 ---
 
@@ -94,7 +93,8 @@ WASD와 마우스를 통해 움직일 수 있고, Space를 눌러 점프할 수 
 - 유니티 2022.3.17f LTS   
 - Microsoft Visual Studio 2022   
 - GitHub   
-
+- BGM Made With Suno
+  
 ---
 
 ## Trouble Shooting
