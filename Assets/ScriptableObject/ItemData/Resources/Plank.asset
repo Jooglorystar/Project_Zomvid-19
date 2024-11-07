@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce2ef2de24278f46a5c6e4b0e36fd79, type: 3}
+  m_Name: Plank
+  m_EditorClassIdentifier: 
+  identifier: 3000
+  itemName: "\uB098\uBB34\uD310\uC790"
+  itemDesc: "\uAC00\uACF5\uB41C \uB098\uBB34\uC785\uB2C8\uB2E4."
+  itemType: 2
+  icon: {fileID: 21300000, guid: f2e33a51b0599e8469a5d3689101d7ad, type: 3}
+  dropPrefab: {fileID: 490711462827457198, guid: 17032a4c4486abc4886de4f481ffc0b8, type: 3}
+  canStack: 1
+  MaxStackSize: 30
+  ConsumeData: []
+  canCrafting: 1
+  itemMaterials:
+  - item: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
+    itemCount: 1

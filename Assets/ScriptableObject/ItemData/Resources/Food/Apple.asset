@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce2ef2de24278f46a5c6e4b0e36fd79, type: 3}
+  m_Name: Apple
+  m_EditorClassIdentifier: 
+  identifier: 2005
+  itemName: "\uC0AC\uACFC"
+  itemDesc: "\uC2E0\uC120\uD55C \uC0AC\uACFC. \uACFC\uC999\uC774 \uB9CE\uC774 \uD3EC\uD568\uB418\uC5B4
+    \uC788\uC2B5\uB2C8\uB2E4."
+  itemType: 1
+  icon: {fileID: 21300000, guid: 3181b21d60307984ab244c9398f2d436, type: 3}
+  dropPrefab: {fileID: 7877519943254079097, guid: f862dd341f6404945863bf3f1e8e4d14, type: 3}
+  canStack: 1
+  MaxStackSize: 10
+  ConsumeData:
+  - consumeType: 0
+    itemEffectValue: 30
+  - consumeType: 2
+    itemEffectValue: 30
+  - consumeType: 3
+    itemEffectValue: 50
+  canCrafting: 0
+  itemMaterials: []

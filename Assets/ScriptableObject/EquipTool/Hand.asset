@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108fe3b1cdc6deb46b1ee4aaeb1aaa80, type: 3}
+  m_Name: Hand
+  m_EditorClassIdentifier: 
+  identifier: 104
+  itemName: "\uB9E8\uC190"
+  itemDesc: "\uB9E8\uC190\uC785\uB2C8\uB2E4"
+  itemType: 0
+  icon: {fileID: 0}
+  dropPrefab: {fileID: 0}
+  canStack: 0
+  MaxStackSize: 0
+  ConsumeData: []
+  canCrafting: 0
+  itemMaterials: []
+  damage: 1
+  attackDistance: 2
+  attackRate: 0.1
+  useStamina: 5
+  toolType: 2
+  meleePrefab: {fileID: 9104585179157289246, guid: 265068cdbbbdf2b449a6c8a9e9107ede, type: 3}
