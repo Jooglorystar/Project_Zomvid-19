@@ -8,6 +8,7 @@ TagManager:
   - CraftingSlot
   - Fence
   - FPCamera
+  - ZombieSound
   layers:
   - Default
   - TransparentFX

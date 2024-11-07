@@ -273,7 +273,7 @@ public class UIInventoryTab : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].itemData != null)
+            if (slots[i].itemData != null && slots[i].itemCount != 0)
             {
                 slots[i].Set();
             }
@@ -387,7 +387,6 @@ public class UIInventoryTab : MonoBehaviour
     {
         if (WorldLevelManager.Instance.buildingSystem.LoadBuildObject(selectedItem.itemData.identifier))
         {
-            equipItemSlot = null;
             CharacterManager.Instance.player.equip.unEquip(); // 장착 해제
             CharacterManager.Instance.player.controller.ToggleInventory?.Invoke();
             CharacterManager.Instance.player.controller.isBuilding = true;

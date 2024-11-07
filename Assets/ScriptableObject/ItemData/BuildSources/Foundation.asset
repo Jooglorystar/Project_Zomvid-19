@@ -21,5 +21,9 @@ MonoBehaviour:
   canStack: 1
   MaxStackSize: 10
   ConsumeData: []
-  canCrafting: 0
-  itemMaterials: []
+  canCrafting: 1
+  itemMaterials:
+  - item: {fileID: 11400000, guid: 4634427cc127fb04b8e7d22fb71e322e, type: 2}
+    itemCount: 1
+  - item: {fileID: 11400000, guid: e1a34b7d42a26914da8397e5f4473d8c, type: 2}
+    itemCount: 2

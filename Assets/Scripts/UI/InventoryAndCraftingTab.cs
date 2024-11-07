@@ -56,6 +56,7 @@ public class InventoryAndCraftingTab : MonoBehaviour
             // ´Ù½Ã Ç°
             CharacterManager.Instance.player.controller.canMove = true;
             CharacterManager.Instance.player.controller.canLook = true;
+            Time.timeScale = 1;
 
         }
         else
@@ -72,7 +73,10 @@ public class InventoryAndCraftingTab : MonoBehaviour
             {
                 CharacterManager.Instance.player.controller.isBuilding = false;
                 WorldLevelManager.Instance.buildingSystem.ExitBuild();
+
             }
+            Time.timeScale = 0;
+
         }
     }
 
