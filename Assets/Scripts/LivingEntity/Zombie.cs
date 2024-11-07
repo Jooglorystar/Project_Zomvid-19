@@ -257,7 +257,6 @@ public class Zombie : MonoBehaviour, IDamagable
         Ray ray = new Ray(transform.position + Vector3.up * 0.5f, transform.forward);
         RaycastHit hit;
 
-        //Ray로할지, Tag로할지는 미정
         if (Physics.Raycast(ray, out hit, data.attackDistance, fenceMaskLayer))
         {
             FenceAttacked = hit.collider.GetComponent<IDamagable>();

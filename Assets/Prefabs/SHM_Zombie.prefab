@@ -1704,7 +1704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5593738106821812253}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05542823, y: -0.39151272, z: 0.023683187, w: 0.91819644}
+  m_LocalRotation: {x: 0.055426482, y: -0.3915141, z: 0.023680743, w: 0.91819596}
   m_LocalPosition: {x: 269.29156, y: 24.621304, z: 302.78476}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1712,7 +1712,7 @@ Transform:
   - {fileID: 89775764269661166}
   - {fileID: 5470300779291014446}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.911, y: -46.186, z: 0.005}
 --- !u!65 &3773826059931693712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1958,7 +1958,7 @@ GameObject:
   - component: {fileID: 3141947889461271854}
   m_Layer: 13
   m_Name: ZombieSoundZone
-  m_TagString: Untagged
+  m_TagString: ZombieSound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

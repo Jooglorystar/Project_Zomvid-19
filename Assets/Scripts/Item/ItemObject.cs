@@ -24,7 +24,7 @@ public class ItemObject : MonoBehaviour, IInteractable
         List<ItemStack> itemStacks = new();
         itemStacks.Add(new ItemStack (itemStack.itemSO, itemStack.stack));
         CharacterManager.Instance.player.uiInventoryTab.AddItem(itemStacks);
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     public string GetInteractPromptName()
