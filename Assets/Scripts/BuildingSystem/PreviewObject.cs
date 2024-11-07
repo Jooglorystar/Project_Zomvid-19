@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
-using static BuildObjectSO;
 
 public class PreviewObject : MonoBehaviour
 {
     [SerializeField] Material green;
     [SerializeField] Material red;
+    [SerializeField] LayerMask ignoreColliderLayers;
     [HideInInspector] public BuildObjectSO.BuildType buildType;
     [HideInInspector] public bool isBuildable;
 
@@ -22,7 +19,7 @@ public class PreviewObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (IsLayerMatched(ignoreColliderLayers, other.gameObject.layer))
         {
             return;
         }
@@ -70,7 +67,7 @@ public class PreviewObject : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (IsLayerMatched(ignoreColliderLayers, other.gameObject.layer))
         {
             return;
         }
@@ -144,6 +141,11 @@ public class PreviewObject : MonoBehaviour
             }
             renderers[i].materials = materials;
         }
+    }
+
+    private bool IsLayerMatched(int value, int layer)
+    {
+        return value == (value | 1 << layer);
     }
 }
 

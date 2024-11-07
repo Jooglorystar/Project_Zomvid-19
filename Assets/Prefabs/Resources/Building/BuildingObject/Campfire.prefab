@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 3937606554352205298}
   - component: {fileID: 6915978161190985427}
   - component: {fileID: 2180885653495923064}
-  m_Layer: 8
+  m_Layer: 17
   m_Name: Campfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10363,7 +10363,7 @@ GameObject:
   - component: {fileID: 763728338370778350}
   - component: {fileID: 6510811013996645787}
   - component: {fileID: 6365325881996467178}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: Fire_light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

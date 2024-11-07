@@ -151,5 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   green: {fileID: 2100000, guid: e70bd6967b4a20c41b01ad94bc1db08f, type: 2}
   red: {fileID: 2100000, guid: b2008d111d709d64c84382cb701f5bce, type: 2}
+  ignoreColliderLayers:
+    serializedVersion: 2
+    m_Bits: 131200
   buildType: 0
   isBuildable: 0

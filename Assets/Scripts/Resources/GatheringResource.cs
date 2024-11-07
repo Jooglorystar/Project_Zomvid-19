@@ -67,7 +67,7 @@ public class GatheringResource : MonoBehaviour, IInteractable, IDamagable
             int beforeRemain = (int)(curDurability / durability * item.stack);
             int afterRemain = (int)(after / durability * item.stack);
             int gather = beforeRemain - afterRemain;
-            if (gather >= 0)
+            if (gather > 0)
             {
                 gatherItems.Add(new ItemStack(item.itemSO, gather));
             }

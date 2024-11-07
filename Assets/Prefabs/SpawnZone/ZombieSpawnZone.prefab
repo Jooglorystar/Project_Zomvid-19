@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5247055764691670473}
   - component: {fileID: 8930133206282226472}
   - component: {fileID: 1695538120946675540}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ZombieSpawnZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23684e87ab1e1e04e85635e20ee25cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrain: {fileID: 0}
   objectPool: {fileID: 0}
 --- !u!114 &8930133206282226472
 MonoBehaviour:
@@ -59,6 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcef476328b4a445ac38a50c7901471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  despawnDistance: 15
+  spawnCount: 5
 --- !u!65 &1695538120946675540
 BoxCollider:
   m_ObjectHideFlags: 0
